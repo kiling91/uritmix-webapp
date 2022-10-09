@@ -44,6 +44,7 @@ const PasswordReset = observer(() => {
 					<div className='mb-3 required'>
 						<label className='small mb-1'>{'Email'}</label>
 						<TextBox
+							disabled={store.loading}
 							mode='email'
 							placeholder={'Enter your email address'}
 							value={email}

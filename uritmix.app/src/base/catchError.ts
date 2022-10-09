@@ -1,4 +1,5 @@
 import { StatusCodes } from 'http-status-codes'
+import { dto } from 'uritmix.api'
 
 export const catchHttp = (error: any, addError: (error: string) => void) => {
 	console.log('*** Error ***')
@@ -33,12 +34,8 @@ export const catchHttp = (error: any, addError: (error: string) => void) => {
 	} else if (resp.status == StatusCodes.INTERNAL_SERVER_ERROR) {
 		addError('Internal server error')
 	} else if (resp.status == StatusCodes.UNPROCESSABLE_ENTITY) {
-		for (let key in resp.data)
-			if (resp.data.hasOwnProperty(key)) {
-				resp.data[key].forEach((error: string) => {
-					addError(error)
-				})
-			}
+		for (let value of resp.data.properties)
+			addError(`${value.name}: ${value.error}`)
 	} else {
 		addError(resp.status)
 		if (resp.data) console.log(resp.data)

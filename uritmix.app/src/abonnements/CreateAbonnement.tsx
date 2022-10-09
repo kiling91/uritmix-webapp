@@ -13,7 +13,7 @@ import { RequiredRule, StringLengthRule } from 'devextreme-react/validator'
 import NumberBox from 'devextreme-react/number-box'
 import { dto } from 'uritmix.api'
 import { RuleCaption } from '../base/ruleCaption'
-import { PersonDomain } from '../domainConfig'
+import { AbonnementDomain } from '../domainConfig'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
@@ -28,8 +28,12 @@ const CreateAbonnement = observer((param: Param) => {
 	const store = useLocalObservable(() => new AbonnementStore())
 	const [name, setName] = useState<string>()
 	const [validity, setValidity] = useState(dto.AbonnementValidityView.OneDay)
-	const [numberOfVisits, setNumberOfVisits] = useState<number>(1)
-	const [basePrice, setBasePrice] = useState<number>(0.0)
+	const [numberOfVisits, setNumberOfVisits] = useState<number>(
+		AbonnementDomain.NumberOfVisitsMin
+	)
+	const [basePrice, setBasePrice] = useState<number>(
+		AbonnementDomain.BasePriceMax
+	)
 	const [discount, setDiscount] = useState(dto.DiscountView.D0)
 
 	const validityLookup = () => {
@@ -118,7 +122,11 @@ const CreateAbonnement = observer((param: Param) => {
 		e.preventDefault()
 		if (name) {
 			const res = await store.create({
-				// ***** *
+				name: name,
+				validity: validity,
+				numberOfVisits: numberOfVisits,
+				basePrice: basePrice,
+				discount: discount
 			})
 			if (res && store.value?.id) param.onClose(store.value.id, true)
 			return
@@ -135,11 +143,12 @@ const CreateAbonnement = observer((param: Param) => {
 			<form onSubmit={onSubmit}>
 				<ShowErrors errors={store.errors} />
 				<fieldset disabled={store.loading}>
-					{/*Firstname*/}
+					{/*Name*/}
 					<div className='required'>
-						<label className='small mb-1'>{'Firstname'}</label>
+						<label className='small mb-1'>{'Name'}</label>
 						<TextBox
 							mode='text'
+							disabled={store.loading}
 							className='mb-3'
 							placeholder={'Enter name'}
 							value={name}
@@ -149,11 +158,11 @@ const CreateAbonnement = observer((param: Param) => {
 								<RequiredRule message={RuleCaption.required('Name')} />
 								<StringLengthRule
 									trim
-									min={PersonDomain.PersonNameAndEmailMinLength}
-									max={PersonDomain.PersonNameAndEmailMaxLength}
+									min={AbonnementDomain.NameMinLength}
+									max={AbonnementDomain.NameMaxLength}
 									message={RuleCaption.length(
-										PersonDomain.PersonNameAndEmailMinLength,
-										PersonDomain.PersonNameAndEmailMaxLength
+										AbonnementDomain.NameMinLength,
+										AbonnementDomain.NameMaxLength
 									)}
 								/>
 							</Validator>
@@ -170,6 +179,7 @@ const CreateAbonnement = observer((param: Param) => {
 							showCancelButton={false}
 							showDropDownButton={false}
 							dataSource={validityLookup()}
+							disabled={store.loading}
 							displayExpr='Name'
 							valueExpr='Id'
 							searchEnabled={false}
@@ -193,7 +203,8 @@ const CreateAbonnement = observer((param: Param) => {
 							defaultValue={numberOfVisits}
 							onValueChanged={e => setNumberOfVisits(e.value)}
 							showSpinButtons={true}
-							min={1}
+							min={AbonnementDomain.NumberOfVisitsMin}
+							max={AbonnementDomain.NumberOfVisitsMax}
 							format='#0'
 						/>
 					</div>
@@ -207,7 +218,8 @@ const CreateAbonnement = observer((param: Param) => {
 							disabled={store.loading}
 							defaultValue={basePrice}
 							onValueChanged={e => setBasePrice(e.value)}
-							min={0.0}
+							min={AbonnementDomain.BasePriceMin}
+							max={AbonnementDomain.BasePriceMax}
 							format='#0.##'
 						/>
 					</div>
@@ -222,6 +234,7 @@ const CreateAbonnement = observer((param: Param) => {
 							showCancelButton={false}
 							showDropDownButton={false}
 							dataSource={discountLookup()}
+							disabled={store.loading}
 							displayExpr='Name'
 							valueExpr='Id'
 							searchEnabled={false}
@@ -265,25 +278,23 @@ const CreateAbonnement = observer((param: Param) => {
 		return 'Create abonnement'
 	}
 
+	{
+		/*Костыль нужны для перерисовки в Popup*/
+	}
+	console.log(store.loading)
 	return (
-		<>
-			{/*Костыль нужны для перерисовки в Popup*/}
-			<Visibility visible={store.errors.length > 0 || store.loading}>
-				<div />
-			</Visibility>
-			<Popup
-				width={POPUP_FORM_WIDTH}
-				height={'auto'}
-				position={POPUP_POSITION}
-				showTitle={true}
-				visible={true}
-				title={title()}
-				dragEnabled={false}
-				closeOnOutsideClick={false}
-				onHiding={onClose}
-				contentRender={form}
-			/>
-		</>
+		<Popup
+			width={POPUP_FORM_WIDTH}
+			height={'auto'}
+			position={POPUP_POSITION}
+			showTitle={true}
+			visible={true}
+			title={title()}
+			dragEnabled={false}
+			hideOnOutsideClick={false}
+			onHiding={onClose}
+			contentRender={form}
+		/>
 	)
 })
 

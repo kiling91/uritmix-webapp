@@ -45,6 +45,7 @@ const PasswordChange = observer(() => {
 							{'Password'}
 						</label>
 						<TextBox
+							disabled={store.loading}
 							mode='password'
 							placeholder={'Enter password'}
 							value={password}
@@ -70,6 +71,7 @@ const PasswordChange = observer(() => {
 							{'Confirm password'}
 						</label>
 						<TextBox
+							disabled={store.loading}
 							mode='password'
 							placeholder={'Enter confirm password'}
 							value={passwordConfirm}

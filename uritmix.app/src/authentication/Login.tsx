@@ -48,6 +48,7 @@ const Login = observer(() => {
 						<div className='mb-3 required'>
 							<label className='small mb-1'>{'Email'}</label>
 							<TextBox
+								disabled={store.loading}
 								mode='email'
 								placeholder={'Enter your email address'}
 								value={email}
@@ -76,6 +77,7 @@ const Login = observer(() => {
 						<div className='my-3 required'>
 							<label className='small mb-1'>{'Password'}</label>
 							<TextBox
+								disabled={store.loading}
 								mode='password'
 								placeholder={'Enter password'}
 								value={password}
@@ -99,6 +101,7 @@ const Login = observer(() => {
 						{/*Remember me*/}
 						<div className='mb-4'>
 							<CheckBox
+								disabled={store.loading}
 								id='rememberMeCheck'
 								name='rememberMe'
 								text={'Remember me'}

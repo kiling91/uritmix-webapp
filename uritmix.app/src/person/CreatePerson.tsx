@@ -57,6 +57,7 @@ const CreatePerson = observer((param: Param) => {
 						<label className='small mb-1'>{'Firstname'}</label>
 						<TextBox
 							mode='text'
+							disabled={store.loading}
 							className='mb-3'
 							placeholder={'Enter firstaname'}
 							value={firstName}
@@ -66,11 +67,11 @@ const CreatePerson = observer((param: Param) => {
 								<RequiredRule message={RuleCaption.required('Firstaname')} />
 								<StringLengthRule
 									trim
-									min={PersonDomain.PersonNameAndEmailMinLength}
-									max={PersonDomain.PersonNameAndEmailMaxLength}
+									min={PersonDomain.NameMinLength}
+									max={PersonDomain.NameMaxLength}
 									message={RuleCaption.length(
-										PersonDomain.PersonNameAndEmailMinLength,
-										PersonDomain.PersonNameAndEmailMaxLength
+										PersonDomain.NameMinLength,
+										PersonDomain.NameMaxLength
 									)}
 								/>
 							</Validator>
@@ -84,17 +85,18 @@ const CreatePerson = observer((param: Param) => {
 							className='mb-3'
 							placeholder={'Enter lastname'}
 							value={lastName}
+							disabled={store.loading}
 							onValueChanged={e => setLastName(e.value)}
 						>
 							<Validator>
 								<RequiredRule message={RuleCaption.required('Lastname')} />
 								<StringLengthRule
 									trim
-									min={PersonDomain.PersonNameAndEmailMinLength}
-									max={PersonDomain.PersonNameAndEmailMaxLength}
+									min={PersonDomain.NameMinLength}
+									max={PersonDomain.NameMaxLength}
 									message={RuleCaption.length(
-										PersonDomain.PersonNameAndEmailMinLength,
-										PersonDomain.PersonNameAndEmailMaxLength
+										PersonDomain.NameMinLength,
+										PersonDomain.NameMaxLength
 									)}
 								/>
 							</Validator>
@@ -103,6 +105,7 @@ const CreatePerson = observer((param: Param) => {
 					{/*Description*/}
 					<label className='small mb-1'>{'Description'}</label>
 					<TextArea
+						disabled={store.loading}
 						value={description}
 						onValueChanged={e => setDescription(e.value)}
 					>
@@ -143,25 +146,23 @@ const CreatePerson = observer((param: Param) => {
 		return 'Create customer'
 	}
 
+	{
+		/*Костыль нужны для перерисовки в Popup*/
+	}
+	console.log(store.loading)
 	return (
-		<>
-			{/*Костыль нужны для перерисовки в Popup*/}
-			<Visibility visible={store.errors.length > 0 || store.loading}>
-				<div />
-			</Visibility>
-			<Popup
-				width={POPUP_FORM_WIDTH}
-				height={'auto'}
-				position={POPUP_POSITION}
-				showTitle={true}
-				visible={true}
-				title={title()}
-				dragEnabled={false}
-				closeOnOutsideClick={false}
-				onHiding={onClose}
-				contentRender={form}
-			/>
-		</>
+		<Popup
+			width={POPUP_FORM_WIDTH}
+			height={'auto'}
+			position={POPUP_POSITION}
+			showTitle={true}
+			visible={true}
+			title={title()}
+			dragEnabled={false}
+			hideOnOutsideClick={false}
+			onHiding={onClose}
+			contentRender={form}
+		/>
 	)
 })
 
