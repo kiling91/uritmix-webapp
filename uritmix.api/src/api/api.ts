@@ -232,37 +232,37 @@ export interface CreateAuth {
 /**
  * 
  * @export
- * @interface CreateLessonPerson
+ * @interface CreateLesson
  */
-export interface CreateLessonPerson {
+export interface CreateLesson {
     /**
      * 
      * @type {string}
-     * @memberof CreateLessonPerson
+     * @memberof CreateLesson
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CreateLessonPerson
+     * @memberof CreateLesson
      */
     'description'?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof CreateLessonPerson
+     * @memberof CreateLesson
      */
     'trainerId'?: number;
     /**
      * 
      * @type {number}
-     * @memberof CreateLessonPerson
+     * @memberof CreateLesson
      */
     'durationMinute'?: number;
     /**
      * 
      * @type {number}
-     * @memberof CreateLessonPerson
+     * @memberof CreateLesson
      */
     'basePrice'?: number;
 }
@@ -300,19 +300,19 @@ export interface CreatePerson {
 /**
  * 
  * @export
- * @interface CreateRoomPerson
+ * @interface CreateRoom
  */
-export interface CreateRoomPerson {
+export interface CreateRoom {
     /**
      * 
      * @type {string}
-     * @memberof CreateRoomPerson
+     * @memberof CreateRoom
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CreateRoomPerson
+     * @memberof CreateRoom
      */
     'description'?: string | null;
 }
@@ -508,12 +508,6 @@ export interface Lesson {
      * @memberof Lesson
      */
     'description'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Lesson
-     */
-    'trainerId'?: number;
     /**
      * 
      * @type {Person}
@@ -874,16 +868,16 @@ export interface Person {
     'lastName'?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof Person
-     */
-    'isTrainer'?: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof Person
      */
     'description'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Person
+     */
+    'isTrainer'?: boolean;
     /**
      * 
      * @type {boolean}
@@ -897,6 +891,21 @@ export interface Person {
      */
     'auth'?: Auth;
 }
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const PersonTypeView = {
+    All: 'All',
+    Trainer: 'Trainer',
+    Account: 'Account'
+} as const;
+
+export type PersonTypeView = typeof PersonTypeView[keyof typeof PersonTypeView];
+
+
 /**
  * 
  * @export
@@ -2347,11 +2356,11 @@ export const LessonApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Создает новое занятие
-         * @param {CreateLessonPerson} [createLessonPerson] 
+         * @param {CreateLesson} [createLesson] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1LessonPost: async (createLessonPerson?: CreateLessonPerson, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1LessonPost: async (createLesson?: CreateLesson, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/lesson`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2374,7 +2383,7 @@ export const LessonApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createLessonPerson, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createLesson, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2418,12 +2427,12 @@ export const LessonApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Создает новое занятие
-         * @param {CreateLessonPerson} [createLessonPerson] 
+         * @param {CreateLesson} [createLesson] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLesson>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LessonPost(createLessonPerson, options);
+        async apiV1LessonPost(createLesson?: CreateLesson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLesson>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LessonPost(createLesson, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2461,12 +2470,12 @@ export const LessonApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Создает новое занятие
-         * @param {CreateLessonPerson} [createLessonPerson] 
+         * @param {CreateLesson} [createLesson] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: any): AxiosPromise<ResultLesson> {
-            return localVarFp.apiV1LessonPost(createLessonPerson, options).then((request) => request(axios, basePath));
+        apiV1LessonPost(createLesson?: CreateLesson, options?: any): AxiosPromise<ResultLesson> {
+            return localVarFp.apiV1LessonPost(createLesson, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2507,13 +2516,13 @@ export class LessonApi extends BaseAPI {
     /**
      * 
      * @summary Создает новое занятие
-     * @param {CreateLessonPerson} [createLessonPerson] 
+     * @param {CreateLesson} [createLesson] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LessonApi
      */
-    public apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: AxiosRequestConfig) {
-        return LessonApiFp(this.configuration).apiV1LessonPost(createLessonPerson, options).then((request) => request(this.axios, this.basePath));
+    public apiV1LessonPost(createLesson?: CreateLesson, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiV1LessonPost(createLesson, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2529,10 +2538,11 @@ export const PersonApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary Возвращает список пользователей
          * @param {number} pageSize 
          * @param {number} pageNumber 
+         * @param {PersonTypeView} [type] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1PersonGet: async (pageSize: number, pageNumber: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1PersonGet: async (pageSize: number, pageNumber: number, type?: PersonTypeView, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'pageSize' is not null or undefined
             assertParamExists('apiV1PersonGet', 'pageSize', pageSize)
             // verify required parameter 'pageNumber' is not null or undefined
@@ -2551,6 +2561,10 @@ export const PersonApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication Bearer required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['pageSize'] = pageSize;
@@ -2734,11 +2748,12 @@ export const PersonApiFp = function(configuration?: Configuration) {
          * @summary Возвращает список пользователей
          * @param {number} pageSize 
          * @param {number} pageNumber 
+         * @param {PersonTypeView} [type] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1PersonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedPerson>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1PersonGet(pageSize, pageNumber, options);
+        async apiV1PersonGet(pageSize: number, pageNumber: number, type?: PersonTypeView, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedPerson>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1PersonGet(pageSize, pageNumber, type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2800,11 +2815,12 @@ export const PersonApiFactory = function (configuration?: Configuration, basePat
          * @summary Возвращает список пользователей
          * @param {number} pageSize 
          * @param {number} pageNumber 
+         * @param {PersonTypeView} [type] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1PersonGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedPerson> {
-            return localVarFp.apiV1PersonGet(pageSize, pageNumber, options).then((request) => request(axios, basePath));
+        apiV1PersonGet(pageSize: number, pageNumber: number, type?: PersonTypeView, options?: any): AxiosPromise<ResultPaginatedPerson> {
+            return localVarFp.apiV1PersonGet(pageSize, pageNumber, type, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2861,12 +2877,13 @@ export class PersonApi extends BaseAPI {
      * @summary Возвращает список пользователей
      * @param {number} pageSize 
      * @param {number} pageNumber 
+     * @param {PersonTypeView} [type] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PersonApi
      */
-    public apiV1PersonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig) {
-        return PersonApiFp(this.configuration).apiV1PersonGet(pageSize, pageNumber, options).then((request) => request(this.axios, this.basePath));
+    public apiV1PersonGet(pageSize: number, pageNumber: number, type?: PersonTypeView, options?: AxiosRequestConfig) {
+        return PersonApiFp(this.configuration).apiV1PersonGet(pageSize, pageNumber, type, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2975,11 +2992,11 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @summary Создает новое помещение
-         * @param {CreateRoomPerson} [createRoomPerson] 
+         * @param {CreateRoom} [createRoom] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1RoomPost: async (createRoomPerson?: CreateRoomPerson, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiV1RoomPost: async (createRoom?: CreateRoom, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/room`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3002,7 +3019,7 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createRoomPerson, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createRoom, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3075,12 +3092,12 @@ export const RoomApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Создает новое помещение
-         * @param {CreateRoomPerson} [createRoomPerson] 
+         * @param {CreateRoom} [createRoom] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoom>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RoomPost(createRoomPerson, options);
+        async apiV1RoomPost(createRoom?: CreateRoom, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoom>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RoomPost(createRoom, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3119,12 +3136,12 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @summary Создает новое помещение
-         * @param {CreateRoomPerson} [createRoomPerson] 
+         * @param {CreateRoom} [createRoom] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: any): AxiosPromise<ResultRoom> {
-            return localVarFp.apiV1RoomPost(createRoomPerson, options).then((request) => request(axios, basePath));
+        apiV1RoomPost(createRoom?: CreateRoom, options?: any): AxiosPromise<ResultRoom> {
+            return localVarFp.apiV1RoomPost(createRoom, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3163,13 +3180,13 @@ export class RoomApi extends BaseAPI {
     /**
      * 
      * @summary Создает новое помещение
-     * @param {CreateRoomPerson} [createRoomPerson] 
+     * @param {CreateRoom} [createRoom] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoomApi
      */
-    public apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: AxiosRequestConfig) {
-        return RoomApiFp(this.configuration).apiV1RoomPost(createRoomPerson, options).then((request) => request(this.axios, this.basePath));
+    public apiV1RoomPost(createRoom?: CreateRoom, options?: AxiosRequestConfig) {
+        return RoomApiFp(this.configuration).apiV1RoomPost(createRoom, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

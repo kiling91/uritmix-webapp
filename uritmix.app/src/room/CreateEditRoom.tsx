@@ -118,11 +118,16 @@ const CreateEditRoom = observer((param: Param) => {
 						stylingMode='contained'
 						disabled={store.loading}
 					>
-						{store.loading ? '...' : 'Create'}
+						{store.loading ? '...' : buttonTitle()}
 					</Button>
 				</div>
 			</form>
 		)
+	}
+
+	const buttonTitle = () => {
+		if (param.room == null) return 'Create'
+		return 'Edit'
 	}
 
 	const title = () => {

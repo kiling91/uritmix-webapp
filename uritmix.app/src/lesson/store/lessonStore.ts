@@ -1,19 +1,19 @@
 import { Api, dto } from 'uritmix.api'
 import BaseStore from '../../base/baseStore'
 
-class RoomStore extends BaseStore<dto.Room> {
-	public async create(create: dto.CreateRoom) {
+class LessonStore extends BaseStore<dto.Lesson> {
+	public async create(create: dto.CreateLesson) {
 		return await this.makeRequest(async () => {
-			const res = await Api.roomApi.apiV1RoomPost(create)
+			const res = await Api.lessonApi.apiV1LessonPost(create)
 			this.checkErrors(res)
 			this.setValue(res.data.result)
 			return res.data.ok || false
 		})
 	}
 
-	public async edit(roomId: number, edit: dto.EditRoom) {
+	public async edit(lessonId: number, edit: dto.EditLesson) {
 		return await this.makeRequest(async () => {
-			const res = await Api.roomApi.apiV1RoomRoomIdPut(roomId, edit)
+			const res = await Api.lessonApi.apiV1LessonLessonIdPut(lessonId, edit)
 			this.checkErrors(res)
 			this.setValue(res.data.result)
 			return res.data.ok || false
@@ -21,4 +21,4 @@ class RoomStore extends BaseStore<dto.Room> {
 	}
 }
 
-export default RoomStore
+export default LessonStore
