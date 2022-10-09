@@ -1,0 +1,18 @@
+
+body {
+  background-color: #f5f5f5;
+}
+
+/*Пользовательские стили*/
+form .required label:after {
+  content: '*';
+  color: red;
+  font-family: 'Glyphicons Halflings';
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.dx-btn {
+  min-width: 8em;
+  height: 2.5em;
+}
