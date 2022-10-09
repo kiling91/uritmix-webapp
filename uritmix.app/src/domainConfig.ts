@@ -1,13 +1,22 @@
 export namespace AuthDomain {
-  export const PasswordMinLength = 6;
-  export const PasswordMaxLength = 64;
+	export const PasswordMinLength = 6
+	export const PasswordMaxLength = 64
 
-  export const NameAndEmailMinLength = 2;
-  export const NameAndEmailMaxLength = 64;
+	export const NameAndEmailMinLength = 2
+	export const NameAndEmailMaxLength = 64
 }
 
 export namespace PersonDomain {
-  export const PersonNameAndEmailMinLength = 2;
-  export const PersonNameAndEmailMaxLength = 64;
-  export const DescriptionMaxLength = 64;
+	export const NameMinLength = 2
+	export const NameMaxLength = 64
+	export const DescriptionMaxLength = 64
+}
+
+export namespace AbonnementDomain {
+	export const NameMinLength = 2
+	export const NameMaxLength = 64
+	export const NumberOfVisitsMin = 1
+	export const NumberOfVisitsMax = 100
+	export const BasePriceMin = 1.0
+	export const BasePriceMax = 100000.0
 }
