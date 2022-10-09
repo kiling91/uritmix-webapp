@@ -1,4 +1,3 @@
-import { IAccount } from "../../base/account";
 import BaseStore from "../../base/baseStore";
 import { Api } from "uritmix.api";
 
