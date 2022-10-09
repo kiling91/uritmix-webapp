@@ -14,7 +14,7 @@ import abonnementsStore from './store/abonnementsStore'
 interface Param {
 	personId: number
 	initDataGrid: (dataGrid: DataGrid) => void
-	onSelect: (value: dto.AbonnementView) => void
+	onSelect: (value: dto.Abonnement) => void
 }
 
 const PersonsAbonnementsTable = ({

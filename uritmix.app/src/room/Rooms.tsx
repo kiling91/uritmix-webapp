@@ -16,7 +16,7 @@ enum ModalMode {
 const Rooms = () => {
 	const [dataGrid, setDataGrid] = useState<DataGrid | null>(null)
 	const [modalMode, setModalMode] = useState(ModalMode.None)
-	const [current, setCurrent] = useState<dto.RoomView | null>(null)
+	const [current, setCurrent] = useState<dto.Room | null>(null)
 
 	const initDataGrid = (grid: DataGrid) => {
 		setDataGrid(grid)
@@ -30,7 +30,7 @@ const Rooms = () => {
 		setModalMode(ModalMode.Create)
 	}
 
-	const onEdit = (value: dto.RoomView) => {
+	const onEdit = (value: dto.Room) => {
 		setCurrent(value)
 		setModalMode(ModalMode.Edit)
 	}

@@ -5,7 +5,7 @@ import { catchHttp, checkErrors } from '../../base/catchError'
 
 const roomsStore = () => {
 	let totalCount = 0
-	let rooms: dto.RoomView[] = []
+	let rooms: dto.Room[] = []
 	return new CustomStore({
 		key: 'id',
 		load: async options => {

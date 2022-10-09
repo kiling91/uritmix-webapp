@@ -5,7 +5,7 @@ import { catchHttp, checkErrors } from '../../base/catchError'
 
 const abonnementsStore = (personId: number) => {
 	let totalCount = 0
-	let abonnements: dto.SoldAbonnementView[] = []
+	let abonnements: dto.SoldAbonnement[] = []
 	return new CustomStore({
 		key: 'id',
 		load: async options => {

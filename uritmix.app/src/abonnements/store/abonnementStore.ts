@@ -1,7 +1,7 @@
 import { Api, dto } from 'uritmix.api'
 import BaseStore from '../../base/baseStore'
 
-class AbonnementStore extends BaseStore<dto.AbonnementView> {
+class AbonnementStore extends BaseStore<dto.Abonnement> {
 	public async create(create: dto.CreateAbonnement) {
 		return await this.makeRequest(async () => {
 			const res = await Api.abonnementApi.apiV1AbonnementPost(create)

@@ -24,6 +24,55 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
+ * @interface Abonnement
+ */
+export interface Abonnement {
+    /**
+     * 
+     * @type {number}
+     * @memberof Abonnement
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Abonnement
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {AbonnementValidityView}
+     * @memberof Abonnement
+     */
+    'validity'?: AbonnementValidityView;
+    /**
+     * 
+     * @type {number}
+     * @memberof Abonnement
+     */
+    'numberOfVisits'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Abonnement
+     */
+    'basePrice'?: number;
+    /**
+     * 
+     * @type {DiscountView}
+     * @memberof Abonnement
+     */
+    'discount'?: DiscountView;
+    /**
+     * 
+     * @type {Array<Lesson>}
+     * @memberof Abonnement
+     */
+    'lessons'?: Array<Lesson>;
+}
+/**
+ * 
+ * @export
  * @enum {string}
  */
 
@@ -38,55 +87,6 @@ export const AbonnementValidityView = {
 export type AbonnementValidityView = typeof AbonnementValidityView[keyof typeof AbonnementValidityView];
 
 
-/**
- * 
- * @export
- * @interface AbonnementView
- */
-export interface AbonnementView {
-    /**
-     * 
-     * @type {number}
-     * @memberof AbonnementView
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof AbonnementView
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {AbonnementValidityView}
-     * @memberof AbonnementView
-     */
-    'validity'?: AbonnementValidityView;
-    /**
-     * 
-     * @type {number}
-     * @memberof AbonnementView
-     */
-    'numberOfVisits'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof AbonnementView
-     */
-    'basePrice'?: number;
-    /**
-     * 
-     * @type {DiscountView}
-     * @memberof AbonnementView
-     */
-    'discount'?: DiscountView;
-    /**
-     * 
-     * @type {Array<LessonView>}
-     * @memberof AbonnementView
-     */
-    'lessons'?: Array<LessonView>;
-}
 /**
  * 
  * @export
@@ -111,6 +111,31 @@ export interface ActivateAuth {
      * @memberof ActivateAuth
      */
     'passwordConfirm'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Auth
+ */
+export interface Auth {
+    /**
+     * 
+     * @type {AuthRoleView}
+     * @memberof Auth
+     */
+    'role'?: AuthRoleView;
+    /**
+     * 
+     * @type {AuthStatusView}
+     * @memberof Auth
+     */
+    'status'?: AuthStatusView;
+    /**
+     * 
+     * @type {string}
+     * @memberof Auth
+     */
+    'email'?: string;
 }
 /**
  * 
@@ -142,31 +167,6 @@ export const AuthStatusView = {
 export type AuthStatusView = typeof AuthStatusView[keyof typeof AuthStatusView];
 
 
-/**
- * 
- * @export
- * @interface AuthView
- */
-export interface AuthView {
-    /**
-     * 
-     * @type {AuthRoleView}
-     * @memberof AuthView
-     */
-    'role'?: AuthRoleView;
-    /**
-     * 
-     * @type {AuthStatusView}
-     * @memberof AuthView
-     */
-    'status'?: AuthStatusView;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthView
-     */
-    'email'?: string;
-}
 /**
  * 
  * @export
@@ -487,49 +487,49 @@ export interface ErrorResponse {
 /**
  * 
  * @export
- * @interface LessonView
+ * @interface Lesson
  */
-export interface LessonView {
+export interface Lesson {
     /**
      * 
      * @type {number}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'description'?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'trainerId'?: number;
     /**
      * 
      * @type {Person}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'trainer'?: Person;
     /**
      * 
      * @type {number}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'durationMinute'?: number;
     /**
      * 
      * @type {number}
-     * @memberof LessonView
+     * @memberof Lesson
      */
     'basePrice'?: number;
 }
@@ -598,88 +598,88 @@ export interface LoginUser {
 /**
  * 
  * @export
- * @interface PaginatedAbonnementView
+ * @interface PaginatedAbonnement
  */
-export interface PaginatedAbonnementView {
+export interface PaginatedAbonnement {
     /**
      * 
      * @type {number}
-     * @memberof PaginatedAbonnementView
+     * @memberof PaginatedAbonnement
      */
     'pageNumber'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedAbonnementView
+     * @memberof PaginatedAbonnement
      */
     'pageSize'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedAbonnementView
+     * @memberof PaginatedAbonnement
      */
     'totalPages'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedAbonnementView
+     * @memberof PaginatedAbonnement
      */
     'totalRecords'?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof PaginatedAbonnementView
+     * @memberof PaginatedAbonnement
      */
     'nextPageExists'?: boolean;
     /**
      * 
-     * @type {Array<AbonnementView>}
-     * @memberof PaginatedAbonnementView
+     * @type {Array<Abonnement>}
+     * @memberof PaginatedAbonnement
      */
-    'results'?: Array<AbonnementView> | null;
+    'results'?: Array<Abonnement> | null;
 }
 /**
  * 
  * @export
- * @interface PaginatedLessonView
+ * @interface PaginatedLesson
  */
-export interface PaginatedLessonView {
+export interface PaginatedLesson {
     /**
      * 
      * @type {number}
-     * @memberof PaginatedLessonView
+     * @memberof PaginatedLesson
      */
     'pageNumber'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedLessonView
+     * @memberof PaginatedLesson
      */
     'pageSize'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedLessonView
+     * @memberof PaginatedLesson
      */
     'totalPages'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedLessonView
+     * @memberof PaginatedLesson
      */
     'totalRecords'?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof PaginatedLessonView
+     * @memberof PaginatedLesson
      */
     'nextPageExists'?: boolean;
     /**
      * 
-     * @type {Array<LessonView>}
-     * @memberof PaginatedLessonView
+     * @type {Array<Lesson>}
+     * @memberof PaginatedLesson
      */
-    'results'?: Array<LessonView> | null;
+    'results'?: Array<Lesson> | null;
 }
 /**
  * 
@@ -727,88 +727,88 @@ export interface PaginatedPerson {
 /**
  * 
  * @export
- * @interface PaginatedRoomView
+ * @interface PaginatedRoom
  */
-export interface PaginatedRoomView {
+export interface PaginatedRoom {
     /**
      * 
      * @type {number}
-     * @memberof PaginatedRoomView
+     * @memberof PaginatedRoom
      */
     'pageNumber'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedRoomView
+     * @memberof PaginatedRoom
      */
     'pageSize'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedRoomView
+     * @memberof PaginatedRoom
      */
     'totalPages'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedRoomView
+     * @memberof PaginatedRoom
      */
     'totalRecords'?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof PaginatedRoomView
+     * @memberof PaginatedRoom
      */
     'nextPageExists'?: boolean;
     /**
      * 
-     * @type {Array<RoomView>}
-     * @memberof PaginatedRoomView
+     * @type {Array<Room>}
+     * @memberof PaginatedRoom
      */
-    'results'?: Array<RoomView> | null;
+    'results'?: Array<Room> | null;
 }
 /**
  * 
  * @export
- * @interface PaginatedSoldAbonnementView
+ * @interface PaginatedSoldAbonnement
  */
-export interface PaginatedSoldAbonnementView {
+export interface PaginatedSoldAbonnement {
     /**
      * 
      * @type {number}
-     * @memberof PaginatedSoldAbonnementView
+     * @memberof PaginatedSoldAbonnement
      */
     'pageNumber'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedSoldAbonnementView
+     * @memberof PaginatedSoldAbonnement
      */
     'pageSize'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedSoldAbonnementView
+     * @memberof PaginatedSoldAbonnement
      */
     'totalPages'?: number;
     /**
      * 
      * @type {number}
-     * @memberof PaginatedSoldAbonnementView
+     * @memberof PaginatedSoldAbonnement
      */
     'totalRecords'?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof PaginatedSoldAbonnementView
+     * @memberof PaginatedSoldAbonnement
      */
     'nextPageExists'?: boolean;
     /**
      * 
-     * @type {Array<SoldAbonnementView>}
-     * @memberof PaginatedSoldAbonnementView
+     * @type {Array<SoldAbonnement>}
+     * @memberof PaginatedSoldAbonnement
      */
-    'results'?: Array<SoldAbonnementView> | null;
+    'results'?: Array<SoldAbonnement> | null;
 }
 /**
  * 
@@ -892,10 +892,10 @@ export interface Person {
     'haveAuth'?: boolean;
     /**
      * 
-     * @type {AuthView}
+     * @type {Auth}
      * @memberof Person
      */
-    'auth'?: AuthView;
+    'auth'?: Auth;
 }
 /**
  * 
@@ -932,50 +932,50 @@ export interface Refresh {
 /**
  * 
  * @export
- * @interface ResultAbonnementView
+ * @interface ResultAbonnement
  */
-export interface ResultAbonnementView {
+export interface ResultAbonnement {
     /**
      * 
-     * @type {AbonnementView}
-     * @memberof ResultAbonnementView
+     * @type {Abonnement}
+     * @memberof ResultAbonnement
      */
-    'result'?: AbonnementView;
+    'result'?: Abonnement;
     /**
      * 
      * @type {string}
-     * @memberof ResultAbonnementView
+     * @memberof ResultAbonnement
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultAbonnementView
+     * @memberof ResultAbonnement
      */
     'ok'?: boolean;
 }
 /**
  * 
  * @export
- * @interface ResultLessonView
+ * @interface ResultLesson
  */
-export interface ResultLessonView {
+export interface ResultLesson {
     /**
      * 
-     * @type {LessonView}
-     * @memberof ResultLessonView
+     * @type {Lesson}
+     * @memberof ResultLesson
      */
-    'result'?: LessonView;
+    'result'?: Lesson;
     /**
      * 
      * @type {string}
-     * @memberof ResultLessonView
+     * @memberof ResultLesson
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultLessonView
+     * @memberof ResultLesson
      */
     'ok'?: boolean;
 }
@@ -1007,50 +1007,50 @@ export interface ResultLoggedPerson {
 /**
  * 
  * @export
- * @interface ResultPaginatedAbonnementView
+ * @interface ResultPaginatedAbonnement
  */
-export interface ResultPaginatedAbonnementView {
+export interface ResultPaginatedAbonnement {
     /**
      * 
-     * @type {PaginatedAbonnementView}
-     * @memberof ResultPaginatedAbonnementView
+     * @type {PaginatedAbonnement}
+     * @memberof ResultPaginatedAbonnement
      */
-    'result'?: PaginatedAbonnementView;
+    'result'?: PaginatedAbonnement;
     /**
      * 
      * @type {string}
-     * @memberof ResultPaginatedAbonnementView
+     * @memberof ResultPaginatedAbonnement
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultPaginatedAbonnementView
+     * @memberof ResultPaginatedAbonnement
      */
     'ok'?: boolean;
 }
 /**
  * 
  * @export
- * @interface ResultPaginatedLessonView
+ * @interface ResultPaginatedLesson
  */
-export interface ResultPaginatedLessonView {
+export interface ResultPaginatedLesson {
     /**
      * 
-     * @type {PaginatedLessonView}
-     * @memberof ResultPaginatedLessonView
+     * @type {PaginatedLesson}
+     * @memberof ResultPaginatedLesson
      */
-    'result'?: PaginatedLessonView;
+    'result'?: PaginatedLesson;
     /**
      * 
      * @type {string}
-     * @memberof ResultPaginatedLessonView
+     * @memberof ResultPaginatedLesson
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultPaginatedLessonView
+     * @memberof ResultPaginatedLesson
      */
     'ok'?: boolean;
 }
@@ -1082,50 +1082,50 @@ export interface ResultPaginatedPerson {
 /**
  * 
  * @export
- * @interface ResultPaginatedRoomView
+ * @interface ResultPaginatedRoom
  */
-export interface ResultPaginatedRoomView {
+export interface ResultPaginatedRoom {
     /**
      * 
-     * @type {PaginatedRoomView}
-     * @memberof ResultPaginatedRoomView
+     * @type {PaginatedRoom}
+     * @memberof ResultPaginatedRoom
      */
-    'result'?: PaginatedRoomView;
+    'result'?: PaginatedRoom;
     /**
      * 
      * @type {string}
-     * @memberof ResultPaginatedRoomView
+     * @memberof ResultPaginatedRoom
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultPaginatedRoomView
+     * @memberof ResultPaginatedRoom
      */
     'ok'?: boolean;
 }
 /**
  * 
  * @export
- * @interface ResultPaginatedSoldAbonnementView
+ * @interface ResultPaginatedSoldAbonnement
  */
-export interface ResultPaginatedSoldAbonnementView {
+export interface ResultPaginatedSoldAbonnement {
     /**
      * 
-     * @type {PaginatedSoldAbonnementView}
-     * @memberof ResultPaginatedSoldAbonnementView
+     * @type {PaginatedSoldAbonnement}
+     * @memberof ResultPaginatedSoldAbonnement
      */
-    'result'?: PaginatedSoldAbonnementView;
+    'result'?: PaginatedSoldAbonnement;
     /**
      * 
      * @type {string}
-     * @memberof ResultPaginatedSoldAbonnementView
+     * @memberof ResultPaginatedSoldAbonnement
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultPaginatedSoldAbonnementView
+     * @memberof ResultPaginatedSoldAbonnement
      */
     'ok'?: boolean;
 }
@@ -1157,50 +1157,50 @@ export interface ResultPerson {
 /**
  * 
  * @export
- * @interface ResultRoomView
+ * @interface ResultRoom
  */
-export interface ResultRoomView {
+export interface ResultRoom {
     /**
      * 
-     * @type {RoomView}
-     * @memberof ResultRoomView
+     * @type {Room}
+     * @memberof ResultRoom
      */
-    'result'?: RoomView;
+    'result'?: Room;
     /**
      * 
      * @type {string}
-     * @memberof ResultRoomView
+     * @memberof ResultRoom
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultRoomView
+     * @memberof ResultRoom
      */
     'ok'?: boolean;
 }
 /**
  * 
  * @export
- * @interface ResultSoldAbonnementView
+ * @interface ResultSoldAbonnement
  */
-export interface ResultSoldAbonnementView {
+export interface ResultSoldAbonnement {
     /**
      * 
-     * @type {SoldAbonnementView}
-     * @memberof ResultSoldAbonnementView
+     * @type {SoldAbonnement}
+     * @memberof ResultSoldAbonnement
      */
-    'result'?: SoldAbonnementView;
+    'result'?: SoldAbonnement;
     /**
      * 
      * @type {string}
-     * @memberof ResultSoldAbonnementView
+     * @memberof ResultSoldAbonnement
      */
     'error'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof ResultSoldAbonnementView
+     * @memberof ResultSoldAbonnement
      */
     'ok'?: boolean;
 }
@@ -1232,25 +1232,25 @@ export interface ResultUnit {
 /**
  * 
  * @export
- * @interface RoomView
+ * @interface Room
  */
-export interface RoomView {
+export interface Room {
     /**
      * 
      * @type {number}
-     * @memberof RoomView
+     * @memberof Room
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof RoomView
+     * @memberof Room
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof RoomView
+     * @memberof Room
      */
     'description'?: string | null;
 }
@@ -1282,81 +1282,81 @@ export interface SaleAbonnement {
 /**
  * 
  * @export
- * @interface SoldAbonnementView
+ * @interface SoldAbonnement
  */
-export interface SoldAbonnementView {
+export interface SoldAbonnement {
     /**
      * 
      * @type {number}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'id'?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'active'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'dateSale'?: string;
     /**
      * 
      * @type {string}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'dateExpiration'?: string;
     /**
      * 
      * @type {number}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'priceSold'?: number;
     /**
      * 
      * @type {number}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'visitCounter'?: number;
     /**
      * 
      * @type {string}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'name'?: string;
     /**
      * 
      * @type {AbonnementValidityView}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'validity'?: AbonnementValidityView;
     /**
      * 
      * @type {number}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'numberOfVisits'?: number;
     /**
      * 
      * @type {number}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'basePrice'?: number;
     /**
      * 
      * @type {DiscountView}
-     * @memberof SoldAbonnementView
+     * @memberof SoldAbonnement
      */
     'discount'?: DiscountView;
     /**
      * 
-     * @type {Array<LessonView>}
-     * @memberof SoldAbonnementView
+     * @type {Array<Lesson>}
+     * @memberof SoldAbonnement
      */
-    'lessons'?: Array<LessonView>;
+    'lessons'?: Array<Lesson>;
 }
 /**
  * 
@@ -1609,7 +1609,7 @@ export const AbonnementApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultAbonnementView>> {
+        async apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultAbonnement>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AbonnementAbonnementIdPut(abonnementId, editAbonnement, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1621,7 +1621,7 @@ export const AbonnementApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedAbonnementView>> {
+        async apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedAbonnement>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AbonnementGet(pageSize, pageNumber, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1632,7 +1632,7 @@ export const AbonnementApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1AbonnementPost(createAbonnement?: CreateAbonnement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultAbonnementView>> {
+        async apiV1AbonnementPost(createAbonnement?: CreateAbonnement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultAbonnement>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AbonnementPost(createAbonnement, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1645,7 +1645,7 @@ export const AbonnementApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedSoldAbonnementView>> {
+        async apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedSoldAbonnement>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AbonnementSoldPersonIdGet(personId, pageSize, pageNumber, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1656,7 +1656,7 @@ export const AbonnementApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultSoldAbonnementView>> {
+        async apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultSoldAbonnement>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AbonnementSoldPost(saleAbonnement, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1678,7 +1678,7 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement, options?: any): AxiosPromise<ResultAbonnementView> {
+        apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement, options?: any): AxiosPromise<ResultAbonnement> {
             return localVarFp.apiV1AbonnementAbonnementIdPut(abonnementId, editAbonnement, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1689,7 +1689,7 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedAbonnementView> {
+        apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedAbonnement> {
             return localVarFp.apiV1AbonnementGet(pageSize, pageNumber, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1699,7 +1699,7 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1AbonnementPost(createAbonnement?: CreateAbonnement, options?: any): AxiosPromise<ResultAbonnementView> {
+        apiV1AbonnementPost(createAbonnement?: CreateAbonnement, options?: any): AxiosPromise<ResultAbonnement> {
             return localVarFp.apiV1AbonnementPost(createAbonnement, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1711,7 +1711,7 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedSoldAbonnementView> {
+        apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedSoldAbonnement> {
             return localVarFp.apiV1AbonnementSoldPersonIdGet(personId, pageSize, pageNumber, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1721,7 +1721,7 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement, options?: any): AxiosPromise<ResultSoldAbonnementView> {
+        apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement, options?: any): AxiosPromise<ResultSoldAbonnement> {
             return localVarFp.apiV1AbonnementSoldPost(saleAbonnement, options).then((request) => request(axios, basePath));
         },
     };
@@ -2399,7 +2399,7 @@ export const LessonApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1LessonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedLessonView>> {
+        async apiV1LessonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedLesson>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LessonGet(pageSize, pageNumber, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2411,7 +2411,7 @@ export const LessonApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLessonView>> {
+        async apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLesson>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LessonLessonIdPut(lessonId, editLesson, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2422,7 +2422,7 @@ export const LessonApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLessonView>> {
+        async apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLesson>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LessonPost(createLessonPerson, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2444,7 +2444,7 @@ export const LessonApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1LessonGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedLessonView> {
+        apiV1LessonGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedLesson> {
             return localVarFp.apiV1LessonGet(pageSize, pageNumber, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2455,7 +2455,7 @@ export const LessonApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson, options?: any): AxiosPromise<ResultLessonView> {
+        apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson, options?: any): AxiosPromise<ResultLesson> {
             return localVarFp.apiV1LessonLessonIdPut(lessonId, editLesson, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2465,7 +2465,7 @@ export const LessonApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: any): AxiosPromise<ResultLessonView> {
+        apiV1LessonPost(createLessonPerson?: CreateLessonPerson, options?: any): AxiosPromise<ResultLesson> {
             return localVarFp.apiV1LessonPost(createLessonPerson, options).then((request) => request(axios, basePath));
         },
     };
@@ -3068,7 +3068,7 @@ export const RoomApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1RoomGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedRoomView>> {
+        async apiV1RoomGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultPaginatedRoom>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RoomGet(pageSize, pageNumber, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3079,7 +3079,7 @@ export const RoomApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoomView>> {
+        async apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoom>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RoomPost(createRoomPerson, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3091,7 +3091,7 @@ export const RoomApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoomView>> {
+        async apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoom>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RoomRoomIdPut(roomId, editRoom, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3113,7 +3113,7 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1RoomGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedRoomView> {
+        apiV1RoomGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedRoom> {
             return localVarFp.apiV1RoomGet(pageSize, pageNumber, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3123,7 +3123,7 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: any): AxiosPromise<ResultRoomView> {
+        apiV1RoomPost(createRoomPerson?: CreateRoomPerson, options?: any): AxiosPromise<ResultRoom> {
             return localVarFp.apiV1RoomPost(createRoomPerson, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3134,7 +3134,7 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom, options?: any): AxiosPromise<ResultRoomView> {
+        apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom, options?: any): AxiosPromise<ResultRoom> {
             return localVarFp.apiV1RoomRoomIdPut(roomId, editRoom, options).then((request) => request(axios, basePath));
         },
     };

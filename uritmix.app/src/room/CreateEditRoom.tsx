@@ -19,7 +19,7 @@ import RoomStore from './store/roomStore'
 import ShowErrors from '../ui/ShowErrors'
 
 interface Param {
-	room?: dto.RoomView | null
+	room?: dto.Room | null
 	onClose: (id: number, needReload: boolean) => void
 }
 

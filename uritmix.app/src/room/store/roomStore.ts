@@ -1,8 +1,8 @@
 import { Api, dto } from 'uritmix.api'
 import BaseStore from '../../base/baseStore'
 
-class RoomStore extends BaseStore<dto.RoomView> {
-	public async create(create: dto.RoomView) {
+class RoomStore extends BaseStore<dto.Room> {
+	public async create(create: dto.Room) {
 		return await this.makeRequest(async () => {
 			const res = await Api.roomApi.apiV1RoomPost(create)
 			this.checkErrors(res)
