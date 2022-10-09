@@ -4,17 +4,19 @@ import { useState } from 'react'
 import { dto } from 'uritmix.api'
 import Tooltip from '../ui/Tooltip'
 import Visibility from '../ui/Visibility'
-import AbonnementsTable from './AbonnementsTable'
-import CreateAbonnement from './CreateAbonnement'
+import RoomsTable from './RoomsTable'
+import CreateEditRoom from './CreateEditRoom'
 
 enum ModalMode {
 	Create,
+	Edit,
 	None
 }
 
-const Abonnements = () => {
+const Rooms = () => {
 	const [dataGrid, setDataGrid] = useState<DataGrid | null>(null)
 	const [modalMode, setModalMode] = useState(ModalMode.None)
+	const [current, setCurrent] = useState<dto.Room | null>(null)
 
 	const initDataGrid = (grid: DataGrid) => {
 		setDataGrid(grid)
@@ -28,8 +30,9 @@ const Abonnements = () => {
 		setModalMode(ModalMode.Create)
 	}
 
-	const onSelect = (value: dto.Person) => {
-		// navigate(`${value.id}`)
+	const onEdit = (value: dto.Room) => {
+		setCurrent(value)
+		setModalMode(ModalMode.Edit)
 	}
 
 	const onCloseModal = (_: number, needReload: boolean) => {
@@ -38,7 +41,7 @@ const Abonnements = () => {
 	}
 
 	const abonnementsTable = useMemo(
-		() => <AbonnementsTable initDataGrid={initDataGrid} onSelect={onSelect} />,
+		() => <RoomsTable initDataGrid={initDataGrid} onEdit={onEdit} />,
 		[]
 	)
 
@@ -46,13 +49,13 @@ const Abonnements = () => {
 		<div className='card'>
 			<div className='card-header'>
 				<div className='d-flex align-items-center justify-content-between'>
-					<div>{'Abonnements'}</div>
+					<div>{'Rooms'}</div>
 					<div className='d-flex justify-content-between'>
-						<Tooltip tooltip={'Create abonnement'}>
+						<Tooltip tooltip={'Create room'}>
 							<Button
 								icon='plus'
 								type='default'
-								text='Create abonnement'
+								text='Create room'
 								className={'mx-1'}
 								onClick={onCreate}
 							/>
@@ -71,7 +74,11 @@ const Abonnements = () => {
 				{abonnementsTable}
 				{/*Modal*/}
 				<Visibility visible={modalMode == ModalMode.Create}>
-					<CreateAbonnement onClose={onCloseModal} />
+					<CreateEditRoom onClose={onCloseModal} />
+				</Visibility>
+
+				<Visibility visible={modalMode == ModalMode.Edit}>
+					<CreateEditRoom room={current} onClose={onCloseModal} />
 				</Visibility>
 				{/*Modal*/}
 			</div>
@@ -79,4 +86,4 @@ const Abonnements = () => {
 	)
 }
 
-export default Abonnements
+export default Rooms

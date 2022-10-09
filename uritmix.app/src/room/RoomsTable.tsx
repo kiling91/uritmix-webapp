@@ -8,23 +8,18 @@ import DataGrid, {
 	Paging,
 	Scrolling
 } from 'devextreme-react/data-grid'
+import roomsStore from './store/roomsStore'
 import { dto } from 'uritmix.api'
-import abonnementsStore from './store/abonnementsStore'
 
 interface Param {
-	personId: number
 	initDataGrid: (dataGrid: DataGrid) => void
-	onSelect: (value: dto.Abonnement) => void
+	onEdit: (value: dto.Person) => void
 }
 
-const PersonsAbonnementsTable = ({
-	personId,
-	initDataGrid,
-	onSelect
-}: Param) => {
-	const userInfoClick = (e: any) => {
+const RoomsTable = ({ initDataGrid, onEdit }: Param) => {
+	const editClick = (e: any) => {
 		e.event.preventDefault()
-		onSelect(e.row.data)
+		onEdit(e.row.data)
 	}
 
 	return (
@@ -32,7 +27,7 @@ const PersonsAbonnementsTable = ({
 			ref={ref => {
 				if (ref) initDataGrid(ref)
 			}}
-			dataSource={abonnementsStore(personId)}
+			dataSource={roomsStore()}
 			remoteOperations={true}
 			columnAutoWidth={true}
 			rowAlternationEnabled={true}
@@ -74,12 +69,19 @@ const PersonsAbonnementsTable = ({
 				allowHeaderFiltering={false}
 			/>
 
+			<Column
+				dataField='description'
+				caption={'Description'}
+				dataType='string'
+				allowHeaderFiltering={false}
+			/>
+
 			<Column type='buttons'>
-				<Button hint={'Info'} icon='info' onClick={userInfoClick} />
+				<Button hint={'Edit'} icon='edit' onClick={editClick} />
 			</Column>
 			{/**/}
 		</DataGrid>
 	)
 }
 
-export default PersonsAbonnementsTable
+export default RoomsTable

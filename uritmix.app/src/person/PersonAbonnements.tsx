@@ -22,7 +22,7 @@ const PersonAbonnements = observer(() => {
 
 	const onSale = () => {}
 
-	const onSelect = (_: dto.AbonnementView) => {}
+	const onSelect = (_: dto.Abonnement) => {}
 
 	const search = (text: string) => {
 		dataGrid?.instance.searchByText(text)

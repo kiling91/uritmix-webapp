@@ -20,7 +20,6 @@ import ShowErrors from '../ui/ShowErrors'
 import Visibility from '../ui/Visibility'
 
 interface Param {
-	isTrainer: boolean
 	onClose: (id: number, needReload: boolean) => void
 }
 
