@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import DataGrid, {
   Button,
   Column,
@@ -7,17 +7,21 @@ import DataGrid, {
   Pager,
   Paging,
   Scrolling,
-} from 'devextreme-react/data-grid';
-import { dto } from 'uritmix.api';
+} from "devextreme-react/data-grid";
+import { dto } from "uritmix.api";
 import abonnementsStore from "./store/abonnementsStore";
 
 interface Param {
-  personId: number
+  personId: number;
   initDataGrid: (dataGrid: DataGrid) => void;
   onSelect: (value: dto.AbonnementView) => void;
 }
 
-const PersonsAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) => {
+const PersonsAbonnementsTable = ({
+  personId,
+  initDataGrid,
+  onSelect,
+}: Param) => {
   const userInfoClick = (e: any) => {
     e.event.preventDefault();
     onSelect(e.row.data);
@@ -36,7 +40,12 @@ const PersonsAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) =>
       showRowLines={true}
     >
       {/**/}
-      <Editing useIcons={true} allowUpdating={false} allowAdding={false} allowDeleting={false} />
+      <Editing
+        useIcons={true}
+        allowUpdating={false}
+        allowAdding={false}
+        allowDeleting={false}
+      />
       {/**/}
       <Scrolling rowRenderingMode="virtual" />
       <Paging defaultPageSize={10} />
@@ -51,11 +60,22 @@ const PersonsAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) =>
       {/**/}
       <FilterRow visible={true} />
       {/**/}
-      <Column dataField="id" caption={'ID'} dataType="number" allowHeaderFiltering={false} allowEditing={false} />
-      <Column dataField="name" caption={'Name'} dataType="string" allowHeaderFiltering={false} />
+      <Column
+        dataField="id"
+        caption={"ID"}
+        dataType="number"
+        allowHeaderFiltering={false}
+        allowEditing={false}
+      />
+      <Column
+        dataField="name"
+        caption={"Name"}
+        dataType="string"
+        allowHeaderFiltering={false}
+      />
 
       <Column type="buttons">
-        <Button hint={'Info'} icon="info" onClick={userInfoClick} />
+        <Button hint={"Info"} icon="info" onClick={userInfoClick} />
       </Column>
       {/**/}
     </DataGrid>

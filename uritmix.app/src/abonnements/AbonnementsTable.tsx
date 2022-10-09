@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import DataGrid, {
   Button,
   Column,
@@ -7,9 +7,9 @@ import DataGrid, {
   Pager,
   Paging,
   Scrolling,
-} from 'devextreme-react/data-grid';
-import abonnementsStore from './store/abonnementsStore';
-import { dto } from 'uritmix.api';
+} from "devextreme-react/data-grid";
+import abonnementsStore from "./store/abonnementsStore";
+import { dto } from "uritmix.api";
 
 interface Param {
   initDataGrid: (dataGrid: DataGrid) => void;
@@ -35,7 +35,12 @@ const AbonnementsTable = ({ initDataGrid, onSelect }: Param) => {
       showRowLines={true}
     >
       {/**/}
-      <Editing useIcons={true} allowUpdating={false} allowAdding={false} allowDeleting={false} />
+      <Editing
+        useIcons={true}
+        allowUpdating={false}
+        allowAdding={false}
+        allowDeleting={false}
+      />
       {/**/}
       <Scrolling rowRenderingMode="virtual" />
       <Paging defaultPageSize={10} />
@@ -50,11 +55,22 @@ const AbonnementsTable = ({ initDataGrid, onSelect }: Param) => {
       {/**/}
       <FilterRow visible={true} />
       {/**/}
-      <Column dataField="id" caption={'ID'} dataType="number" allowHeaderFiltering={false} allowEditing={false} />
-      <Column dataField="name" caption={'Name'} dataType="string" allowHeaderFiltering={false} />
+      <Column
+        dataField="id"
+        caption={"ID"}
+        dataType="number"
+        allowHeaderFiltering={false}
+        allowEditing={false}
+      />
+      <Column
+        dataField="name"
+        caption={"Name"}
+        dataType="string"
+        allowHeaderFiltering={false}
+      />
 
       <Column type="buttons">
-        <Button hint={'Info'} icon="info" onClick={userInfoClick} />
+        <Button hint={"Info"} icon="info" onClick={userInfoClick} />
       </Column>
       {/**/}
     </DataGrid>

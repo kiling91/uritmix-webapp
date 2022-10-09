@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
-import { observer, useLocalObservable } from 'mobx-react-lite';
-import { Popup } from 'devextreme-react/popup';
-import { Button, CheckBox, TextArea, TextBox, Validator } from 'devextreme-react';
-import {  RequiredRule, StringLengthRule } from 'devextreme-react/validator';
-import { RuleCaption } from '../base/ruleCaption';
-import { PersonDomain } from '../domainConfig';
-import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config';
-import PersonStore from "./store/personStore"
-import ShowErrors from '../ui/ShowErrors';
+import React, { useState } from "react";
+import { observer, useLocalObservable } from "mobx-react-lite";
+import { Popup } from "devextreme-react/popup";
+import {
+  Button,
+  CheckBox,
+  TextArea,
+  TextBox,
+  Validator,
+} from "devextreme-react";
+import { RequiredRule, StringLengthRule } from "devextreme-react/validator";
+import { RuleCaption } from "../base/ruleCaption";
+import { PersonDomain } from "../domainConfig";
+import { POPUP_FORM_WIDTH, POPUP_POSITION } from "../config";
+import PersonStore from "./store/personStore";
+import ShowErrors from "../ui/ShowErrors";
 import Visibility from "../ui/Visibility";
 
 interface Param {
-  isTrainer: boolean
+  isTrainer: boolean;
   onClose: (id: number, needReload: boolean) => void;
 }
 
@@ -31,8 +37,7 @@ const CreatePerson = observer((param: Param) => {
         isTrainer: param.isTrainer,
         description: description,
       });
-      if (res && store.value?.id) 
-        param.onClose(store.value.id, true);
+      if (res && store.value?.id) param.onClose(store.value.id, true);
       return;
     }
     store.addError(RuleCaption.requiredFieldsNotAssigned());
@@ -49,55 +54,58 @@ const CreatePerson = observer((param: Param) => {
         <fieldset disabled={store.loading}>
           {/*Firstname*/}
           <div className="required">
-            <label className="small mb-1">
-              {'Firstname'}
-            </label>
+            <label className="small mb-1">{"Firstname"}</label>
             <TextBox
               mode="text"
               className="mb-3"
-              placeholder={'Enter firstaname'}
+              placeholder={"Enter firstaname"}
               value={firstName}
               onValueChanged={(e) => setFirstName(e.value)}
             >
               <Validator>
-                <RequiredRule message={RuleCaption.required('Firstaname')} />
+                <RequiredRule message={RuleCaption.required("Firstaname")} />
                 <StringLengthRule
                   trim
                   min={PersonDomain.PersonNameAndEmailMinLength}
                   max={PersonDomain.PersonNameAndEmailMaxLength}
-                  message={RuleCaption.length(PersonDomain.PersonNameAndEmailMinLength, PersonDomain.PersonNameAndEmailMaxLength)}
+                  message={RuleCaption.length(
+                    PersonDomain.PersonNameAndEmailMinLength,
+                    PersonDomain.PersonNameAndEmailMaxLength
+                  )}
                 />
               </Validator>
             </TextBox>
           </div>
           {/*Lastname*/}
           <div className="required">
-            <label className="small mb-1">
-              {'Lastname'}
-            </label>
+            <label className="small mb-1">{"Lastname"}</label>
             <TextBox
               mode="text"
               className="mb-3"
-              placeholder={'Enter lastname'}
+              placeholder={"Enter lastname"}
               value={lastName}
               onValueChanged={(e) => setLastName(e.value)}
             >
               <Validator>
-                <RequiredRule message={RuleCaption.required('Lastname')} />
+                <RequiredRule message={RuleCaption.required("Lastname")} />
                 <StringLengthRule
                   trim
                   min={PersonDomain.PersonNameAndEmailMinLength}
                   max={PersonDomain.PersonNameAndEmailMaxLength}
-                  message={RuleCaption.length(PersonDomain.PersonNameAndEmailMinLength, PersonDomain.PersonNameAndEmailMaxLength)}
+                  message={RuleCaption.length(
+                    PersonDomain.PersonNameAndEmailMinLength,
+                    PersonDomain.PersonNameAndEmailMaxLength
+                  )}
                 />
               </Validator>
             </TextBox>
           </div>
           {/*Description*/}
-          <label className="small mb-1">
-            {'Description'}
-          </label>
-          <TextArea value={description} onValueChanged={(e) => setDescription(e.value)}>
+          <label className="small mb-1">{"Description"}</label>
+          <TextArea
+            value={description}
+            onValueChanged={(e) => setDescription(e.value)}
+          >
             <StringLengthRule
               trim
               max={PersonDomain.DescriptionMaxLength}
@@ -107,17 +115,23 @@ const CreatePerson = observer((param: Param) => {
         </fieldset>
         <hr className="my-3" />
         <div className="d-flex justify-content-end gap-3">
-          <Button className={'dx-btn'} type="default" stylingMode="outlined" onClick={onClose} disabled={store.loading}>
-            {'Cancel'}
+          <Button
+            className={"dx-btn"}
+            type="default"
+            stylingMode="outlined"
+            onClick={onClose}
+            disabled={store.loading}
+          >
+            {"Cancel"}
           </Button>
           <Button
-            className={'dx-btn'}
+            className={"dx-btn"}
             type="default"
             useSubmitBehavior={true}
             stylingMode="contained"
             disabled={store.loading}
           >
-            {store.loading ? '...' : 'Create'}
+            {store.loading ? "..." : "Create"}
           </Button>
         </div>
       </form>
@@ -125,10 +139,9 @@ const CreatePerson = observer((param: Param) => {
   };
 
   const title = () => {
-    if (param.isTrainer)
-      return 'Create person';
-    return 'Create customer'
-  }
+    if (param.isTrainer) return "Create person";
+    return "Create customer";
+  };
 
   return (
     <>
@@ -138,7 +151,7 @@ const CreatePerson = observer((param: Param) => {
       </Visibility>
       <Popup
         width={POPUP_FORM_WIDTH}
-        height={'auto'}
+        height={"auto"}
         position={POPUP_POSITION}
         showTitle={true}
         visible={true}

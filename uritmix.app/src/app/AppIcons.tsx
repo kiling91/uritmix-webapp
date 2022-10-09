@@ -1,5 +1,5 @@
-import React from 'react';
-import * as Icon from 'react-feather';
+import React from "react";
+import * as Icon from "react-feather";
 
 export namespace AppIcon {
   export const IconDictionary = () => {
@@ -9,7 +9,6 @@ export namespace AppIcon {
   export const IconAngleDown = () => {
     return <Icon.ChevronDown />;
   };
-
 
   export const IconCompany = () => {
     return (

@@ -1,5 +1,4 @@
 export namespace RuleCaption {
-
   export const parameterError = (field: string | null): string => {
     return `Error query paramener: ${field}`;
   };
@@ -22,6 +21,6 @@ export namespace RuleCaption {
   };
 
   export const requiredFieldsNotAssigned = (): string => {
-    return 'Some fields are not filled';
+    return "Some fields are not filled";
   };
 }

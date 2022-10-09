@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import { observer, useLocalObservable } from 'mobx-react-lite';
-import { Popup } from 'devextreme-react/popup';
-import { Button, CheckBox, TextArea, TextBox, Validator } from 'devextreme-react';
-import { Lookup, DropDownOptions } from 'devextreme-react/lookup';
-import {  RequiredRule, StringLengthRule } from 'devextreme-react/validator';
-import NumberBox from 'devextreme-react/number-box';
+import React, { useState } from "react";
+import { observer, useLocalObservable } from "mobx-react-lite";
+import { Popup } from "devextreme-react/popup";
+import {
+  Button,
+  CheckBox,
+  TextArea,
+  TextBox,
+  Validator,
+} from "devextreme-react";
+import { Lookup, DropDownOptions } from "devextreme-react/lookup";
+import { RequiredRule, StringLengthRule } from "devextreme-react/validator";
+import NumberBox from "devextreme-react/number-box";
 import { dto } from "uritmix.api";
-import { RuleCaption } from '../base/ruleCaption';
-import { PersonDomain } from '../domainConfig';
-import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config';
-import AbonnementStore from "./store/abonnementStore"
-import ShowErrors from '../ui/ShowErrors';
+import { RuleCaption } from "../base/ruleCaption";
+import { PersonDomain } from "../domainConfig";
+import { POPUP_FORM_WIDTH, POPUP_POSITION } from "../config";
+import AbonnementStore from "./store/abonnementStore";
+import ShowErrors from "../ui/ShowErrors";
 import Visibility from "../ui/Visibility";
 
 interface Param {
-  isTrainer: boolean
+  isTrainer: boolean;
   onClose: (id: number, needReload: boolean) => void;
 }
 
@@ -114,8 +120,7 @@ const CreateAbonnement = observer((param: Param) => {
       const res = await store.create({
         // ***
       });
-      if (res && store.value?.id) 
-        param.onClose(store.value.id, true);
+      if (res && store.value?.id) param.onClose(store.value.id, true);
       return;
     }
     store.addError(RuleCaption.requiredFieldsNotAssigned());
@@ -132,23 +137,24 @@ const CreateAbonnement = observer((param: Param) => {
         <fieldset disabled={store.loading}>
           {/*Firstname*/}
           <div className="required">
-            <label className="small mb-1">
-              {'Firstname'}
-            </label>
+            <label className="small mb-1">{"Firstname"}</label>
             <TextBox
               mode="text"
               className="mb-3"
-              placeholder={'Enter name'}
+              placeholder={"Enter name"}
               value={name}
               onValueChanged={(e) => setName(e.value)}
             >
               <Validator>
-                <RequiredRule message={RuleCaption.required('Name')} />
+                <RequiredRule message={RuleCaption.required("Name")} />
                 <StringLengthRule
                   trim
                   min={PersonDomain.PersonNameAndEmailMinLength}
                   max={PersonDomain.PersonNameAndEmailMaxLength}
-                  message={RuleCaption.length(PersonDomain.PersonNameAndEmailMinLength, PersonDomain.PersonNameAndEmailMaxLength)}
+                  message={RuleCaption.length(
+                    PersonDomain.PersonNameAndEmailMinLength,
+                    PersonDomain.PersonNameAndEmailMaxLength
+                  )}
                 />
               </Validator>
             </TextBox>
@@ -160,7 +166,7 @@ const CreateAbonnement = observer((param: Param) => {
             </label>
             <Lookup
               className="mb-3"
-              placeholder={'Select validity'}
+              placeholder={"Select validity"}
               showCancelButton={false}
               showDropDownButton={false}
               dataSource={validityLookup()}
@@ -172,7 +178,7 @@ const CreateAbonnement = observer((param: Param) => {
             >
               <DropDownOptions showTitle={false} />
               <Validator>
-                <RequiredRule message={RuleCaption.required('Validity')} />
+                <RequiredRule message={RuleCaption.required("Validity")} />
               </Validator>
             </Lookup>
           </div>
@@ -195,7 +201,7 @@ const CreateAbonnement = observer((param: Param) => {
           {/*Price*/}
           <div className="required">
             <label className="small mb-1" htmlFor="inputName">
-              {'Price'}
+              {"Price"}
             </label>
             <NumberBox
               disabled={store.loading}
@@ -212,7 +218,7 @@ const CreateAbonnement = observer((param: Param) => {
             </label>
             <Lookup
               className="mb-3"
-              placeholder={'Select max discount'}
+              placeholder={"Select max discount"}
               showCancelButton={false}
               showDropDownButton={false}
               dataSource={discountLookup()}
@@ -224,7 +230,7 @@ const CreateAbonnement = observer((param: Param) => {
             >
               <DropDownOptions showTitle={false} />
               <Validator>
-                <RequiredRule message={RuleCaption.required( "Max discount")} />
+                <RequiredRule message={RuleCaption.required("Max discount")} />
               </Validator>
             </Lookup>
           </div>
@@ -232,17 +238,23 @@ const CreateAbonnement = observer((param: Param) => {
         </fieldset>
         <hr className="my-3" />
         <div className="d-flex justify-content-end gap-3">
-          <Button className={'dx-btn'} type="default" stylingMode="outlined" onClick={onClose} disabled={store.loading}>
-            {'Cancel'}
+          <Button
+            className={"dx-btn"}
+            type="default"
+            stylingMode="outlined"
+            onClick={onClose}
+            disabled={store.loading}
+          >
+            {"Cancel"}
           </Button>
           <Button
-            className={'dx-btn'}
+            className={"dx-btn"}
             type="default"
             useSubmitBehavior={true}
             stylingMode="contained"
             disabled={store.loading}
           >
-            {store.loading ? '...' : 'Create'}
+            {store.loading ? "..." : "Create"}
           </Button>
         </div>
       </form>
@@ -250,8 +262,8 @@ const CreateAbonnement = observer((param: Param) => {
   };
 
   const title = () => {
-    return 'Create abonnement'
-  }
+    return "Create abonnement";
+  };
 
   return (
     <>
@@ -261,7 +273,7 @@ const CreateAbonnement = observer((param: Param) => {
       </Visibility>
       <Popup
         width={POPUP_FORM_WIDTH}
-        height={'auto'}
+        height={"auto"}
         position={POPUP_POSITION}
         showTitle={true}
         visible={true}

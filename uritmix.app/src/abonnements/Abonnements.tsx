@@ -38,22 +38,29 @@ const Abonnements = () => {
   };
 
   const abonnementsTable = useMemo(
-    () => (<AbonnementsTable initDataGrid={initDataGrid} onSelect={onSelect} />),[]);
+    () => <AbonnementsTable initDataGrid={initDataGrid} onSelect={onSelect} />,
+    []
+  );
 
   return (
     <div className="card">
       <div className="card-header">
         <div className="d-flex align-items-center justify-content-between">
-          <div>{'Abonnements'}</div>
+          <div>{"Abonnements"}</div>
           <div className="d-flex justify-content-between">
-            <Tooltip tooltip={'Create abonnement'}>
-              <Button icon="plus" type="default"
-                      text="Create abonnement" className={"mx-1"} onClick={onCreate} />
+            <Tooltip tooltip={"Create abonnement"}>
+              <Button
+                icon="plus"
+                type="default"
+                text="Create abonnement"
+                className={"mx-1"}
+                onClick={onCreate}
+              />
             </Tooltip>
             <TextBox
               mode="text"
               valueChangeEvent="keyup"
-              placeholder={'Search' + '...'}
+              placeholder={"Search" + "..."}
               showClearButton={true}
               onValueChanged={(e) => search(e.value)}
             />
@@ -63,8 +70,11 @@ const Abonnements = () => {
       <div className="card-body">
         {abonnementsTable}
         {/*Modal*/}
-        <Visibility visible={modalMode == ModalMode.Create }>
-          <CreateAbonnement onClose={onCloseModal} isTrainer={modalMode == ModalMode.Create}/>
+        <Visibility visible={modalMode == ModalMode.Create}>
+          <CreateAbonnement
+            onClose={onCloseModal}
+            isTrainer={modalMode == ModalMode.Create}
+          />
         </Visibility>
         {/*Modal*/}
       </div>

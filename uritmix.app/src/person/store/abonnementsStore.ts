@@ -1,23 +1,21 @@
-import CustomStore from 'devextreme/data/custom_store';
-import { Api, dto } from 'uritmix.api';
-import { Paginator } from '../../base/paginator';
-import { catchHttp, checkErrors } from '../../base/catchError';
+import CustomStore from "devextreme/data/custom_store";
+import { Api, dto } from "uritmix.api";
+import { Paginator } from "../../base/paginator";
+import { catchHttp, checkErrors } from "../../base/catchError";
 
 const abonnementsStore = (personId: number) => {
   let totalCount = 0;
   let abonnements: dto.SoldAbonnementView[] = [];
   return new CustomStore({
-    key: 'id',
+    key: "id",
     load: async (options) => {
-
-      if (options.searchOperation != 'contains')
-        return [];
+      if (options.searchOperation != "contains") return [];
 
       try {
         const response = await Api.abonnementApi.apiV1AbonnementSoldPersonIdGet(
           personId,
           Paginator.paginatorPageSize(options.skip, options.take),
-          Paginator.paginatorPageNumber(options.skip, options.take),
+          Paginator.paginatorPageNumber(options.skip, options.take)
         );
         checkErrors(response);
         totalCount = response.data.result?.totalRecords!;

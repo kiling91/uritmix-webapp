@@ -48,6 +48,6 @@ export const catchHttp = (error: any, addError: (error: string) => void) => {
 
 export const checkErrors = (result: any) => {
   if (result && !result.data.ok) {
-    throw result.data.Metadata.Message || 'Неизвестная ошибка';
+    throw result.data.Metadata.Message || "Неизвестная ошибка";
   }
 };

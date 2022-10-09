@@ -1,6 +1,6 @@
 import { IAccount } from "../../base/account";
 import BaseStore from "../../base/baseStore";
-import { Api } from "uritmix.api"
+import { Api } from "uritmix.api";
 
 class PasswordResetStore extends BaseStore<boolean> {
   constructor() {

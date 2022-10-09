@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import DataGrid, {
   Button,
   Column,
@@ -7,9 +7,9 @@ import DataGrid, {
   Pager,
   Paging,
   Scrolling,
-} from 'devextreme-react/data-grid';
-import personsDataStore from './store/personsStore';
-import { dto } from 'uritmix.api';
+} from "devextreme-react/data-grid";
+import personsDataStore from "./store/personsStore";
+import { dto } from "uritmix.api";
 
 interface Param {
   initDataGrid: (dataGrid: DataGrid) => void;
@@ -65,7 +65,12 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
       showRowLines={true}
     >
       {/**/}
-      <Editing useIcons={true} allowUpdating={false} allowAdding={false} allowDeleting={false} />
+      <Editing
+        useIcons={true}
+        allowUpdating={false}
+        allowAdding={false}
+        allowDeleting={false}
+      />
       {/**/}
       <Scrolling rowRenderingMode="virtual" />
       <Paging defaultPageSize={10} />
@@ -80,11 +85,37 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
       {/**/}
       <FilterRow visible={true} />
       {/**/}
-      <Column dataField="id" caption={'ID'} dataType="number" allowHeaderFiltering={false} allowEditing={false} />
-      <Column dataField="firstName" caption={'Firstname'} dataType="string" allowHeaderFiltering={false} />
-      <Column dataField="lastName" caption={'Lastname'} dataType="string" allowHeaderFiltering={false} />
-      <Column dataField="isTrainer" caption={'Trainer'} dataType="boolean" allowHeaderFiltering={false} />
-      <Column dataField="haveAuth" caption={'Auth'} dataType="boolean" allowHeaderFiltering={false} />
+      <Column
+        dataField="id"
+        caption={"ID"}
+        dataType="number"
+        allowHeaderFiltering={false}
+        allowEditing={false}
+      />
+      <Column
+        dataField="firstName"
+        caption={"Firstname"}
+        dataType="string"
+        allowHeaderFiltering={false}
+      />
+      <Column
+        dataField="lastName"
+        caption={"Lastname"}
+        dataType="string"
+        allowHeaderFiltering={false}
+      />
+      <Column
+        dataField="isTrainer"
+        caption={"Trainer"}
+        dataType="boolean"
+        allowHeaderFiltering={false}
+      />
+      <Column
+        dataField="haveAuth"
+        caption={"Auth"}
+        dataType="boolean"
+        allowHeaderFiltering={false}
+      />
       {/*<Column dataField="auth.email" caption={'Email'} dataType="string" allowHeaderFiltering={false} />
 
       <Column dataField="auth.role"
@@ -106,7 +137,7 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
       </Column>*/}
 
       <Column type="buttons">
-        <Button hint={'Info'} icon="info" onClick={userInfoClick} />
+        <Button hint={"Info"} icon="info" onClick={userInfoClick} />
       </Column>
       {/**/}
     </DataGrid>

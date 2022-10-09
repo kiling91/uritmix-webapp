@@ -5,7 +5,7 @@ import GenericErrorPage, { ErrorPageType } from "./GenericErrorPage";
 import { AppUrl, PROJECT_NAME } from "../config";
 import PasswordReset from "../authentication/PasswordReset";
 import PasswordChange from "../authentication/PasswordChange";
-import Persons from "../person/Persons"
+import Persons from "../person/Persons";
 import PersonData from "../person/PersonData";
 import { IAccount } from "../base/account";
 import TopNavbar from "./TopNavbar";
@@ -19,7 +19,7 @@ const AppWrapper = () => {
       <>
         <TopNavbar />
         <main className="container">
-        <Outlet />
+          <Outlet />
         </main>
       </>
     );
@@ -29,20 +29,19 @@ const AppWrapper = () => {
 };
 
 const App = () => {
-
   useEffect(() => {
     document.title = PROJECT_NAME;
   });
 
   return (
     <Routes>
-      <Route path={"/"} element={<AppWrapper/>}>
+      <Route path={"/"} element={<AppWrapper />}>
         <Route index element={<h1>Home</h1>} />
         <Route path={AppUrl.Abonnements} element={<Abonnements />} />
         <Route path={AppUrl.Persons} element={<Persons />} />
         <Route path={AppUrl.Person}>
-          <Route index element={<PersonData/>} />
-          <Route path={"abonnements"} element={<PersonAbonnements/>} />
+          <Route index element={<PersonData />} />
+          <Route path={"abonnements"} element={<PersonAbonnements />} />
         </Route>
         <Route path={"about"} element={<h1>About</h1>} />
       </Route>

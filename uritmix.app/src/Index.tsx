@@ -6,10 +6,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app/App";
 import { BrowserRouter } from "react-router-dom";
-import {createAxiosResponseInterceptor, createAuthAxiosUse} from "./base/authorization"
+import {
+  createAxiosResponseInterceptor,
+  createAuthAxiosUse,
+} from "./base/authorization";
 
-createAuthAxiosUse()
-createAxiosResponseInterceptor()
+createAuthAxiosUse();
+createAxiosResponseInterceptor();
 
 const root = ReactDOM.render(
   <React.StrictMode>
@@ -17,4 +20,5 @@ const root = ReactDOM.render(
       <App />
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root"));
+  document.getElementById("root")
+);

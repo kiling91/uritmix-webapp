@@ -1,17 +1,21 @@
 import { IAccount } from "../../base/account";
 import BaseStore from "../../base/baseStore";
-import { Api } from "uritmix.api"
+import { Api } from "uritmix.api";
 
 class LoginStore extends BaseStore<IAccount> {
   constructor() {
     super();
   }
 
-  public async login(email: string, password: string, rememberMe: boolean): Promise<boolean> {
+  public async login(
+    email: string,
+    password: string,
+    rememberMe: boolean
+  ): Promise<boolean> {
     return await this.makeRequest(async () => {
       const res = await Api.authApi.apiV1AuthLoginPost({
         email: email,
-        password: password
+        password: password,
       });
 
       this.checkErrors(res);

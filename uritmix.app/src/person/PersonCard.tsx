@@ -5,7 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 
 type PersonCardProps = {
   body: ReactChild | ReactChildren;
-  toolbar: ReactChild | ReactChildren | null
+  toolbar: ReactChild | ReactChildren | null;
 };
 
 const PersonCard = ({ body, toolbar }: PersonCardProps) => {
@@ -18,19 +18,21 @@ const PersonCard = ({ body, toolbar }: PersonCardProps) => {
             <BackNavbar path={AppUrl.Persons} />
             <ul className="nav nav-tabs card-header-tabs ms-3">
               <li className="nav-item">
-                <NavLink className="nav-link" end to={`/persons/${id}`}>{"Person"}</NavLink>
+                <NavLink className="nav-link" end to={`/persons/${id}`}>
+                  {"Person"}
+                </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to={`/persons/${id}/abonnements`}>{"Abonnements"}</NavLink>
+                <NavLink className="nav-link" to={`/persons/${id}/abonnements`}>
+                  {"Abonnements"}
+                </NavLink>
               </li>
             </ul>
           </div>
           {toolbar}
         </div>
       </div>
-      <div className="card-body">
-        {body}
-      </div>
+      <div className="card-body">{body}</div>
     </div>
   );
 };
