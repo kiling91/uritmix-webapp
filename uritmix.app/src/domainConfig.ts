@@ -26,3 +26,13 @@ export namespace RoomDomain {
 	export const NameMaxLength = 64
 	export const DescriptionMaxLength = 64
 }
+
+export namespace LessonDomain {
+	export const NameMinLength = 2
+	export const NameMaxLength = 64
+	export const DurationMinuteMin = 15
+	export const DurationMinuteMax = 180
+	export const BasePriceMin = 1.0
+	export const BasePriceMax = 100000.0
+	export const DescriptionMaxLength = 64
+}

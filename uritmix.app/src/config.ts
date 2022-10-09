@@ -9,6 +9,7 @@ export enum AppUrl {
 	PasswordChange = '/password-change/:token',
 	Abonnements = '/abonnements',
 	Rooms = '/Rooms',
+	Lessons = '/lessons',
 	Persons = '/persons',
 	Person = '/persons/:id',
 	Error404 = '/404',

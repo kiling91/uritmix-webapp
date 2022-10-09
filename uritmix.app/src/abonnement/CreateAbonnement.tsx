@@ -17,7 +17,6 @@ import { AbonnementDomain } from '../domainConfig'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
-import Visibility from '../ui/Visibility'
 
 interface Param {
 	onClose: (id: number, needReload: boolean) => void
@@ -31,7 +30,7 @@ const CreateAbonnement = observer((param: Param) => {
 		AbonnementDomain.NumberOfVisitsMin
 	)
 	const [basePrice, setBasePrice] = useState<number>(
-		AbonnementDomain.BasePriceMax
+		AbonnementDomain.BasePriceMin
 	)
 	const [discount, setDiscount] = useState(dto.DiscountView.D0)
 

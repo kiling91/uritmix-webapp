@@ -10,8 +10,9 @@ import PersonData from '../person/PersonData'
 import { IAccount } from '../base/account'
 import TopNavbar from './TopNavbar'
 import PersonAbonnements from '../person/PersonAbonnements'
-import Abonnements from '../abonnements/Abonnements'
+import Abonnements from '../abonnement/Abonnements'
 import Rooms from '../room/Rooms'
+import Lessons from '../lesson/Lessons'
 
 const AppWrapper = () => {
 	const account = IAccount.load()
@@ -40,6 +41,7 @@ const App = () => {
 				<Route index element={<h1>Home</h1>} />
 				<Route path={AppUrl.Abonnements} element={<Abonnements />} />
 				<Route path={AppUrl.Rooms} element={<Rooms />} />
+				<Route path={AppUrl.Lessons} element={<Lessons />} />
 				<Route path={AppUrl.Persons} element={<Persons />} />
 				<Route path={AppUrl.Person}>
 					<Route index element={<PersonData />} />
