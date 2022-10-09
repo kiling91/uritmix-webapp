@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "esnext",
+    "outDir": "./dist/",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "target": "es6",
+    "esModuleInterop": true,
+    "removeComments": true,
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    /*"paths": {
+      "@component/*": ["*"],
+    }*/
+  },
+  "include": [
+    "src",
+    "index.d.ts"
+  ]
+}
