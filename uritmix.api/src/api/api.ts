@@ -592,6 +592,19 @@ export interface LoginUser {
 /**
  * 
  * @export
+ * @interface Logout
+ */
+export interface Logout {
+    /**
+     * 
+     * @type {string}
+     * @memberof Logout
+     */
+    'token'?: string;
+}
+/**
+ * 
+ * @export
  * @interface PaginatedAbonnement
  */
 export interface PaginatedAbonnement {
@@ -1885,6 +1898,40 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @summary Разлогин пользователя
+         * @param {Logout} [logout] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1AuthLogoutPost: async (logout?: Logout, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/auth/logout`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(logout, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Смена пароля на основе токена отправленного на почту
          * @param {PasswordReset} [passwordReset] 
          * @param {*} [options] Override http request option.
@@ -2060,6 +2107,17 @@ export const AuthApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Разлогин пользователя
+         * @param {Logout} [logout] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1AuthLogoutPost(logout?: Logout, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultUnit>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AuthLogoutPost(logout, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Смена пароля на основе токена отправленного на почту
          * @param {PasswordReset} [passwordReset] 
          * @param {*} [options] Override http request option.
@@ -2135,6 +2193,16 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @summary Разлогин пользователя
+         * @param {Logout} [logout] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1AuthLogoutPost(logout?: Logout, options?: any): AxiosPromise<ResultUnit> {
+            return localVarFp.apiV1AuthLogoutPost(logout, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Смена пароля на основе токена отправленного на почту
          * @param {PasswordReset} [passwordReset] 
          * @param {*} [options] Override http request option.
@@ -2206,6 +2274,18 @@ export class AuthApi extends BaseAPI {
      */
     public apiV1AuthLoginPost(loginUser?: LoginUser, options?: AxiosRequestConfig) {
         return AuthApiFp(this.configuration).apiV1AuthLoginPost(loginUser, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Разлогин пользователя
+     * @param {Logout} [logout] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public apiV1AuthLogoutPost(logout?: Logout, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).apiV1AuthLogoutPost(logout, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2300,6 +2380,43 @@ export const LessonApiAxiosParamCreator = function (configuration?: Configuratio
             if (pageNumber !== undefined) {
                 localVarQueryParameter['pageNumber'] = pageNumber;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Возвращает занятие по id
+         * @param {number} lessonId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1LessonLessonIdGet: async (lessonId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lessonId' is not null or undefined
+            assertParamExists('apiV1LessonLessonIdGet', 'lessonId', lessonId)
+            const localVarPath = `/api/v1/lesson/{lessonId}`
+                .replace(`{${"lessonId"}}`, encodeURIComponent(String(lessonId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -2414,6 +2531,17 @@ export const LessonApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Возвращает занятие по id
+         * @param {number} lessonId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1LessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultLesson>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1LessonLessonIdGet(lessonId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Обновляет данные занятия
          * @param {number} lessonId 
          * @param {EditLesson} [editLesson] 
@@ -2458,6 +2586,16 @@ export const LessonApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
+         * @summary Возвращает занятие по id
+         * @param {number} lessonId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1LessonLessonIdGet(lessonId: number, options?: any): AxiosPromise<ResultLesson> {
+            return localVarFp.apiV1LessonLessonIdGet(lessonId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Обновляет данные занятия
          * @param {number} lessonId 
          * @param {EditLesson} [editLesson] 
@@ -2498,6 +2636,18 @@ export class LessonApi extends BaseAPI {
      */
     public apiV1LessonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig) {
         return LessonApiFp(this.configuration).apiV1LessonGet(pageSize, pageNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Возвращает занятие по id
+     * @param {number} lessonId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LessonApi
+     */
+    public apiV1LessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiV1LessonLessonIdGet(lessonId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

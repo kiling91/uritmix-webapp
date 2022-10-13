@@ -135,23 +135,24 @@ const CreateEditRoom = observer((param: Param) => {
 		return 'Edit room'
 	}
 
-	{
-		/*Костыль нужны для перерисовки в Popup*/
-	}
-	console.log(store.loading)
 	return (
-		<Popup
-			width={POPUP_FORM_WIDTH}
-			height={'auto'}
-			position={POPUP_POSITION}
-			showTitle={true}
-			visible={true}
-			title={title()}
-			dragEnabled={false}
-			hideOnOutsideClick={false}
-			onHiding={onClose}
-			contentRender={form}
-		/>
+		<>
+			{/*Костыль нужны для перерисовки в Popup*/}
+			{store.errors.length > 0 && <>Errors</>}
+			{store.loading && <>Loading</>}
+			<Popup
+				width={POPUP_FORM_WIDTH}
+				height={'auto'}
+				position={POPUP_POSITION}
+				showTitle={true}
+				visible={true}
+				title={title()}
+				dragEnabled={false}
+				hideOnOutsideClick={false}
+				onHiding={onClose}
+				contentRender={form}
+			/>
+		</>
 	)
 })
 

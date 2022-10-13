@@ -18,48 +18,48 @@ import { RequestArgs, BaseAPI } from './base';
  * @interface Abonnement
  */
 export interface Abonnement {
-  /**
-   *
-   * @type {number}
-   * @memberof Abonnement
-   */
-  id?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof Abonnement
-   */
-  name?: string;
-  /**
-   *
-   * @type {AbonnementValidityView}
-   * @memberof Abonnement
-   */
-  validity?: AbonnementValidityView;
-  /**
-   *
-   * @type {number}
-   * @memberof Abonnement
-   */
-  numberOfVisits?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof Abonnement
-   */
-  basePrice?: number;
-  /**
-   *
-   * @type {DiscountView}
-   * @memberof Abonnement
-   */
-  discount?: DiscountView;
-  /**
-   *
-   * @type {Array<Lesson>}
-   * @memberof Abonnement
-   */
-  lessons?: Array<Lesson>;
+    /**
+     *
+     * @type {number}
+     * @memberof Abonnement
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof Abonnement
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {AbonnementValidityView}
+     * @memberof Abonnement
+     */
+    'validity'?: AbonnementValidityView;
+    /**
+     *
+     * @type {number}
+     * @memberof Abonnement
+     */
+    'numberOfVisits'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Abonnement
+     */
+    'basePrice'?: number;
+    /**
+     *
+     * @type {DiscountView}
+     * @memberof Abonnement
+     */
+    'discount'?: DiscountView;
+    /**
+     *
+     * @type {Array<Lesson>}
+     * @memberof Abonnement
+     */
+    'lessons'?: Array<Lesson>;
 }
 /**
  *
@@ -67,11 +67,11 @@ export interface Abonnement {
  * @enum {string}
  */
 export declare const AbonnementValidityView: {
-  readonly OneDay: 'OneDay';
-  readonly OneMonth: 'OneMonth';
-  readonly ThreeMonths: 'ThreeMonths';
-  readonly HalfYear: 'HalfYear';
-  readonly Year: 'Year';
+    readonly OneDay: "OneDay";
+    readonly OneMonth: "OneMonth";
+    readonly ThreeMonths: "ThreeMonths";
+    readonly HalfYear: "HalfYear";
+    readonly Year: "Year";
 };
 export declare type AbonnementValidityView = typeof AbonnementValidityView[keyof typeof AbonnementValidityView];
 /**
@@ -80,24 +80,24 @@ export declare type AbonnementValidityView = typeof AbonnementValidityView[keyof
  * @interface ActivateAuth
  */
 export interface ActivateAuth {
-  /**
-   *
-   * @type {string}
-   * @memberof ActivateAuth
-   */
-  confirmCode?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof ActivateAuth
-   */
-  password?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof ActivateAuth
-   */
-  passwordConfirm?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ActivateAuth
+     */
+    'confirmCode'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ActivateAuth
+     */
+    'password'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ActivateAuth
+     */
+    'passwordConfirm'?: string;
 }
 /**
  *
@@ -105,24 +105,24 @@ export interface ActivateAuth {
  * @interface Auth
  */
 export interface Auth {
-  /**
-   *
-   * @type {AuthRoleView}
-   * @memberof Auth
-   */
-  role?: AuthRoleView;
-  /**
-   *
-   * @type {AuthStatusView}
-   * @memberof Auth
-   */
-  status?: AuthStatusView;
-  /**
-   *
-   * @type {string}
-   * @memberof Auth
-   */
-  email?: string;
+    /**
+     *
+     * @type {AuthRoleView}
+     * @memberof Auth
+     */
+    'role'?: AuthRoleView;
+    /**
+     *
+     * @type {AuthStatusView}
+     * @memberof Auth
+     */
+    'status'?: AuthStatusView;
+    /**
+     *
+     * @type {string}
+     * @memberof Auth
+     */
+    'email'?: string;
 }
 /**
  *
@@ -130,9 +130,9 @@ export interface Auth {
  * @enum {string}
  */
 export declare const AuthRoleView: {
-  readonly Manager: 'Manager';
-  readonly Admin: 'Admin';
-  readonly Server: 'Server';
+    readonly Manager: "Manager";
+    readonly Admin: "Admin";
+    readonly Server: "Server";
 };
 export declare type AuthRoleView = typeof AuthRoleView[keyof typeof AuthRoleView];
 /**
@@ -141,9 +141,9 @@ export declare type AuthRoleView = typeof AuthRoleView[keyof typeof AuthRoleView
  * @enum {string}
  */
 export declare const AuthStatusView: {
-  readonly NotActivated: 'NotActivated';
-  readonly Activated: 'Activated';
-  readonly Blocked: 'Blocked';
+    readonly NotActivated: "NotActivated";
+    readonly Activated: "Activated";
+    readonly Blocked: "Blocked";
 };
 export declare type AuthStatusView = typeof AuthStatusView[keyof typeof AuthStatusView];
 /**
@@ -152,42 +152,42 @@ export declare type AuthStatusView = typeof AuthStatusView[keyof typeof AuthStat
  * @interface CreateAbonnement
  */
 export interface CreateAbonnement {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateAbonnement
-   */
-  name?: string;
-  /**
-   *
-   * @type {AbonnementValidityView}
-   * @memberof CreateAbonnement
-   */
-  validity?: AbonnementValidityView;
-  /**
-   *
-   * @type {number}
-   * @memberof CreateAbonnement
-   */
-  numberOfVisits?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof CreateAbonnement
-   */
-  basePrice?: number;
-  /**
-   *
-   * @type {DiscountView}
-   * @memberof CreateAbonnement
-   */
-  discount?: DiscountView;
-  /**
-   *
-   * @type {Array<number>}
-   * @memberof CreateAbonnement
-   */
-  lessonIds?: Array<number>;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateAbonnement
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {AbonnementValidityView}
+     * @memberof CreateAbonnement
+     */
+    'validity'?: AbonnementValidityView;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateAbonnement
+     */
+    'numberOfVisits'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateAbonnement
+     */
+    'basePrice'?: number;
+    /**
+     *
+     * @type {DiscountView}
+     * @memberof CreateAbonnement
+     */
+    'discount'?: DiscountView;
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof CreateAbonnement
+     */
+    'lessonIds'?: Array<number>;
 }
 /**
  *
@@ -195,18 +195,18 @@ export interface CreateAbonnement {
  * @interface CreateAuth
  */
 export interface CreateAuth {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateAuth
-   */
-  email?: string;
-  /**
-   *
-   * @type {AuthRoleView}
-   * @memberof CreateAuth
-   */
-  role?: AuthRoleView;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateAuth
+     */
+    'email'?: string;
+    /**
+     *
+     * @type {AuthRoleView}
+     * @memberof CreateAuth
+     */
+    'role'?: AuthRoleView;
 }
 /**
  *
@@ -214,36 +214,36 @@ export interface CreateAuth {
  * @interface CreateLesson
  */
 export interface CreateLesson {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateLesson
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof CreateLesson
-   */
-  description?: string | null;
-  /**
-   *
-   * @type {number}
-   * @memberof CreateLesson
-   */
-  trainerId?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof CreateLesson
-   */
-  durationMinute?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof CreateLesson
-   */
-  basePrice?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateLesson
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateLesson
+     */
+    'description'?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateLesson
+     */
+    'trainerId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateLesson
+     */
+    'durationMinute'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateLesson
+     */
+    'basePrice'?: number;
 }
 /**
  *
@@ -251,30 +251,30 @@ export interface CreateLesson {
  * @interface CreatePerson
  */
 export interface CreatePerson {
-  /**
-   *
-   * @type {string}
-   * @memberof CreatePerson
-   */
-  firstName?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof CreatePerson
-   */
-  lastName?: string;
-  /**
-   *
-   * @type {boolean}
-   * @memberof CreatePerson
-   */
-  isTrainer?: boolean;
-  /**
-   *
-   * @type {string}
-   * @memberof CreatePerson
-   */
-  description?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof CreatePerson
+     */
+    'firstName'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreatePerson
+     */
+    'lastName'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof CreatePerson
+     */
+    'isTrainer'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof CreatePerson
+     */
+    'description'?: string | null;
 }
 /**
  *
@@ -282,18 +282,18 @@ export interface CreatePerson {
  * @interface CreateRoom
  */
 export interface CreateRoom {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateRoom
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof CreateRoom
-   */
-  description?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateRoom
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateRoom
+     */
+    'description'?: string | null;
 }
 /**
  *
@@ -301,19 +301,19 @@ export interface CreateRoom {
  * @enum {string}
  */
 export declare const DiscountView: {
-  readonly D0: 'D0';
-  readonly D5: 'D5';
-  readonly D10: 'D10';
-  readonly D15: 'D15';
-  readonly D20: 'D20';
-  readonly D25: 'D25';
-  readonly D30: 'D30';
-  readonly D40: 'D40';
-  readonly D50: 'D50';
-  readonly D60: 'D60';
-  readonly D70: 'D70';
-  readonly D80: 'D80';
-  readonly D90: 'D90';
+    readonly D0: "D0";
+    readonly D5: "D5";
+    readonly D10: "D10";
+    readonly D15: "D15";
+    readonly D20: "D20";
+    readonly D25: "D25";
+    readonly D30: "D30";
+    readonly D40: "D40";
+    readonly D50: "D50";
+    readonly D60: "D60";
+    readonly D70: "D70";
+    readonly D80: "D80";
+    readonly D90: "D90";
 };
 export declare type DiscountView = typeof DiscountView[keyof typeof DiscountView];
 /**
@@ -322,42 +322,42 @@ export declare type DiscountView = typeof DiscountView[keyof typeof DiscountView
  * @interface EditAbonnement
  */
 export interface EditAbonnement {
-  /**
-   *
-   * @type {string}
-   * @memberof EditAbonnement
-   */
-  name?: string;
-  /**
-   *
-   * @type {AbonnementValidityView}
-   * @memberof EditAbonnement
-   */
-  validity?: AbonnementValidityView;
-  /**
-   *
-   * @type {number}
-   * @memberof EditAbonnement
-   */
-  numberOfVisits?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof EditAbonnement
-   */
-  basePrice?: number;
-  /**
-   *
-   * @type {DiscountView}
-   * @memberof EditAbonnement
-   */
-  discount?: DiscountView;
-  /**
-   *
-   * @type {Array<number>}
-   * @memberof EditAbonnement
-   */
-  lessonIds?: Array<number>;
+    /**
+     *
+     * @type {string}
+     * @memberof EditAbonnement
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {AbonnementValidityView}
+     * @memberof EditAbonnement
+     */
+    'validity'?: AbonnementValidityView;
+    /**
+     *
+     * @type {number}
+     * @memberof EditAbonnement
+     */
+    'numberOfVisits'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof EditAbonnement
+     */
+    'basePrice'?: number;
+    /**
+     *
+     * @type {DiscountView}
+     * @memberof EditAbonnement
+     */
+    'discount'?: DiscountView;
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof EditAbonnement
+     */
+    'lessonIds'?: Array<number>;
 }
 /**
  *
@@ -365,36 +365,36 @@ export interface EditAbonnement {
  * @interface EditLesson
  */
 export interface EditLesson {
-  /**
-   *
-   * @type {string}
-   * @memberof EditLesson
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof EditLesson
-   */
-  description?: string | null;
-  /**
-   *
-   * @type {number}
-   * @memberof EditLesson
-   */
-  trainerId?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof EditLesson
-   */
-  durationMinute?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof EditLesson
-   */
-  basePrice?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof EditLesson
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EditLesson
+     */
+    'description'?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof EditLesson
+     */
+    'trainerId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof EditLesson
+     */
+    'durationMinute'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof EditLesson
+     */
+    'basePrice'?: number;
 }
 /**
  *
@@ -402,24 +402,24 @@ export interface EditLesson {
  * @interface EditPerson
  */
 export interface EditPerson {
-  /**
-   *
-   * @type {string}
-   * @memberof EditPerson
-   */
-  firstName?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof EditPerson
-   */
-  lastName?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof EditPerson
-   */
-  description?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof EditPerson
+     */
+    'firstName'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EditPerson
+     */
+    'lastName'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EditPerson
+     */
+    'description'?: string | null;
 }
 /**
  *
@@ -427,18 +427,18 @@ export interface EditPerson {
  * @interface EditRoom
  */
 export interface EditRoom {
-  /**
-   *
-   * @type {string}
-   * @memberof EditRoom
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof EditRoom
-   */
-  description?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof EditRoom
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EditRoom
+     */
+    'description'?: string | null;
 }
 /**
  *
@@ -446,18 +446,18 @@ export interface EditRoom {
  * @interface ErrorResponse
  */
 export interface ErrorResponse {
-  /**
-   *
-   * @type {string}
-   * @memberof ErrorResponse
-   */
-  error?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof ErrorResponse
-   */
-  code?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ErrorResponse
+     */
+    'error'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ErrorResponse
+     */
+    'code'?: string;
 }
 /**
  *
@@ -465,42 +465,42 @@ export interface ErrorResponse {
  * @interface Lesson
  */
 export interface Lesson {
-  /**
-   *
-   * @type {number}
-   * @memberof Lesson
-   */
-  id?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof Lesson
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Lesson
-   */
-  description?: string | null;
-  /**
-   *
-   * @type {Person}
-   * @memberof Lesson
-   */
-  trainer?: Person;
-  /**
-   *
-   * @type {number}
-   * @memberof Lesson
-   */
-  durationMinute?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof Lesson
-   */
-  basePrice?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof Lesson
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Lesson
+     */
+    'description'?: string | null;
+    /**
+     *
+     * @type {Person}
+     * @memberof Lesson
+     */
+    'trainer'?: Person;
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'durationMinute'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'basePrice'?: number;
 }
 /**
  *
@@ -508,42 +508,42 @@ export interface Lesson {
  * @interface LoggedPerson
  */
 export interface LoggedPerson {
-  /**
-   *
-   * @type {string}
-   * @memberof LoggedPerson
-   */
-  firstName?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof LoggedPerson
-   */
-  lastName?: string;
-  /**
-   *
-   * @type {AuthRoleView}
-   * @memberof LoggedPerson
-   */
-  role?: AuthRoleView;
-  /**
-   *
-   * @type {string}
-   * @memberof LoggedPerson
-   */
-  email?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof LoggedPerson
-   */
-  accessToken?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof LoggedPerson
-   */
-  refreshToken?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LoggedPerson
+     */
+    'firstName'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LoggedPerson
+     */
+    'lastName'?: string;
+    /**
+     *
+     * @type {AuthRoleView}
+     * @memberof LoggedPerson
+     */
+    'role'?: AuthRoleView;
+    /**
+     *
+     * @type {string}
+     * @memberof LoggedPerson
+     */
+    'email'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LoggedPerson
+     */
+    'accessToken'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LoggedPerson
+     */
+    'refreshToken'?: string;
 }
 /**
  *
@@ -551,18 +551,31 @@ export interface LoggedPerson {
  * @interface LoginUser
  */
 export interface LoginUser {
-  /**
-   *
-   * @type {string}
-   * @memberof LoginUser
-   */
-  email?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof LoginUser
-   */
-  password?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LoginUser
+     */
+    'email'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof LoginUser
+     */
+    'password'?: string;
+}
+/**
+ *
+ * @export
+ * @interface Logout
+ */
+export interface Logout {
+    /**
+     *
+     * @type {string}
+     * @memberof Logout
+     */
+    'token'?: string;
 }
 /**
  *
@@ -570,42 +583,42 @@ export interface LoginUser {
  * @interface PaginatedAbonnement
  */
 export interface PaginatedAbonnement {
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedAbonnement
-   */
-  pageNumber?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedAbonnement
-   */
-  pageSize?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedAbonnement
-   */
-  totalPages?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedAbonnement
-   */
-  totalRecords?: number;
-  /**
-   *
-   * @type {boolean}
-   * @memberof PaginatedAbonnement
-   */
-  nextPageExists?: boolean;
-  /**
-   *
-   * @type {Array<Abonnement>}
-   * @memberof PaginatedAbonnement
-   */
-  results?: Array<Abonnement> | null;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedAbonnement
+     */
+    'pageNumber'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedAbonnement
+     */
+    'pageSize'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedAbonnement
+     */
+    'totalPages'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedAbonnement
+     */
+    'totalRecords'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PaginatedAbonnement
+     */
+    'nextPageExists'?: boolean;
+    /**
+     *
+     * @type {Array<Abonnement>}
+     * @memberof PaginatedAbonnement
+     */
+    'results'?: Array<Abonnement> | null;
 }
 /**
  *
@@ -613,42 +626,42 @@ export interface PaginatedAbonnement {
  * @interface PaginatedLesson
  */
 export interface PaginatedLesson {
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedLesson
-   */
-  pageNumber?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedLesson
-   */
-  pageSize?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedLesson
-   */
-  totalPages?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedLesson
-   */
-  totalRecords?: number;
-  /**
-   *
-   * @type {boolean}
-   * @memberof PaginatedLesson
-   */
-  nextPageExists?: boolean;
-  /**
-   *
-   * @type {Array<Lesson>}
-   * @memberof PaginatedLesson
-   */
-  results?: Array<Lesson> | null;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedLesson
+     */
+    'pageNumber'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedLesson
+     */
+    'pageSize'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedLesson
+     */
+    'totalPages'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedLesson
+     */
+    'totalRecords'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PaginatedLesson
+     */
+    'nextPageExists'?: boolean;
+    /**
+     *
+     * @type {Array<Lesson>}
+     * @memberof PaginatedLesson
+     */
+    'results'?: Array<Lesson> | null;
 }
 /**
  *
@@ -656,42 +669,42 @@ export interface PaginatedLesson {
  * @interface PaginatedPerson
  */
 export interface PaginatedPerson {
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedPerson
-   */
-  pageNumber?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedPerson
-   */
-  pageSize?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedPerson
-   */
-  totalPages?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedPerson
-   */
-  totalRecords?: number;
-  /**
-   *
-   * @type {boolean}
-   * @memberof PaginatedPerson
-   */
-  nextPageExists?: boolean;
-  /**
-   *
-   * @type {Array<Person>}
-   * @memberof PaginatedPerson
-   */
-  results?: Array<Person> | null;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedPerson
+     */
+    'pageNumber'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedPerson
+     */
+    'pageSize'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedPerson
+     */
+    'totalPages'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedPerson
+     */
+    'totalRecords'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PaginatedPerson
+     */
+    'nextPageExists'?: boolean;
+    /**
+     *
+     * @type {Array<Person>}
+     * @memberof PaginatedPerson
+     */
+    'results'?: Array<Person> | null;
 }
 /**
  *
@@ -699,42 +712,42 @@ export interface PaginatedPerson {
  * @interface PaginatedRoom
  */
 export interface PaginatedRoom {
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedRoom
-   */
-  pageNumber?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedRoom
-   */
-  pageSize?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedRoom
-   */
-  totalPages?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedRoom
-   */
-  totalRecords?: number;
-  /**
-   *
-   * @type {boolean}
-   * @memberof PaginatedRoom
-   */
-  nextPageExists?: boolean;
-  /**
-   *
-   * @type {Array<Room>}
-   * @memberof PaginatedRoom
-   */
-  results?: Array<Room> | null;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedRoom
+     */
+    'pageNumber'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedRoom
+     */
+    'pageSize'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedRoom
+     */
+    'totalPages'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedRoom
+     */
+    'totalRecords'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PaginatedRoom
+     */
+    'nextPageExists'?: boolean;
+    /**
+     *
+     * @type {Array<Room>}
+     * @memberof PaginatedRoom
+     */
+    'results'?: Array<Room> | null;
 }
 /**
  *
@@ -742,42 +755,42 @@ export interface PaginatedRoom {
  * @interface PaginatedSoldAbonnement
  */
 export interface PaginatedSoldAbonnement {
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedSoldAbonnement
-   */
-  pageNumber?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedSoldAbonnement
-   */
-  pageSize?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedSoldAbonnement
-   */
-  totalPages?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PaginatedSoldAbonnement
-   */
-  totalRecords?: number;
-  /**
-   *
-   * @type {boolean}
-   * @memberof PaginatedSoldAbonnement
-   */
-  nextPageExists?: boolean;
-  /**
-   *
-   * @type {Array<SoldAbonnement>}
-   * @memberof PaginatedSoldAbonnement
-   */
-  results?: Array<SoldAbonnement> | null;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedSoldAbonnement
+     */
+    'pageNumber'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedSoldAbonnement
+     */
+    'pageSize'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedSoldAbonnement
+     */
+    'totalPages'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaginatedSoldAbonnement
+     */
+    'totalRecords'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PaginatedSoldAbonnement
+     */
+    'nextPageExists'?: boolean;
+    /**
+     *
+     * @type {Array<SoldAbonnement>}
+     * @memberof PaginatedSoldAbonnement
+     */
+    'results'?: Array<SoldAbonnement> | null;
 }
 /**
  *
@@ -785,24 +798,24 @@ export interface PaginatedSoldAbonnement {
  * @interface PasswordReset
  */
 export interface PasswordReset {
-  /**
-   *
-   * @type {string}
-   * @memberof PasswordReset
-   */
-  confirmCode?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof PasswordReset
-   */
-  password?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof PasswordReset
-   */
-  passwordConfirm?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PasswordReset
+     */
+    'confirmCode'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PasswordReset
+     */
+    'password'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PasswordReset
+     */
+    'passwordConfirm'?: string;
 }
 /**
  *
@@ -810,12 +823,12 @@ export interface PasswordReset {
  * @interface PasswordResetQuery
  */
 export interface PasswordResetQuery {
-  /**
-   *
-   * @type {string}
-   * @memberof PasswordResetQuery
-   */
-  email?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PasswordResetQuery
+     */
+    'email'?: string;
 }
 /**
  *
@@ -823,48 +836,48 @@ export interface PasswordResetQuery {
  * @interface Person
  */
 export interface Person {
-  /**
-   *
-   * @type {number}
-   * @memberof Person
-   */
-  id?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof Person
-   */
-  firstName?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Person
-   */
-  lastName?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Person
-   */
-  description?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof Person
-   */
-  isTrainer?: boolean;
-  /**
-   *
-   * @type {boolean}
-   * @memberof Person
-   */
-  haveAuth?: boolean;
-  /**
-   *
-   * @type {Auth}
-   * @memberof Person
-   */
-  auth?: Auth;
+    /**
+     *
+     * @type {number}
+     * @memberof Person
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof Person
+     */
+    'firstName'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Person
+     */
+    'lastName'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Person
+     */
+    'description'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof Person
+     */
+    'isTrainer'?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof Person
+     */
+    'haveAuth'?: boolean;
+    /**
+     *
+     * @type {Auth}
+     * @memberof Person
+     */
+    'auth'?: Auth;
 }
 /**
  *
@@ -872,9 +885,9 @@ export interface Person {
  * @enum {string}
  */
 export declare const PersonTypeView: {
-  readonly All: 'All';
-  readonly Trainer: 'Trainer';
-  readonly Account: 'Account';
+    readonly All: "All";
+    readonly Trainer: "Trainer";
+    readonly Account: "Account";
 };
 export declare type PersonTypeView = typeof PersonTypeView[keyof typeof PersonTypeView];
 /**
@@ -883,18 +896,18 @@ export declare type PersonTypeView = typeof PersonTypeView[keyof typeof PersonTy
  * @interface PropertyError
  */
 export interface PropertyError {
-  /**
-   *
-   * @type {string}
-   * @memberof PropertyError
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof PropertyError
-   */
-  error?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PropertyError
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PropertyError
+     */
+    'error'?: string;
 }
 /**
  *
@@ -902,12 +915,12 @@ export interface PropertyError {
  * @interface Refresh
  */
 export interface Refresh {
-  /**
-   *
-   * @type {string}
-   * @memberof Refresh
-   */
-  token?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Refresh
+     */
+    'token'?: string;
 }
 /**
  *
@@ -915,24 +928,24 @@ export interface Refresh {
  * @interface ResultAbonnement
  */
 export interface ResultAbonnement {
-  /**
-   *
-   * @type {Abonnement}
-   * @memberof ResultAbonnement
-   */
-  result?: Abonnement;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultAbonnement
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultAbonnement
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {Abonnement}
+     * @memberof ResultAbonnement
+     */
+    'result'?: Abonnement;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultAbonnement
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultAbonnement
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -940,24 +953,24 @@ export interface ResultAbonnement {
  * @interface ResultLesson
  */
 export interface ResultLesson {
-  /**
-   *
-   * @type {Lesson}
-   * @memberof ResultLesson
-   */
-  result?: Lesson;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultLesson
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultLesson
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {Lesson}
+     * @memberof ResultLesson
+     */
+    'result'?: Lesson;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultLesson
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultLesson
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -965,24 +978,24 @@ export interface ResultLesson {
  * @interface ResultLoggedPerson
  */
 export interface ResultLoggedPerson {
-  /**
-   *
-   * @type {LoggedPerson}
-   * @memberof ResultLoggedPerson
-   */
-  result?: LoggedPerson;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultLoggedPerson
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultLoggedPerson
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {LoggedPerson}
+     * @memberof ResultLoggedPerson
+     */
+    'result'?: LoggedPerson;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultLoggedPerson
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultLoggedPerson
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -990,24 +1003,24 @@ export interface ResultLoggedPerson {
  * @interface ResultPaginatedAbonnement
  */
 export interface ResultPaginatedAbonnement {
-  /**
-   *
-   * @type {PaginatedAbonnement}
-   * @memberof ResultPaginatedAbonnement
-   */
-  result?: PaginatedAbonnement;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultPaginatedAbonnement
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultPaginatedAbonnement
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {PaginatedAbonnement}
+     * @memberof ResultPaginatedAbonnement
+     */
+    'result'?: PaginatedAbonnement;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultPaginatedAbonnement
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultPaginatedAbonnement
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1015,24 +1028,24 @@ export interface ResultPaginatedAbonnement {
  * @interface ResultPaginatedLesson
  */
 export interface ResultPaginatedLesson {
-  /**
-   *
-   * @type {PaginatedLesson}
-   * @memberof ResultPaginatedLesson
-   */
-  result?: PaginatedLesson;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultPaginatedLesson
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultPaginatedLesson
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {PaginatedLesson}
+     * @memberof ResultPaginatedLesson
+     */
+    'result'?: PaginatedLesson;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultPaginatedLesson
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultPaginatedLesson
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1040,24 +1053,24 @@ export interface ResultPaginatedLesson {
  * @interface ResultPaginatedPerson
  */
 export interface ResultPaginatedPerson {
-  /**
-   *
-   * @type {PaginatedPerson}
-   * @memberof ResultPaginatedPerson
-   */
-  result?: PaginatedPerson;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultPaginatedPerson
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultPaginatedPerson
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {PaginatedPerson}
+     * @memberof ResultPaginatedPerson
+     */
+    'result'?: PaginatedPerson;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultPaginatedPerson
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultPaginatedPerson
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1065,24 +1078,24 @@ export interface ResultPaginatedPerson {
  * @interface ResultPaginatedRoom
  */
 export interface ResultPaginatedRoom {
-  /**
-   *
-   * @type {PaginatedRoom}
-   * @memberof ResultPaginatedRoom
-   */
-  result?: PaginatedRoom;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultPaginatedRoom
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultPaginatedRoom
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {PaginatedRoom}
+     * @memberof ResultPaginatedRoom
+     */
+    'result'?: PaginatedRoom;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultPaginatedRoom
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultPaginatedRoom
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1090,24 +1103,24 @@ export interface ResultPaginatedRoom {
  * @interface ResultPaginatedSoldAbonnement
  */
 export interface ResultPaginatedSoldAbonnement {
-  /**
-   *
-   * @type {PaginatedSoldAbonnement}
-   * @memberof ResultPaginatedSoldAbonnement
-   */
-  result?: PaginatedSoldAbonnement;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultPaginatedSoldAbonnement
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultPaginatedSoldAbonnement
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {PaginatedSoldAbonnement}
+     * @memberof ResultPaginatedSoldAbonnement
+     */
+    'result'?: PaginatedSoldAbonnement;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultPaginatedSoldAbonnement
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultPaginatedSoldAbonnement
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1115,24 +1128,24 @@ export interface ResultPaginatedSoldAbonnement {
  * @interface ResultPerson
  */
 export interface ResultPerson {
-  /**
-   *
-   * @type {Person}
-   * @memberof ResultPerson
-   */
-  result?: Person;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultPerson
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultPerson
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {Person}
+     * @memberof ResultPerson
+     */
+    'result'?: Person;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultPerson
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultPerson
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1140,24 +1153,24 @@ export interface ResultPerson {
  * @interface ResultRoom
  */
 export interface ResultRoom {
-  /**
-   *
-   * @type {Room}
-   * @memberof ResultRoom
-   */
-  result?: Room;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultRoom
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultRoom
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {Room}
+     * @memberof ResultRoom
+     */
+    'result'?: Room;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultRoom
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultRoom
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1165,24 +1178,24 @@ export interface ResultRoom {
  * @interface ResultSoldAbonnement
  */
 export interface ResultSoldAbonnement {
-  /**
-   *
-   * @type {SoldAbonnement}
-   * @memberof ResultSoldAbonnement
-   */
-  result?: SoldAbonnement;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultSoldAbonnement
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultSoldAbonnement
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {SoldAbonnement}
+     * @memberof ResultSoldAbonnement
+     */
+    'result'?: SoldAbonnement;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultSoldAbonnement
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultSoldAbonnement
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1190,24 +1203,24 @@ export interface ResultSoldAbonnement {
  * @interface ResultUnit
  */
 export interface ResultUnit {
-  /**
-   *
-   * @type {object}
-   * @memberof ResultUnit
-   */
-  result?: object;
-  /**
-   *
-   * @type {string}
-   * @memberof ResultUnit
-   */
-  error?: string | null;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ResultUnit
-   */
-  ok?: boolean;
+    /**
+     *
+     * @type {object}
+     * @memberof ResultUnit
+     */
+    'result'?: object;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultUnit
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultUnit
+     */
+    'ok'?: boolean;
 }
 /**
  *
@@ -1215,24 +1228,24 @@ export interface ResultUnit {
  * @interface Room
  */
 export interface Room {
-  /**
-   *
-   * @type {number}
-   * @memberof Room
-   */
-  id?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof Room
-   */
-  name?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Room
-   */
-  description?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof Room
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof Room
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Room
+     */
+    'description'?: string | null;
 }
 /**
  *
@@ -1240,24 +1253,24 @@ export interface Room {
  * @interface SaleAbonnement
  */
 export interface SaleAbonnement {
-  /**
-   *
-   * @type {number}
-   * @memberof SaleAbonnement
-   */
-  personId?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof SaleAbonnement
-   */
-  abonnementId?: number;
-  /**
-   *
-   * @type {DiscountView}
-   * @memberof SaleAbonnement
-   */
-  discount?: DiscountView;
+    /**
+     *
+     * @type {number}
+     * @memberof SaleAbonnement
+     */
+    'personId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof SaleAbonnement
+     */
+    'abonnementId'?: number;
+    /**
+     *
+     * @type {DiscountView}
+     * @memberof SaleAbonnement
+     */
+    'discount'?: DiscountView;
 }
 /**
  *
@@ -1265,78 +1278,78 @@ export interface SaleAbonnement {
  * @interface SoldAbonnement
  */
 export interface SoldAbonnement {
-  /**
-   *
-   * @type {number}
-   * @memberof SoldAbonnement
-   */
-  id?: number;
-  /**
-   *
-   * @type {boolean}
-   * @memberof SoldAbonnement
-   */
-  active?: boolean;
-  /**
-   *
-   * @type {string}
-   * @memberof SoldAbonnement
-   */
-  dateSale?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof SoldAbonnement
-   */
-  dateExpiration?: string;
-  /**
-   *
-   * @type {number}
-   * @memberof SoldAbonnement
-   */
-  priceSold?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof SoldAbonnement
-   */
-  visitCounter?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof SoldAbonnement
-   */
-  name?: string;
-  /**
-   *
-   * @type {AbonnementValidityView}
-   * @memberof SoldAbonnement
-   */
-  validity?: AbonnementValidityView;
-  /**
-   *
-   * @type {number}
-   * @memberof SoldAbonnement
-   */
-  numberOfVisits?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof SoldAbonnement
-   */
-  basePrice?: number;
-  /**
-   *
-   * @type {DiscountView}
-   * @memberof SoldAbonnement
-   */
-  discount?: DiscountView;
-  /**
-   *
-   * @type {Array<Lesson>}
-   * @memberof SoldAbonnement
-   */
-  lessons?: Array<Lesson>;
+    /**
+     *
+     * @type {number}
+     * @memberof SoldAbonnement
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SoldAbonnement
+     */
+    'active'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof SoldAbonnement
+     */
+    'dateSale'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SoldAbonnement
+     */
+    'dateExpiration'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof SoldAbonnement
+     */
+    'priceSold'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof SoldAbonnement
+     */
+    'visitCounter'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof SoldAbonnement
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {AbonnementValidityView}
+     * @memberof SoldAbonnement
+     */
+    'validity'?: AbonnementValidityView;
+    /**
+     *
+     * @type {number}
+     * @memberof SoldAbonnement
+     */
+    'numberOfVisits'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof SoldAbonnement
+     */
+    'basePrice'?: number;
+    /**
+     *
+     * @type {DiscountView}
+     * @memberof SoldAbonnement
+     */
+    'discount'?: DiscountView;
+    /**
+     *
+     * @type {Array<Lesson>}
+     * @memberof SoldAbonnement
+     */
+    'lessons'?: Array<Lesson>;
 }
 /**
  *
@@ -1344,216 +1357,162 @@ export interface SoldAbonnement {
  * @interface ValidError
  */
 export interface ValidError {
-  /**
-   *
-   * @type {Array<PropertyError>}
-   * @memberof ValidError
-   */
-  properties?: Array<PropertyError>;
+    /**
+     *
+     * @type {Array<PropertyError>}
+     * @memberof ValidError
+     */
+    'properties'?: Array<PropertyError>;
 }
 /**
  * AbonnementApi - axios parameter creator
  * @export
  */
 export declare const AbonnementApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Обновляет данные абонимента
-   * @param {number} abonnementId
-   * @param {EditAbonnement} [editAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementAbonnementIdPut: (
-    abonnementId: number,
-    editAbonnement?: EditAbonnement | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Возвращает список абониментов
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementGet: (pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Создает новый абонимент
-   * @param {CreateAbonnement} [createAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementPost: (
-    createAbonnement?: CreateAbonnement | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Возвращает список купленных абониментов пользователя
-   * @param {number} personId
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementSoldPersonIdGet: (
-    personId: number,
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Продажа абонимента
-   * @param {SaleAbonnement} [saleAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementSoldPost: (
-    saleAbonnement?: SaleAbonnement | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Обновляет данные абонимента
+     * @param {number} abonnementId
+     * @param {EditAbonnement} [editAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementAbonnementIdPut: (abonnementId: number, editAbonnement?: EditAbonnement | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает список абониментов
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementGet: (pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Создает новый абонимент
+     * @param {CreateAbonnement} [createAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementPost: (createAbonnement?: CreateAbonnement | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает список купленных абониментов пользователя
+     * @param {number} personId
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementSoldPersonIdGet: (personId: number, pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Продажа абонимента
+     * @param {SaleAbonnement} [saleAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementSoldPost: (saleAbonnement?: SaleAbonnement | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AbonnementApi - functional programming interface
  * @export
  */
 export declare const AbonnementApiFp: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Обновляет данные абонимента
-   * @param {number} abonnementId
-   * @param {EditAbonnement} [editAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementAbonnementIdPut(
-    abonnementId: number,
-    editAbonnement?: EditAbonnement | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultAbonnement>>;
-  /**
-   *
-   * @summary Возвращает список абониментов
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementGet(
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<
-    (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedAbonnement>
-  >;
-  /**
-   *
-   * @summary Создает новый абонимент
-   * @param {CreateAbonnement} [createAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementPost(
-    createAbonnement?: CreateAbonnement | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultAbonnement>>;
-  /**
-   *
-   * @summary Возвращает список купленных абониментов пользователя
-   * @param {number} personId
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementSoldPersonIdGet(
-    personId: number,
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<
-    (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedSoldAbonnement>
-  >;
-  /**
-   *
-   * @summary Продажа абонимента
-   * @param {SaleAbonnement} [saleAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementSoldPost(
-    saleAbonnement?: SaleAbonnement | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultSoldAbonnement>>;
+    /**
+     *
+     * @summary Обновляет данные абонимента
+     * @param {number} abonnementId
+     * @param {EditAbonnement} [editAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultAbonnement>>;
+    /**
+     *
+     * @summary Возвращает список абониментов
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedAbonnement>>;
+    /**
+     *
+     * @summary Создает новый абонимент
+     * @param {CreateAbonnement} [createAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementPost(createAbonnement?: CreateAbonnement | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultAbonnement>>;
+    /**
+     *
+     * @summary Возвращает список купленных абониментов пользователя
+     * @param {number} personId
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedSoldAbonnement>>;
+    /**
+     *
+     * @summary Продажа абонимента
+     * @param {SaleAbonnement} [saleAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultSoldAbonnement>>;
 };
 /**
  * AbonnementApi - factory interface
  * @export
  */
-export declare const AbonnementApiFactory: (
-  configuration?: Configuration | undefined,
-  basePath?: string | undefined,
-  axios?: AxiosInstance | undefined
-) => {
-  /**
-   *
-   * @summary Обновляет данные абонимента
-   * @param {number} abonnementId
-   * @param {EditAbonnement} [editAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementAbonnementIdPut(
-    abonnementId: number,
-    editAbonnement?: EditAbonnement | undefined,
-    options?: any
-  ): AxiosPromise<ResultAbonnement>;
-  /**
-   *
-   * @summary Возвращает список абониментов
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedAbonnement>;
-  /**
-   *
-   * @summary Создает новый абонимент
-   * @param {CreateAbonnement} [createAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementPost(createAbonnement?: CreateAbonnement | undefined, options?: any): AxiosPromise<ResultAbonnement>;
-  /**
-   *
-   * @summary Возвращает список купленных абониментов пользователя
-   * @param {number} personId
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementSoldPersonIdGet(
-    personId: number,
-    pageSize: number,
-    pageNumber: number,
-    options?: any
-  ): AxiosPromise<ResultPaginatedSoldAbonnement>;
-  /**
-   *
-   * @summary Продажа абонимента
-   * @param {SaleAbonnement} [saleAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AbonnementSoldPost(
-    saleAbonnement?: SaleAbonnement | undefined,
-    options?: any
-  ): AxiosPromise<ResultSoldAbonnement>;
+export declare const AbonnementApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
+    /**
+     *
+     * @summary Обновляет данные абонимента
+     * @param {number} abonnementId
+     * @param {EditAbonnement} [editAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement | undefined, options?: any): AxiosPromise<ResultAbonnement>;
+    /**
+     *
+     * @summary Возвращает список абониментов
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedAbonnement>;
+    /**
+     *
+     * @summary Создает новый абонимент
+     * @param {CreateAbonnement} [createAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementPost(createAbonnement?: CreateAbonnement | undefined, options?: any): AxiosPromise<ResultAbonnement>;
+    /**
+     *
+     * @summary Возвращает список купленных абониментов пользователя
+     * @param {number} personId
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedSoldAbonnement>;
+    /**
+     *
+     * @summary Продажа абонимента
+     * @param {SaleAbonnement} [saleAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement | undefined, options?: any): AxiosPromise<ResultSoldAbonnement>;
 };
 /**
  * AbonnementApi - object-oriented interface
@@ -1562,278 +1521,244 @@ export declare const AbonnementApiFactory: (
  * @extends {BaseAPI}
  */
 export declare class AbonnementApi extends BaseAPI {
-  /**
-   *
-   * @summary Обновляет данные абонимента
-   * @param {number} abonnementId
-   * @param {EditAbonnement} [editAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AbonnementApi
-   */
-  apiV1AbonnementAbonnementIdPut(
-    abonnementId: number,
-    editAbonnement?: EditAbonnement,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultAbonnement, any>>;
-  /**
-   *
-   * @summary Возвращает список абониментов
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AbonnementApi
-   */
-  apiV1AbonnementGet(
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPaginatedAbonnement, any>>;
-  /**
-   *
-   * @summary Создает новый абонимент
-   * @param {CreateAbonnement} [createAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AbonnementApi
-   */
-  apiV1AbonnementPost(
-    createAbonnement?: CreateAbonnement,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultAbonnement, any>>;
-  /**
-   *
-   * @summary Возвращает список купленных абониментов пользователя
-   * @param {number} personId
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AbonnementApi
-   */
-  apiV1AbonnementSoldPersonIdGet(
-    personId: number,
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPaginatedSoldAbonnement, any>>;
-  /**
-   *
-   * @summary Продажа абонимента
-   * @param {SaleAbonnement} [saleAbonnement]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AbonnementApi
-   */
-  apiV1AbonnementSoldPost(
-    saleAbonnement?: SaleAbonnement,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultSoldAbonnement, any>>;
+    /**
+     *
+     * @summary Обновляет данные абонимента
+     * @param {number} abonnementId
+     * @param {EditAbonnement} [editAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    apiV1AbonnementAbonnementIdPut(abonnementId: number, editAbonnement?: EditAbonnement, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultAbonnement, any>>;
+    /**
+     *
+     * @summary Возвращает список абониментов
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    apiV1AbonnementGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPaginatedAbonnement, any>>;
+    /**
+     *
+     * @summary Создает новый абонимент
+     * @param {CreateAbonnement} [createAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    apiV1AbonnementPost(createAbonnement?: CreateAbonnement, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultAbonnement, any>>;
+    /**
+     *
+     * @summary Возвращает список купленных абониментов пользователя
+     * @param {number} personId
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    apiV1AbonnementSoldPersonIdGet(personId: number, pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPaginatedSoldAbonnement, any>>;
+    /**
+     *
+     * @summary Продажа абонимента
+     * @param {SaleAbonnement} [saleAbonnement]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    apiV1AbonnementSoldPost(saleAbonnement?: SaleAbonnement, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultSoldAbonnement, any>>;
 }
 /**
  * AuthApi - axios parameter creator
  * @export
  */
 export declare const AuthApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Активация созданного пользователя
-   * @param {ActivateAuth} [activateAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthActivatePost: (
-    activateAuth?: ActivateAuth | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Авторизация пользователя
-   * @param {LoginUser} [loginUser]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthLoginPost: (loginUser?: LoginUser | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Смена пароля на основе токена отправленного на почту
-   * @param {PasswordReset} [passwordReset]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPasswordResetPost: (
-    passwordReset?: PasswordReset | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Запрос на смену пароля
-   * @param {PasswordResetQuery} [passwordResetQuery]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPasswordResetQueryPost: (
-    passwordResetQuery?: PasswordResetQuery | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Создание аккаунта для пользователя
-   * @param {number} personId
-   * @param {CreateAuth} [createAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPersonIdPost: (
-    personId: number,
-    createAuth?: CreateAuth | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Получение нового token с помощью refresh token
-   * @param {Refresh} [refresh]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthRefreshPost: (refresh?: Refresh | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Активация созданного пользователя
+     * @param {ActivateAuth} [activateAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthActivatePost: (activateAuth?: ActivateAuth | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Авторизация пользователя
+     * @param {LoginUser} [loginUser]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthLoginPost: (loginUser?: LoginUser | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Разлогин пользователя
+     * @param {Logout} [logout]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthLogoutPost: (logout?: Logout | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Смена пароля на основе токена отправленного на почту
+     * @param {PasswordReset} [passwordReset]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPasswordResetPost: (passwordReset?: PasswordReset | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Запрос на смену пароля
+     * @param {PasswordResetQuery} [passwordResetQuery]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPasswordResetQueryPost: (passwordResetQuery?: PasswordResetQuery | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Создание аккаунта для пользователя
+     * @param {number} personId
+     * @param {CreateAuth} [createAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPersonIdPost: (personId: number, createAuth?: CreateAuth | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Получение нового token с помощью refresh token
+     * @param {Refresh} [refresh]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthRefreshPost: (refresh?: Refresh | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
  * @export
  */
 export declare const AuthApiFp: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Активация созданного пользователя
-   * @param {ActivateAuth} [activateAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthActivatePost(
-    activateAuth?: ActivateAuth | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
-  /**
-   *
-   * @summary Авторизация пользователя
-   * @param {LoginUser} [loginUser]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthLoginPost(
-    loginUser?: LoginUser | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLoggedPerson>>;
-  /**
-   *
-   * @summary Смена пароля на основе токена отправленного на почту
-   * @param {PasswordReset} [passwordReset]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPasswordResetPost(
-    passwordReset?: PasswordReset | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
-  /**
-   *
-   * @summary Запрос на смену пароля
-   * @param {PasswordResetQuery} [passwordResetQuery]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPasswordResetQueryPost(
-    passwordResetQuery?: PasswordResetQuery | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
-  /**
-   *
-   * @summary Создание аккаунта для пользователя
-   * @param {number} personId
-   * @param {CreateAuth} [createAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPersonIdPost(
-    personId: number,
-    createAuth?: CreateAuth | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
-  /**
-   *
-   * @summary Получение нового token с помощью refresh token
-   * @param {Refresh} [refresh]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthRefreshPost(
-    refresh?: Refresh | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLoggedPerson>>;
+    /**
+     *
+     * @summary Активация созданного пользователя
+     * @param {ActivateAuth} [activateAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthActivatePost(activateAuth?: ActivateAuth | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
+    /**
+     *
+     * @summary Авторизация пользователя
+     * @param {LoginUser} [loginUser]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthLoginPost(loginUser?: LoginUser | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLoggedPerson>>;
+    /**
+     *
+     * @summary Разлогин пользователя
+     * @param {Logout} [logout]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthLogoutPost(logout?: Logout | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
+    /**
+     *
+     * @summary Смена пароля на основе токена отправленного на почту
+     * @param {PasswordReset} [passwordReset]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPasswordResetPost(passwordReset?: PasswordReset | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
+    /**
+     *
+     * @summary Запрос на смену пароля
+     * @param {PasswordResetQuery} [passwordResetQuery]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPasswordResetQueryPost(passwordResetQuery?: PasswordResetQuery | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
+    /**
+     *
+     * @summary Создание аккаунта для пользователя
+     * @param {number} personId
+     * @param {CreateAuth} [createAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPersonIdPost(personId: number, createAuth?: CreateAuth | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
+    /**
+     *
+     * @summary Получение нового token с помощью refresh token
+     * @param {Refresh} [refresh]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthRefreshPost(refresh?: Refresh | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLoggedPerson>>;
 };
 /**
  * AuthApi - factory interface
  * @export
  */
-export declare const AuthApiFactory: (
-  configuration?: Configuration | undefined,
-  basePath?: string | undefined,
-  axios?: AxiosInstance | undefined
-) => {
-  /**
-   *
-   * @summary Активация созданного пользователя
-   * @param {ActivateAuth} [activateAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthActivatePost(activateAuth?: ActivateAuth | undefined, options?: any): AxiosPromise<ResultUnit>;
-  /**
-   *
-   * @summary Авторизация пользователя
-   * @param {LoginUser} [loginUser]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthLoginPost(loginUser?: LoginUser | undefined, options?: any): AxiosPromise<ResultLoggedPerson>;
-  /**
-   *
-   * @summary Смена пароля на основе токена отправленного на почту
-   * @param {PasswordReset} [passwordReset]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPasswordResetPost(passwordReset?: PasswordReset | undefined, options?: any): AxiosPromise<ResultUnit>;
-  /**
-   *
-   * @summary Запрос на смену пароля
-   * @param {PasswordResetQuery} [passwordResetQuery]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPasswordResetQueryPost(
-    passwordResetQuery?: PasswordResetQuery | undefined,
-    options?: any
-  ): AxiosPromise<ResultUnit>;
-  /**
-   *
-   * @summary Создание аккаунта для пользователя
-   * @param {number} personId
-   * @param {CreateAuth} [createAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthPersonIdPost(personId: number, createAuth?: CreateAuth | undefined, options?: any): AxiosPromise<ResultUnit>;
-  /**
-   *
-   * @summary Получение нового token с помощью refresh token
-   * @param {Refresh} [refresh]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1AuthRefreshPost(refresh?: Refresh | undefined, options?: any): AxiosPromise<ResultLoggedPerson>;
+export declare const AuthApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
+    /**
+     *
+     * @summary Активация созданного пользователя
+     * @param {ActivateAuth} [activateAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthActivatePost(activateAuth?: ActivateAuth | undefined, options?: any): AxiosPromise<ResultUnit>;
+    /**
+     *
+     * @summary Авторизация пользователя
+     * @param {LoginUser} [loginUser]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthLoginPost(loginUser?: LoginUser | undefined, options?: any): AxiosPromise<ResultLoggedPerson>;
+    /**
+     *
+     * @summary Разлогин пользователя
+     * @param {Logout} [logout]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthLogoutPost(logout?: Logout | undefined, options?: any): AxiosPromise<ResultUnit>;
+    /**
+     *
+     * @summary Смена пароля на основе токена отправленного на почту
+     * @param {PasswordReset} [passwordReset]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPasswordResetPost(passwordReset?: PasswordReset | undefined, options?: any): AxiosPromise<ResultUnit>;
+    /**
+     *
+     * @summary Запрос на смену пароля
+     * @param {PasswordResetQuery} [passwordResetQuery]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPasswordResetQueryPost(passwordResetQuery?: PasswordResetQuery | undefined, options?: any): AxiosPromise<ResultUnit>;
+    /**
+     *
+     * @summary Создание аккаунта для пользователя
+     * @param {number} personId
+     * @param {CreateAuth} [createAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthPersonIdPost(personId: number, createAuth?: CreateAuth | undefined, options?: any): AxiosPromise<ResultUnit>;
+    /**
+     *
+     * @summary Получение нового token с помощью refresh token
+     * @param {Refresh} [refresh]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AuthRefreshPost(refresh?: Refresh | undefined, options?: any): AxiosPromise<ResultLoggedPerson>;
 };
 /**
  * AuthApi - object-oriented interface
@@ -1842,199 +1767,190 @@ export declare const AuthApiFactory: (
  * @extends {BaseAPI}
  */
 export declare class AuthApi extends BaseAPI {
-  /**
-   *
-   * @summary Активация созданного пользователя
-   * @param {ActivateAuth} [activateAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AuthApi
-   */
-  apiV1AuthActivatePost(
-    activateAuth?: ActivateAuth,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultUnit, any>>;
-  /**
-   *
-   * @summary Авторизация пользователя
-   * @param {LoginUser} [loginUser]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AuthApi
-   */
-  apiV1AuthLoginPost(
-    loginUser?: LoginUser,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultLoggedPerson, any>>;
-  /**
-   *
-   * @summary Смена пароля на основе токена отправленного на почту
-   * @param {PasswordReset} [passwordReset]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AuthApi
-   */
-  apiV1AuthPasswordResetPost(
-    passwordReset?: PasswordReset,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultUnit, any>>;
-  /**
-   *
-   * @summary Запрос на смену пароля
-   * @param {PasswordResetQuery} [passwordResetQuery]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AuthApi
-   */
-  apiV1AuthPasswordResetQueryPost(
-    passwordResetQuery?: PasswordResetQuery,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultUnit, any>>;
-  /**
-   *
-   * @summary Создание аккаунта для пользователя
-   * @param {number} personId
-   * @param {CreateAuth} [createAuth]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AuthApi
-   */
-  apiV1AuthPersonIdPost(
-    personId: number,
-    createAuth?: CreateAuth,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultUnit, any>>;
-  /**
-   *
-   * @summary Получение нового token с помощью refresh token
-   * @param {Refresh} [refresh]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof AuthApi
-   */
-  apiV1AuthRefreshPost(
-    refresh?: Refresh,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultLoggedPerson, any>>;
+    /**
+     *
+     * @summary Активация созданного пользователя
+     * @param {ActivateAuth} [activateAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthActivatePost(activateAuth?: ActivateAuth, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultUnit, any>>;
+    /**
+     *
+     * @summary Авторизация пользователя
+     * @param {LoginUser} [loginUser]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthLoginPost(loginUser?: LoginUser, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultLoggedPerson, any>>;
+    /**
+     *
+     * @summary Разлогин пользователя
+     * @param {Logout} [logout]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthLogoutPost(logout?: Logout, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultUnit, any>>;
+    /**
+     *
+     * @summary Смена пароля на основе токена отправленного на почту
+     * @param {PasswordReset} [passwordReset]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthPasswordResetPost(passwordReset?: PasswordReset, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultUnit, any>>;
+    /**
+     *
+     * @summary Запрос на смену пароля
+     * @param {PasswordResetQuery} [passwordResetQuery]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthPasswordResetQueryPost(passwordResetQuery?: PasswordResetQuery, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultUnit, any>>;
+    /**
+     *
+     * @summary Создание аккаунта для пользователя
+     * @param {number} personId
+     * @param {CreateAuth} [createAuth]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthPersonIdPost(personId: number, createAuth?: CreateAuth, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultUnit, any>>;
+    /**
+     *
+     * @summary Получение нового token с помощью refresh token
+     * @param {Refresh} [refresh]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    apiV1AuthRefreshPost(refresh?: Refresh, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultLoggedPerson, any>>;
 }
 /**
  * LessonApi - axios parameter creator
  * @export
  */
 export declare const LessonApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Возвращает список занятий
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonGet: (pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Обновляет данные занятия
-   * @param {number} lessonId
-   * @param {EditLesson} [editLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonLessonIdPut: (
-    lessonId: number,
-    editLesson?: EditLesson | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Создает новое занятие
-   * @param {CreateLesson} [createLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonPost: (createLesson?: CreateLesson | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает список занятий
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonGet: (pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает занятие по id
+     * @param {number} lessonId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdGet: (lessonId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Обновляет данные занятия
+     * @param {number} lessonId
+     * @param {EditLesson} [editLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdPut: (lessonId: number, editLesson?: EditLesson | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Создает новое занятие
+     * @param {CreateLesson} [createLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonPost: (createLesson?: CreateLesson | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * LessonApi - functional programming interface
  * @export
  */
 export declare const LessonApiFp: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Возвращает список занятий
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonGet(
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedLesson>>;
-  /**
-   *
-   * @summary Обновляет данные занятия
-   * @param {number} lessonId
-   * @param {EditLesson} [editLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonLessonIdPut(
-    lessonId: number,
-    editLesson?: EditLesson | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLesson>>;
-  /**
-   *
-   * @summary Создает новое занятие
-   * @param {CreateLesson} [createLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonPost(
-    createLesson?: CreateLesson | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLesson>>;
+    /**
+     *
+     * @summary Возвращает список занятий
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedLesson>>;
+    /**
+     *
+     * @summary Возвращает занятие по id
+     * @param {number} lessonId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLesson>>;
+    /**
+     *
+     * @summary Обновляет данные занятия
+     * @param {number} lessonId
+     * @param {EditLesson} [editLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLesson>>;
+    /**
+     *
+     * @summary Создает новое занятие
+     * @param {CreateLesson} [createLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonPost(createLesson?: CreateLesson | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultLesson>>;
 };
 /**
  * LessonApi - factory interface
  * @export
  */
-export declare const LessonApiFactory: (
-  configuration?: Configuration | undefined,
-  basePath?: string | undefined,
-  axios?: AxiosInstance | undefined
-) => {
-  /**
-   *
-   * @summary Возвращает список занятий
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedLesson>;
-  /**
-   *
-   * @summary Обновляет данные занятия
-   * @param {number} lessonId
-   * @param {EditLesson} [editLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonLessonIdPut(
-    lessonId: number,
-    editLesson?: EditLesson | undefined,
-    options?: any
-  ): AxiosPromise<ResultLesson>;
-  /**
-   *
-   * @summary Создает новое занятие
-   * @param {CreateLesson} [createLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1LessonPost(createLesson?: CreateLesson | undefined, options?: any): AxiosPromise<ResultLesson>;
+export declare const LessonApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
+    /**
+     *
+     * @summary Возвращает список занятий
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedLesson>;
+    /**
+     *
+     * @summary Возвращает занятие по id
+     * @param {number} lessonId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdGet(lessonId: number, options?: any): AxiosPromise<ResultLesson>;
+    /**
+     *
+     * @summary Обновляет данные занятия
+     * @param {number} lessonId
+     * @param {EditLesson} [editLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson | undefined, options?: any): AxiosPromise<ResultLesson>;
+    /**
+     *
+     * @summary Создает новое занятие
+     * @param {CreateLesson} [createLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonPost(createLesson?: CreateLesson | undefined, options?: any): AxiosPromise<ResultLesson>;
 };
 /**
  * LessonApi - object-oriented interface
@@ -2043,229 +1959,188 @@ export declare const LessonApiFactory: (
  * @extends {BaseAPI}
  */
 export declare class LessonApi extends BaseAPI {
-  /**
-   *
-   * @summary Возвращает список занятий
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof LessonApi
-   */
-  apiV1LessonGet(
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPaginatedLesson, any>>;
-  /**
-   *
-   * @summary Обновляет данные занятия
-   * @param {number} lessonId
-   * @param {EditLesson} [editLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof LessonApi
-   */
-  apiV1LessonLessonIdPut(
-    lessonId: number,
-    editLesson?: EditLesson,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultLesson, any>>;
-  /**
-   *
-   * @summary Создает новое занятие
-   * @param {CreateLesson} [createLesson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof LessonApi
-   */
-  apiV1LessonPost(
-    createLesson?: CreateLesson,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultLesson, any>>;
+    /**
+     *
+     * @summary Возвращает список занятий
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LessonApi
+     */
+    apiV1LessonGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPaginatedLesson, any>>;
+    /**
+     *
+     * @summary Возвращает занятие по id
+     * @param {number} lessonId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LessonApi
+     */
+    apiV1LessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultLesson, any>>;
+    /**
+     *
+     * @summary Обновляет данные занятия
+     * @param {number} lessonId
+     * @param {EditLesson} [editLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LessonApi
+     */
+    apiV1LessonLessonIdPut(lessonId: number, editLesson?: EditLesson, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultLesson, any>>;
+    /**
+     *
+     * @summary Создает новое занятие
+     * @param {CreateLesson} [createLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LessonApi
+     */
+    apiV1LessonPost(createLesson?: CreateLesson, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultLesson, any>>;
 }
 /**
  * PersonApi - axios parameter creator
  * @export
  */
 export declare const PersonApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Возвращает список пользователей
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {PersonTypeView} [type]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonGet: (
-    pageSize: number,
-    pageNumber: number,
-    type?: 'All' | 'Trainer' | 'Account' | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Возвращает пользователя по id
-   * @param {number} personId
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPersonIdGet: (personId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Обновляет данные пользователя
-   * @param {number} personId
-   * @param {EditPerson} [editPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPersonIdPut: (
-    personId: number,
-    editPerson?: EditPerson | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Создает нового пользователя
-   * @param {CreatePerson} [createPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPost: (createPerson?: CreatePerson | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Возвращает текущего авторизованного пользователя
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonSelfGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает список пользователей
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {PersonTypeView} [type]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonGet: (pageSize: number, pageNumber: number, type?: "All" | "Trainer" | "Account" | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает пользователя по id
+     * @param {number} personId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPersonIdGet: (personId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Обновляет данные пользователя
+     * @param {number} personId
+     * @param {EditPerson} [editPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPersonIdPut: (personId: number, editPerson?: EditPerson | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Создает нового пользователя
+     * @param {CreatePerson} [createPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPost: (createPerson?: CreatePerson | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает текущего авторизованного пользователя
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonSelfGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PersonApi - functional programming interface
  * @export
  */
 export declare const PersonApiFp: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Возвращает список пользователей
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {PersonTypeView} [type]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonGet(
-    pageSize: number,
-    pageNumber: number,
-    type?: 'All' | 'Trainer' | 'Account' | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedPerson>>;
-  /**
-   *
-   * @summary Возвращает пользователя по id
-   * @param {number} personId
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPersonIdGet(
-    personId: number,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
-  /**
-   *
-   * @summary Обновляет данные пользователя
-   * @param {number} personId
-   * @param {EditPerson} [editPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPersonIdPut(
-    personId: number,
-    editPerson?: EditPerson | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
-  /**
-   *
-   * @summary Создает нового пользователя
-   * @param {CreatePerson} [createPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPost(
-    createPerson?: CreatePerson | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
-  /**
-   *
-   * @summary Возвращает текущего авторизованного пользователя
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonSelfGet(
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
+    /**
+     *
+     * @summary Возвращает список пользователей
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {PersonTypeView} [type]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonGet(pageSize: number, pageNumber: number, type?: "All" | "Trainer" | "Account" | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedPerson>>;
+    /**
+     *
+     * @summary Возвращает пользователя по id
+     * @param {number} personId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPersonIdGet(personId: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
+    /**
+     *
+     * @summary Обновляет данные пользователя
+     * @param {number} personId
+     * @param {EditPerson} [editPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPersonIdPut(personId: number, editPerson?: EditPerson | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
+    /**
+     *
+     * @summary Создает нового пользователя
+     * @param {CreatePerson} [createPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPost(createPerson?: CreatePerson | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
+    /**
+     *
+     * @summary Возвращает текущего авторизованного пользователя
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonSelfGet(options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPerson>>;
 };
 /**
  * PersonApi - factory interface
  * @export
  */
-export declare const PersonApiFactory: (
-  configuration?: Configuration | undefined,
-  basePath?: string | undefined,
-  axios?: AxiosInstance | undefined
-) => {
-  /**
-   *
-   * @summary Возвращает список пользователей
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {PersonTypeView} [type]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonGet(
-    pageSize: number,
-    pageNumber: number,
-    type?: 'All' | 'Trainer' | 'Account' | undefined,
-    options?: any
-  ): AxiosPromise<ResultPaginatedPerson>;
-  /**
-   *
-   * @summary Возвращает пользователя по id
-   * @param {number} personId
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPersonIdGet(personId: number, options?: any): AxiosPromise<ResultPerson>;
-  /**
-   *
-   * @summary Обновляет данные пользователя
-   * @param {number} personId
-   * @param {EditPerson} [editPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPersonIdPut(
-    personId: number,
-    editPerson?: EditPerson | undefined,
-    options?: any
-  ): AxiosPromise<ResultPerson>;
-  /**
-   *
-   * @summary Создает нового пользователя
-   * @param {CreatePerson} [createPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonPost(createPerson?: CreatePerson | undefined, options?: any): AxiosPromise<ResultPerson>;
-  /**
-   *
-   * @summary Возвращает текущего авторизованного пользователя
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1PersonSelfGet(options?: any): AxiosPromise<ResultPerson>;
+export declare const PersonApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
+    /**
+     *
+     * @summary Возвращает список пользователей
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {PersonTypeView} [type]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonGet(pageSize: number, pageNumber: number, type?: "All" | "Trainer" | "Account" | undefined, options?: any): AxiosPromise<ResultPaginatedPerson>;
+    /**
+     *
+     * @summary Возвращает пользователя по id
+     * @param {number} personId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPersonIdGet(personId: number, options?: any): AxiosPromise<ResultPerson>;
+    /**
+     *
+     * @summary Обновляет данные пользователя
+     * @param {number} personId
+     * @param {EditPerson} [editPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPersonIdPut(personId: number, editPerson?: EditPerson | undefined, options?: any): AxiosPromise<ResultPerson>;
+    /**
+     *
+     * @summary Создает нового пользователя
+     * @param {CreatePerson} [createPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPost(createPerson?: CreatePerson | undefined, options?: any): AxiosPromise<ResultPerson>;
+    /**
+     *
+     * @summary Возвращает текущего авторизованного пользователя
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonSelfGet(options?: any): AxiosPromise<ResultPerson>;
 };
 /**
  * PersonApi - object-oriented interface
@@ -2274,183 +2149,149 @@ export declare const PersonApiFactory: (
  * @extends {BaseAPI}
  */
 export declare class PersonApi extends BaseAPI {
-  /**
-   *
-   * @summary Возвращает список пользователей
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {PersonTypeView} [type]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof PersonApi
-   */
-  apiV1PersonGet(
-    pageSize: number,
-    pageNumber: number,
-    type?: PersonTypeView,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPaginatedPerson, any>>;
-  /**
-   *
-   * @summary Возвращает пользователя по id
-   * @param {number} personId
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof PersonApi
-   */
-  apiV1PersonPersonIdGet(
-    personId: number,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPerson, any>>;
-  /**
-   *
-   * @summary Обновляет данные пользователя
-   * @param {number} personId
-   * @param {EditPerson} [editPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof PersonApi
-   */
-  apiV1PersonPersonIdPut(
-    personId: number,
-    editPerson?: EditPerson,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPerson, any>>;
-  /**
-   *
-   * @summary Создает нового пользователя
-   * @param {CreatePerson} [createPerson]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof PersonApi
-   */
-  apiV1PersonPost(
-    createPerson?: CreatePerson,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPerson, any>>;
-  /**
-   *
-   * @summary Возвращает текущего авторизованного пользователя
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof PersonApi
-   */
-  apiV1PersonSelfGet(options?: AxiosRequestConfig): Promise<import('axios').AxiosResponse<ResultPerson, any>>;
+    /**
+     *
+     * @summary Возвращает список пользователей
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {PersonTypeView} [type]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PersonApi
+     */
+    apiV1PersonGet(pageSize: number, pageNumber: number, type?: PersonTypeView, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPaginatedPerson, any>>;
+    /**
+     *
+     * @summary Возвращает пользователя по id
+     * @param {number} personId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PersonApi
+     */
+    apiV1PersonPersonIdGet(personId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPerson, any>>;
+    /**
+     *
+     * @summary Обновляет данные пользователя
+     * @param {number} personId
+     * @param {EditPerson} [editPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PersonApi
+     */
+    apiV1PersonPersonIdPut(personId: number, editPerson?: EditPerson, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPerson, any>>;
+    /**
+     *
+     * @summary Создает нового пользователя
+     * @param {CreatePerson} [createPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PersonApi
+     */
+    apiV1PersonPost(createPerson?: CreatePerson, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPerson, any>>;
+    /**
+     *
+     * @summary Возвращает текущего авторизованного пользователя
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PersonApi
+     */
+    apiV1PersonSelfGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPerson, any>>;
 }
 /**
  * RoomApi - axios parameter creator
  * @export
  */
 export declare const RoomApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Возвращает список помещений
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomGet: (pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Создает новое помещение
-   * @param {CreateRoom} [createRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomPost: (createRoom?: CreateRoom | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-  /**
-   *
-   * @summary Обновляет данные помещения
-   * @param {number} roomId
-   * @param {EditRoom} [editRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomRoomIdPut: (
-    roomId: number,
-    editRoom?: EditRoom | undefined,
-    options?: AxiosRequestConfig
-  ) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает список помещений
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomGet: (pageSize: number, pageNumber: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Создает новое помещение
+     * @param {CreateRoom} [createRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomPost: (createRoom?: CreateRoom | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Обновляет данные помещения
+     * @param {number} roomId
+     * @param {EditRoom} [editRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdPut: (roomId: number, editRoom?: EditRoom | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RoomApi - functional programming interface
  * @export
  */
 export declare const RoomApiFp: (configuration?: Configuration | undefined) => {
-  /**
-   *
-   * @summary Возвращает список помещений
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomGet(
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedRoom>>;
-  /**
-   *
-   * @summary Создает новое помещение
-   * @param {CreateRoom} [createRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomPost(
-    createRoom?: CreateRoom | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultRoom>>;
-  /**
-   *
-   * @summary Обновляет данные помещения
-   * @param {number} roomId
-   * @param {EditRoom} [editRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomRoomIdPut(
-    roomId: number,
-    editRoom?: EditRoom | undefined,
-    options?: AxiosRequestConfig<any> | undefined
-  ): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultRoom>>;
+    /**
+     *
+     * @summary Возвращает список помещений
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultPaginatedRoom>>;
+    /**
+     *
+     * @summary Создает новое помещение
+     * @param {CreateRoom} [createRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomPost(createRoom?: CreateRoom | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultRoom>>;
+    /**
+     *
+     * @summary Обновляет данные помещения
+     * @param {number} roomId
+     * @param {EditRoom} [editRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultRoom>>;
 };
 /**
  * RoomApi - factory interface
  * @export
  */
-export declare const RoomApiFactory: (
-  configuration?: Configuration | undefined,
-  basePath?: string | undefined,
-  axios?: AxiosInstance | undefined
-) => {
-  /**
-   *
-   * @summary Возвращает список помещений
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedRoom>;
-  /**
-   *
-   * @summary Создает новое помещение
-   * @param {CreateRoom} [createRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomPost(createRoom?: CreateRoom | undefined, options?: any): AxiosPromise<ResultRoom>;
-  /**
-   *
-   * @summary Обновляет данные помещения
-   * @param {number} roomId
-   * @param {EditRoom} [editRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   */
-  apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom | undefined, options?: any): AxiosPromise<ResultRoom>;
+export declare const RoomApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
+    /**
+     *
+     * @summary Возвращает список помещений
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomGet(pageSize: number, pageNumber: number, options?: any): AxiosPromise<ResultPaginatedRoom>;
+    /**
+     *
+     * @summary Создает новое помещение
+     * @param {CreateRoom} [createRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomPost(createRoom?: CreateRoom | undefined, options?: any): AxiosPromise<ResultRoom>;
+    /**
+     *
+     * @summary Обновляет данные помещения
+     * @param {number} roomId
+     * @param {EditRoom} [editRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom | undefined, options?: any): AxiosPromise<ResultRoom>;
 };
 /**
  * RoomApi - object-oriented interface
@@ -2459,44 +2300,33 @@ export declare const RoomApiFactory: (
  * @extends {BaseAPI}
  */
 export declare class RoomApi extends BaseAPI {
-  /**
-   *
-   * @summary Возвращает список помещений
-   * @param {number} pageSize
-   * @param {number} pageNumber
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof RoomApi
-   */
-  apiV1RoomGet(
-    pageSize: number,
-    pageNumber: number,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultPaginatedRoom, any>>;
-  /**
-   *
-   * @summary Создает новое помещение
-   * @param {CreateRoom} [createRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof RoomApi
-   */
-  apiV1RoomPost(
-    createRoom?: CreateRoom,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultRoom, any>>;
-  /**
-   *
-   * @summary Обновляет данные помещения
-   * @param {number} roomId
-   * @param {EditRoom} [editRoom]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof RoomApi
-   */
-  apiV1RoomRoomIdPut(
-    roomId: number,
-    editRoom?: EditRoom,
-    options?: AxiosRequestConfig
-  ): Promise<import('axios').AxiosResponse<ResultRoom, any>>;
+    /**
+     *
+     * @summary Возвращает список помещений
+     * @param {number} pageSize
+     * @param {number} pageNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoomApi
+     */
+    apiV1RoomGet(pageSize: number, pageNumber: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultPaginatedRoom, any>>;
+    /**
+     *
+     * @summary Создает новое помещение
+     * @param {CreateRoom} [createRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoomApi
+     */
+    apiV1RoomPost(createRoom?: CreateRoom, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultRoom, any>>;
+    /**
+     *
+     * @summary Обновляет данные помещения
+     * @param {number} roomId
+     * @param {EditRoom} [editRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoomApi
+     */
+    apiV1RoomRoomIdPut(roomId: number, editRoom?: EditRoom, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultRoom, any>>;
 }

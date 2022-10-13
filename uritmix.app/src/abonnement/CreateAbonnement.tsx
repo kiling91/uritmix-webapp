@@ -4,6 +4,7 @@ import { Popup } from 'devextreme-react/popup'
 import {
 	Button,
 	CheckBox,
+	TagBox,
 	TextArea,
 	TextBox,
 	Validator
@@ -17,22 +18,41 @@ import { AbonnementDomain } from '../domainConfig'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
+import { createLessonsLookupStore } from './store/lessonsLookupStore'
 
 interface Param {
+	abonnement?: dto.Abonnement | null
 	onClose: (id: number, needReload: boolean) => void
 }
 
-const CreateAbonnement = observer((param: Param) => {
+const toArray = (abonnement?: dto.Abonnement | null): number[] => {
+	let lessonsId: number[] = []
+	if (abonnement != null) {
+		for (let lesson of abonnement!.lessons) {
+			lessonsId.push(lesson.id)
+		}
+	}
+	return lessonsId
+}
+
+const CreateEditAbonnement = observer((param: Param) => {
 	const store = useLocalObservable(() => new AbonnementStore())
-	const [name, setName] = useState<string>()
-	const [validity, setValidity] = useState(dto.AbonnementValidityView.OneDay)
+	const [name, setName] = useState<string>(param.abonnement?.name || null)
+	const [lessonsId, setLessonsId] = useState<number[]>(
+		toArray(param.abonnement)
+	)
+	const [validity, setValidity] = useState(
+		param.abonnement?.validity || dto.AbonnementValidityView.OneDay
+	)
 	const [numberOfVisits, setNumberOfVisits] = useState<number>(
-		AbonnementDomain.NumberOfVisitsMin
+		param.abonnement?.numberOfVisits || AbonnementDomain.NumberOfVisitsMin
 	)
 	const [basePrice, setBasePrice] = useState<number>(
-		AbonnementDomain.BasePriceMin
+		param.abonnement?.basePrice || AbonnementDomain.BasePriceMin
 	)
-	const [discount, setDiscount] = useState(dto.DiscountView.D0)
+	const [discount, setDiscount] = useState(
+		param.abonnement?.discount || dto.DiscountView.D0
+	)
 
 	const validityLookup = () => {
 		return [
@@ -118,12 +138,13 @@ const CreateAbonnement = observer((param: Param) => {
 
 	const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		if (name) {
+		if (name && lessonsId.length > 0) {
 			const res = await store.create({
 				name: name,
 				validity: validity,
 				numberOfVisits: numberOfVisits,
 				basePrice: basePrice,
+				lessonIds: lessonsId,
 				discount: discount
 			})
 			if (res && store.value?.id) param.onClose(store.value.id, true)
@@ -166,6 +187,37 @@ const CreateAbonnement = observer((param: Param) => {
 							</Validator>
 						</TextBox>
 					</div>
+					{/*LessonId*/}
+					<div className='required'>
+						<label className='small mb-1' htmlFor='inputName'>
+							{'Lessons'}
+						</label>
+						<TagBox
+							disabled={store.loading}
+							className='mb-3'
+							placeholder={'Select lessons'}
+							dataSource={createLessonsLookupStore()}
+							searchEnabled={false}
+							displayExpr={item => item?.name}
+							defaultValue={lessonsId}
+							onValueChanged={e => {
+								let lessonsId: number[] = []
+								for (let lesson of e.value) {
+									lessonsId.push(lesson.id)
+								}
+								setLessonsId(lessonsId)
+							}}
+						>
+							<DropDownOptions
+								showTitle={false}
+								shading={false}
+								fullScreen={false}
+							/>
+							<Validator>
+								<RequiredRule message={RuleCaption.required('Lessons')} />
+							</Validator>
+						</TagBox>
+					</div>
 					{/*Validity*/}
 					<div className='required'>
 						<label className='small mb-1' htmlFor='inputName'>
@@ -206,7 +258,6 @@ const CreateAbonnement = observer((param: Param) => {
 							format='#0'
 						/>
 					</div>
-
 					{/*Price*/}
 					<div className='required'>
 						<label className='small mb-1' htmlFor='inputName'>
@@ -276,24 +327,25 @@ const CreateAbonnement = observer((param: Param) => {
 		return 'Create abonnement'
 	}
 
-	{
-		/*Костыль нужны для перерисовки в Popup*/
-	}
-	console.log(store.loading)
 	return (
-		<Popup
-			width={POPUP_FORM_WIDTH}
-			height={'auto'}
-			position={POPUP_POSITION}
-			showTitle={true}
-			visible={true}
-			title={title()}
-			dragEnabled={false}
-			hideOnOutsideClick={false}
-			onHiding={onClose}
-			contentRender={form}
-		/>
+		<>
+			{/*Костыль нужны для перерисовки в Popup*/}
+			{store.errors.length > 0 && <>Errors</>}
+			{store.loading && <>Loading</>}
+			<Popup
+				width={POPUP_FORM_WIDTH}
+				height={'auto'}
+				position={POPUP_POSITION}
+				showTitle={true}
+				visible={true}
+				title={title()}
+				dragEnabled={false}
+				hideOnOutsideClick={false}
+				onHiding={onClose}
+				contentRender={form}
+			/>
+		</>
 	)
 })
 
-export default CreateAbonnement
+export default CreateEditAbonnement

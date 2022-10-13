@@ -19,12 +19,14 @@ const abonnementsStore = () => {
 				checkErrors(response)
 				totalCount = response.data.result?.totalRecords!
 				abonnements = response.data.result?.results!
+				console.log(abonnements[0])
 				return abonnements
 			} catch (error) {
 				catchHttp(error, (errorMessage: string) => {
 					throw errorMessage
 				})
 			}
+
 			return []
 		},
 		totalCount: () => {

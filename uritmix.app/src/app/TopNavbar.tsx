@@ -4,12 +4,16 @@ import { AppUrl, PROJECT_NAME } from '../config'
 import { IAccount } from '../base/account'
 import profile1 from '../public/assets/img/illustrations/profiles/profile-1.png'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Api } from 'uritmix.api'
 
 const TopNavbar = () => {
 	const navigate = useNavigate()
 	const account = IAccount.load()
 
-	const logout = () => {
+	const logout = async () => {
+		await Api.authApi.apiV1AuthLogoutPost({
+			token: account.refreshToken
+		})
 		IAccount.logout()
 		navigate(AppUrl.Login)
 	}
