@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { observer, useLocalObservable } from 'mobx-react-lite'
 import { Popup } from 'devextreme-react/popup'
 import {
 	Button,
 	CheckBox,
+	TagBox,
 	TextArea,
 	TextBox,
 	Validator
@@ -17,119 +18,71 @@ import { AbonnementDomain } from '../domainConfig'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
+import { createLessonsLookupStore } from './store/lessonsLookupStore'
+import { discountLookup, validityLookup } from './lookup'
 
 interface Param {
+	abonnement?: dto.Abonnement | null
 	onClose: (id: number, needReload: boolean) => void
 }
 
-const CreateAbonnement = observer((param: Param) => {
+const toArray = (abonnement?: dto.Abonnement | null): number[] => {
+	let lessonsId: number[] = []
+	if (abonnement != null) {
+		for (let lesson of abonnement!.lessons) {
+			lessonsId.push(lesson.id)
+		}
+	}
+	return lessonsId
+}
+
+const CreateEditAbonnement = observer((param: Param) => {
 	const store = useLocalObservable(() => new AbonnementStore())
-	const [name, setName] = useState<string>()
-	const [validity, setValidity] = useState(dto.AbonnementValidityView.OneDay)
+	const [name, setName] = useState<string>(param.abonnement?.name || null)
+	const [lessonsId, setLessonsId] = useState<number[]>(
+		toArray(param.abonnement)
+	)
+	const [validity, setValidity] = useState(
+		param.abonnement?.validity || dto.AbonnementValidityView.OneDay
+	)
 	const [numberOfVisits, setNumberOfVisits] = useState<number>(
-		AbonnementDomain.NumberOfVisitsMin
+		param.abonnement?.numberOfVisits || AbonnementDomain.NumberOfVisitsMin
 	)
 	const [basePrice, setBasePrice] = useState<number>(
-		AbonnementDomain.BasePriceMin
+		param.abonnement?.basePrice || AbonnementDomain.BasePriceMin
 	)
-	const [discount, setDiscount] = useState(dto.DiscountView.D0)
-
-	const validityLookup = () => {
-		return [
-			{
-				Id: dto.AbonnementValidityView.OneDay,
-				Name: 'One day'
-			},
-			{
-				Id: dto.AbonnementValidityView.OneMonth,
-				Name: 'One month'
-			},
-			{
-				Id: dto.AbonnementValidityView.ThreeMonths,
-				Name: 'Three months'
-			},
-			{
-				Id: dto.AbonnementValidityView.HalfYear,
-				Name: 'Half year'
-			},
-			{
-				Id: dto.AbonnementValidityView.Year,
-				Name: 'Year'
-			}
-		]
-	}
-
-	const discountLookup = () => {
-		return [
-			{
-				Id: dto.DiscountView.D0,
-				Name: 'Discount 0%'
-			},
-			{
-				Id: dto.DiscountView.D5,
-				Name: 'Discount 5%'
-			},
-			{
-				Id: dto.DiscountView.D10,
-				Name: 'Discount 10%'
-			},
-			{
-				Id: dto.DiscountView.D15,
-				Name: 'Discount 15%'
-			},
-			{
-				Id: dto.DiscountView.D20,
-				Name: 'Discount 20%'
-			},
-			{
-				Id: dto.DiscountView.D25,
-				Name: 'Discount 25%'
-			},
-			{
-				Id: dto.DiscountView.D30,
-				Name: 'Discount 30%'
-			},
-			{
-				Id: dto.DiscountView.D40,
-				Name: 'Discount 40%'
-			},
-			{
-				Id: dto.DiscountView.D50,
-				Name: 'Discount 50%'
-			},
-			{
-				Id: dto.DiscountView.D60,
-				Name: 'Discount 60%'
-			},
-			{
-				Id: dto.DiscountView.D70,
-				Name: 'Discount 70%'
-			},
-			{
-				Id: dto.DiscountView.D80,
-				Name: 'Discount 80%'
-			},
-			{
-				Id: dto.DiscountView.D90,
-				Name: 'Discount 90%'
-			}
-		]
-	}
+	const [discount, setDiscount] = useState(
+		param.abonnement?.discount || dto.DiscountView.D0
+	)
 
 	const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		if (name) {
+		if (!name || lessonsId.length == 0) {
+			store.addError(RuleCaption.requiredFieldsNotAssigned())
+			return
+		}
+
+		if (param.abonnement) {
+			const res = await store.edit(param.abonnement.id, {
+				name: name,
+				validity: validity,
+				numberOfVisits: numberOfVisits,
+				basePrice: basePrice,
+				lessonIds: lessonsId,
+				discount: discount
+			})
+			if (res && store.value?.id) param.onClose(store.value.id, true)
+		} else {
 			const res = await store.create({
 				name: name,
 				validity: validity,
 				numberOfVisits: numberOfVisits,
 				basePrice: basePrice,
+				lessonIds: lessonsId,
 				discount: discount
 			})
 			if (res && store.value?.id) param.onClose(store.value.id, true)
-			return
 		}
-		store.addError(RuleCaption.requiredFieldsNotAssigned())
 	}
 
 	const onClose = () => {
@@ -166,6 +119,42 @@ const CreateAbonnement = observer((param: Param) => {
 							</Validator>
 						</TextBox>
 					</div>
+					{/*LessonId*/}
+					<div className='required'>
+						<label className='small mb-1' htmlFor='inputName'>
+							{'Lessons'}
+						</label>
+						<TagBox
+							disabled={store.loading}
+							className='mb-3'
+							placeholder={'Select lessons'}
+							dataSource={createLessonsLookupStore()}
+							searchEnabled={false}
+							displayExpr={item => item?.name}
+							defaultValue={lessonsId}
+							onValueChanged={e => {
+								let lessonsId: number[] = []
+								for (let lesson of e.value) {
+									if (lesson.id == undefined) {
+										lessonsId.push(lesson)
+									} else {
+										lessonsId.push(lesson.id)
+									}
+								}
+
+								setLessonsId(lessonsId)
+							}}
+						>
+							<DropDownOptions
+								showTitle={false}
+								shading={false}
+								fullScreen={false}
+							/>
+							<Validator>
+								<RequiredRule message={RuleCaption.required('Lessons')} />
+							</Validator>
+						</TagBox>
+					</div>
 					{/*Validity*/}
 					<div className='required'>
 						<label className='small mb-1' htmlFor='inputName'>
@@ -178,8 +167,8 @@ const CreateAbonnement = observer((param: Param) => {
 							showDropDownButton={false}
 							dataSource={validityLookup()}
 							disabled={store.loading}
-							displayExpr='Name'
-							valueExpr='Id'
+							displayExpr='name'
+							valueExpr='id'
 							searchEnabled={false}
 							value={validity}
 							onValueChanged={e => setValidity(e.value)}
@@ -206,7 +195,6 @@ const CreateAbonnement = observer((param: Param) => {
 							format='#0'
 						/>
 					</div>
-
 					{/*Price*/}
 					<div className='required'>
 						<label className='small mb-1' htmlFor='inputName'>
@@ -233,8 +221,8 @@ const CreateAbonnement = observer((param: Param) => {
 							showDropDownButton={false}
 							dataSource={discountLookup()}
 							disabled={store.loading}
-							displayExpr='Name'
-							valueExpr='Id'
+							displayExpr='name'
+							valueExpr='id'
 							searchEnabled={false}
 							value={discount}
 							onValueChanged={e => setDiscount(e.value)}
@@ -276,24 +264,25 @@ const CreateAbonnement = observer((param: Param) => {
 		return 'Create abonnement'
 	}
 
-	{
-		/*Костыль нужны для перерисовки в Popup*/
-	}
-	console.log(store.loading)
 	return (
-		<Popup
-			width={POPUP_FORM_WIDTH}
-			height={'auto'}
-			position={POPUP_POSITION}
-			showTitle={true}
-			visible={true}
-			title={title()}
-			dragEnabled={false}
-			hideOnOutsideClick={false}
-			onHiding={onClose}
-			contentRender={form}
-		/>
+		<>
+			{/*Костыль нужны для перерисовки в Popup*/}
+			{store.errors.length > 0 && <>Errors</>}
+			{store.loading && <>Loading</>}
+			<Popup
+				width={POPUP_FORM_WIDTH}
+				height={'auto'}
+				position={POPUP_POSITION}
+				showTitle={true}
+				visible={true}
+				title={title()}
+				dragEnabled={false}
+				hideOnOutsideClick={false}
+				onHiding={onClose}
+				contentRender={form}
+			/>
+		</>
 	)
 })
 
-export default CreateAbonnement
+export default CreateEditAbonnement

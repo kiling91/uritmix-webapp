@@ -4,12 +4,16 @@ import { AppUrl, PROJECT_NAME } from '../config'
 import { IAccount } from '../base/account'
 import profile1 from '../public/assets/img/illustrations/profiles/profile-1.png'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Api } from 'uritmix.api'
 
 const TopNavbar = () => {
 	const navigate = useNavigate()
 	const account = IAccount.load()
 
-	const logout = () => {
+	const logout = async () => {
+		await Api.authApi.apiV1AuthLogoutPost({
+			token: account.refreshToken
+		})
 		IAccount.logout()
 		navigate(AppUrl.Login)
 	}
@@ -27,7 +31,12 @@ const TopNavbar = () => {
 
 				<ul className='nav nav-pills col-md-auto mb-2 justify-content-center mb-md-0'>
 					<li className='nav-item'>
-						<NavLink to={AppUrl.Home} className='nav-link ' aria-current='page'>
+						<NavLink
+							to={AppUrl.Home}
+							end
+							className='nav-link '
+							aria-current='page'
+						>
 							{'Home'}
 						</NavLink>
 					</li>

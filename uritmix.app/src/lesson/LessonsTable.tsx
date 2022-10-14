@@ -74,9 +74,9 @@ const LessonsTable = ({ initDataGrid, onEdit }: Param) => {
 				dataType='string'
 				allowHeaderFiltering={false}
 				cellRender={data => (
-					<p>
+					<>
 						{data.value.firstName} {data.value.lastName}
-					</p>
+					</>
 				)}
 			/>
 

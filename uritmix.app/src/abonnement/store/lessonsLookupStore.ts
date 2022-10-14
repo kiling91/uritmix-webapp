@@ -3,8 +3,8 @@ import { catchHttp, checkErrors } from '../../base/catchError'
 import { Api, dto } from 'uritmix.api'
 import { Paginator } from '../../base/paginator'
 
-export const createPersonsLookupStore = () => {
-	let persons: dto.Person[] = []
+export const createLessonsLookupStore = () => {
+	let lessons: dto.Lesson[] = []
 	return {
 		store: new CustomStore({
 			key: 'id',
@@ -14,15 +14,14 @@ export const createPersonsLookupStore = () => {
 						const skip = options.skip ?? 0
 						const take = options.take ?? 10
 
-						const response = await Api.personApi.apiV1PersonGet(
+						const response = await Api.lessonApi.apiV1LessonGet(
 							Paginator.paginatorPageSize(skip, take),
-							Paginator.paginatorPageNumber(skip, take),
-							dto.PersonTypeView.Trainer
+							Paginator.paginatorPageNumber(skip, take)
 						)
 
 						checkErrors(response)
-						persons = response.data.result?.results!
-						return persons
+						lessons = response.data.result?.results!
+						return lessons
 					} catch (error) {
 						catchHttp(error, (errorMessage: string) => {
 							throw errorMessage
@@ -33,12 +32,13 @@ export const createPersonsLookupStore = () => {
 				return []
 			},
 			byKey: async (key: number) => {
-				const find = persons.find(m => m.id == key)
+				const find = lessons.find(m => m.id == key)
 				if (find) return find
+
 				try {
-					const response = await Api.personApi.apiV1PersonPersonIdGet(key)
+					const response = await Api.lessonApi.apiV1LessonLessonIdGet(key)
 					checkErrors(response)
-					persons.push(response.data.result)
+					lessons.push(response.data.result)
 					return response.data.result
 				} catch (error) {
 					catchHttp(error, (errorMessage: string) => {
@@ -48,7 +48,7 @@ export const createPersonsLookupStore = () => {
 				return null
 			}
 		}),
-		sort: 'lastname',
+		sort: 'name',
 		paginate: true,
 		pageSize: 10
 	}

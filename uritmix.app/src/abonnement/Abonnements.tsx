@@ -9,12 +9,14 @@ import CreateAbonnement from './CreateAbonnement'
 
 enum ModalMode {
 	Create,
+	Edit,
 	None
 }
 
 const Abonnements = () => {
 	const [dataGrid, setDataGrid] = useState<DataGrid | null>(null)
 	const [modalMode, setModalMode] = useState(ModalMode.None)
+	const [current, setCurrent] = useState<dto.Abonnement | null>(null)
 
 	const initDataGrid = (grid: DataGrid) => {
 		setDataGrid(grid)
@@ -28,17 +30,21 @@ const Abonnements = () => {
 		setModalMode(ModalMode.Create)
 	}
 
-	const onSelect = (value: dto.Person) => {
-		// navigate(`${value.id}`)
+	const onEditClick = (value: dto.Abonnement) => {
+		setCurrent(value)
+		setModalMode(ModalMode.Edit)
 	}
 
 	const onCloseModal = (_: number, needReload: boolean) => {
 		if (needReload) dataGrid?.instance.refresh()
+		setCurrent(null)
 		setModalMode(ModalMode.None)
 	}
 
 	const abonnementsTable = useMemo(
-		() => <AbonnementsTable initDataGrid={initDataGrid} onSelect={onSelect} />,
+		() => (
+			<AbonnementsTable initDataGrid={initDataGrid} onEditClick={onEditClick} />
+		),
 		[]
 	)
 
@@ -72,6 +78,9 @@ const Abonnements = () => {
 				{/*Modal*/}
 				<Visibility visible={modalMode == ModalMode.Create}>
 					<CreateAbonnement onClose={onCloseModal} />
+				</Visibility>
+				<Visibility visible={modalMode == ModalMode.Edit}>
+					<CreateAbonnement onClose={onCloseModal} abonnement={current} />
 				</Visibility>
 				{/*Modal*/}
 			</div>

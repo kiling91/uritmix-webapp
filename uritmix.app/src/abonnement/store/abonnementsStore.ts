@@ -25,6 +25,7 @@ const abonnementsStore = () => {
 					throw errorMessage
 				})
 			}
+
 			return []
 		},
 		totalCount: () => {
