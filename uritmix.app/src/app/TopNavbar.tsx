@@ -31,7 +31,12 @@ const TopNavbar = () => {
 
 				<ul className='nav nav-pills col-md-auto mb-2 justify-content-center mb-md-0'>
 					<li className='nav-item'>
-						<NavLink to={AppUrl.Home} className='nav-link ' aria-current='page'>
+						<NavLink
+							to={AppUrl.Home}
+							end
+							className='nav-link '
+							aria-current='page'
+						>
 							{'Home'}
 						</NavLink>
 					</li>

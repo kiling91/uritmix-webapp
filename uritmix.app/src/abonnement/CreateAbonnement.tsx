@@ -19,6 +19,7 @@ import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
 import { createLessonsLookupStore } from './store/lessonsLookupStore'
+import { discountLookup, validityLookup } from './lookup'
 
 interface Param {
 	abonnement?: dto.Abonnement | null
@@ -53,88 +54,6 @@ const CreateEditAbonnement = observer((param: Param) => {
 	const [discount, setDiscount] = useState(
 		param.abonnement?.discount || dto.DiscountView.D0
 	)
-
-	const validityLookup = () => {
-		return [
-			{
-				Id: dto.AbonnementValidityView.OneDay,
-				Name: 'One day'
-			},
-			{
-				Id: dto.AbonnementValidityView.OneMonth,
-				Name: 'One month'
-			},
-			{
-				Id: dto.AbonnementValidityView.ThreeMonths,
-				Name: 'Three months'
-			},
-			{
-				Id: dto.AbonnementValidityView.HalfYear,
-				Name: 'Half year'
-			},
-			{
-				Id: dto.AbonnementValidityView.Year,
-				Name: 'Year'
-			}
-		]
-	}
-
-	const discountLookup = () => {
-		return [
-			{
-				Id: dto.DiscountView.D0,
-				Name: 'Discount 0%'
-			},
-			{
-				Id: dto.DiscountView.D5,
-				Name: 'Discount 5%'
-			},
-			{
-				Id: dto.DiscountView.D10,
-				Name: 'Discount 10%'
-			},
-			{
-				Id: dto.DiscountView.D15,
-				Name: 'Discount 15%'
-			},
-			{
-				Id: dto.DiscountView.D20,
-				Name: 'Discount 20%'
-			},
-			{
-				Id: dto.DiscountView.D25,
-				Name: 'Discount 25%'
-			},
-			{
-				Id: dto.DiscountView.D30,
-				Name: 'Discount 30%'
-			},
-			{
-				Id: dto.DiscountView.D40,
-				Name: 'Discount 40%'
-			},
-			{
-				Id: dto.DiscountView.D50,
-				Name: 'Discount 50%'
-			},
-			{
-				Id: dto.DiscountView.D60,
-				Name: 'Discount 60%'
-			},
-			{
-				Id: dto.DiscountView.D70,
-				Name: 'Discount 70%'
-			},
-			{
-				Id: dto.DiscountView.D80,
-				Name: 'Discount 80%'
-			},
-			{
-				Id: dto.DiscountView.D90,
-				Name: 'Discount 90%'
-			}
-		]
-	}
 
 	const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -248,8 +167,8 @@ const CreateEditAbonnement = observer((param: Param) => {
 							showDropDownButton={false}
 							dataSource={validityLookup()}
 							disabled={store.loading}
-							displayExpr='Name'
-							valueExpr='Id'
+							displayExpr='name'
+							valueExpr='id'
 							searchEnabled={false}
 							value={validity}
 							onValueChanged={e => setValidity(e.value)}
@@ -302,8 +221,8 @@ const CreateEditAbonnement = observer((param: Param) => {
 							showDropDownButton={false}
 							dataSource={discountLookup()}
 							disabled={store.loading}
-							displayExpr='Name'
-							valueExpr='Id'
+							displayExpr='name'
+							valueExpr='id'
 							searchEnabled={false}
 							value={discount}
 							onValueChanged={e => setDiscount(e.value)}

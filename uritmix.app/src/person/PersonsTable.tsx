@@ -4,6 +4,7 @@ import DataGrid, {
 	Column,
 	Editing,
 	FilterRow,
+	Lookup,
 	Pager,
 	Paging,
 	Scrolling
@@ -23,34 +24,34 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
 	}
 
 	/*const authRole = () => {
-    return [
-      {
-        id: dto.AuthRoleView.Admin,
-        name: "Administrator",
-      },
-      {
-        id: dto.AuthRoleView.Manager,
-        name: "Manager",
-      },
-    ];
-  };
+		return [
+			{
+				Id: dto.AuthRoleView.Admin,
+				Name: 'Administrator'
+			},
+			{
+				Id: dto.AuthRoleView.Manager,
+				Name: 'Manager'
+			}
+		]
+	}
 
-  const authStatus = () => {
-    return [
-      {
-        id: dto.AuthStatusView.NotActivated,
-        name: "Not Activated",
-      },
-      {
-        id: dto.AuthStatusView.Activated,
-        name: "Activated",
-      },
-      {
-        id: dto.AuthStatusView.Blocked,
-        name: "Blocked",
-      },
-    ];
-  };*/
+	const authStatus = () => {
+		return [
+			{
+				id: dto.AuthStatusView.NotActivated,
+				name: 'Not Activated'
+			},
+			{
+				id: dto.AuthStatusView.Activated,
+				name: 'Activated'
+			},
+			{
+				id: dto.AuthStatusView.Blocked,
+				name: 'Blocked'
+			}
+		]
+	}*/
 
 	return (
 		<DataGrid
@@ -116,25 +117,34 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
 				dataType='boolean'
 				allowHeaderFiltering={false}
 			/>
-			{/*<Column dataField="auth.email" caption={'Email'} dataType="string" allowHeaderFiltering={false} />
+			<Column
+				dataField='auth.email'
+				caption={'Email'}
+				dataType='string'
+				allowHeaderFiltering={false}
+			/>
 
-      <Column dataField="auth.role"
-        caption={'Role'}
-        dataType="string"
-        allowSorting={false}
-        allowHeaderFiltering={true}
-        allowSearch={false}>
-        <Lookup dataSource={authRole()} valueExpr="id" displayExpr="name" />
-      </Column>
+			{/*<Column
+				dataField='auth.role'
+				caption={'Role'}
+				dataType='string'
+				allowSorting={false}
+				allowHeaderFiltering={true}
+				allowSearch={false}
+			>
+				<Lookup dataSource={authRole()} valueExpr='Id' displayExpr='Name' />
+			</Column>
 
-      <Column dataField="auth.status"
-        caption={'Status'}
-        dataType="string"
-        allowSorting={false}
-        allowHeaderFiltering={true}
-        allowSearch={false}>
-        <Lookup dataSource={authStatus()} valueExpr="id" displayExpr="name" />
-      </Column>*/}
+			<Column
+				dataField='auth.status'
+				caption={'Status'}
+				dataType='string'
+				allowSorting={false}
+				allowHeaderFiltering={true}
+				allowSearch={false}
+			>
+				<Lookup dataSource={authStatus()} valueExpr='id' displayExpr='name' />
+			</Column>*/}
 
 			<Column type='buttons'>
 				<Button hint={'Info'} icon='info' onClick={userInfoClick} />
