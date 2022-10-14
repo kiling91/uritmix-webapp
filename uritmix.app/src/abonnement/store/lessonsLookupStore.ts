@@ -38,6 +38,7 @@ export const createLessonsLookupStore = () => {
 				try {
 					const response = await Api.lessonApi.apiV1LessonLessonIdGet(key)
 					checkErrors(response)
+					lessons.push(response.data.result)
 					return response.data.result
 				} catch (error) {
 					catchHttp(error, (errorMessage: string) => {

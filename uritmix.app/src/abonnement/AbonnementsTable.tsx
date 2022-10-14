@@ -13,13 +13,13 @@ import { dto } from 'uritmix.api'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void
-	onSelect: (value: dto.Person) => void
+	onEditClick: (value: dto.Abonnement) => void
 }
 
-const AbonnementsTable = ({ initDataGrid, onSelect }: Param) => {
-	const userInfoClick = (e: any) => {
+const AbonnementsTable = ({ initDataGrid, onEditClick }: Param) => {
+	const editClick = (e: any) => {
 		e.event.preventDefault()
-		onSelect(e.row.data)
+		onEditClick(e.row.data)
 	}
 
 	return (
@@ -70,7 +70,7 @@ const AbonnementsTable = ({ initDataGrid, onSelect }: Param) => {
 			/>
 
 			<Column type='buttons'>
-				<Button hint={'Info'} icon='info' onClick={userInfoClick} />
+				<Button hint={'Edit'} icon='edit' onClick={editClick} />
 			</Column>
 			{/**/}
 		</DataGrid>

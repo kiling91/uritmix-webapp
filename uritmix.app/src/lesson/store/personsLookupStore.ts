@@ -13,23 +13,11 @@ export const createPersonsLookupStore = () => {
 					try {
 						const skip = options.skip ?? 0
 						const take = options.take ?? 10
-						/*let filter = ''
-						if (options.searchExpr && options.searchValue)
-							filter = Store.filterParams([
-								options.searchExpr,
-								'contains',
-								options.searchValue
-							])*/
 
 						const response = await Api.personApi.apiV1PersonGet(
 							Paginator.paginatorPageSize(skip, take),
 							Paginator.paginatorPageNumber(skip, take),
 							dto.PersonTypeView.Trainer
-							/*-1,
-							Paginator.showArchived(false),
-							'Article',
-							Paginator.orderByAsc(),
-							filter*/
 						)
 
 						checkErrors(response)
@@ -50,6 +38,7 @@ export const createPersonsLookupStore = () => {
 				try {
 					const response = await Api.personApi.apiV1PersonPersonIdGet(key)
 					checkErrors(response)
+					persons.push(response.data.result)
 					return response.data.result
 				} catch (error) {
 					catchHttp(error, (errorMessage: string) => {

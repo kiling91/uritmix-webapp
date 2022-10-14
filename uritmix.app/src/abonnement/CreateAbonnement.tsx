@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { observer, useLocalObservable } from 'mobx-react-lite'
 import { Popup } from 'devextreme-react/popup'
 import {
@@ -138,7 +138,22 @@ const CreateEditAbonnement = observer((param: Param) => {
 
 	const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		if (name && lessonsId.length > 0) {
+		if (!name || lessonsId.length == 0) {
+			store.addError(RuleCaption.requiredFieldsNotAssigned())
+			return
+		}
+
+		if (param.abonnement) {
+			const res = await store.edit(param.abonnement.id, {
+				name: name,
+				validity: validity,
+				numberOfVisits: numberOfVisits,
+				basePrice: basePrice,
+				lessonIds: lessonsId,
+				discount: discount
+			})
+			if (res && store.value?.id) param.onClose(store.value.id, true)
+		} else {
 			const res = await store.create({
 				name: name,
 				validity: validity,
@@ -148,9 +163,7 @@ const CreateEditAbonnement = observer((param: Param) => {
 				discount: discount
 			})
 			if (res && store.value?.id) param.onClose(store.value.id, true)
-			return
 		}
-		store.addError(RuleCaption.requiredFieldsNotAssigned())
 	}
 
 	const onClose = () => {
@@ -203,8 +216,13 @@ const CreateEditAbonnement = observer((param: Param) => {
 							onValueChanged={e => {
 								let lessonsId: number[] = []
 								for (let lesson of e.value) {
-									lessonsId.push(lesson.id)
+									if (lesson.id == undefined) {
+										lessonsId.push(lesson)
+									} else {
+										lessonsId.push(lesson.id)
+									}
 								}
+
 								setLessonsId(lessonsId)
 							}}
 						>
