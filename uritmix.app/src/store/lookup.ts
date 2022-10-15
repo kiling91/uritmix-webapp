@@ -81,3 +81,33 @@ export const discountLookup = () => {
 		}
 	]
 }
+
+export const authRole = () => {
+	return [
+		{
+			Id: dto.AuthRoleView.Admin,
+			Name: 'Administrator'
+		},
+		{
+			Id: dto.AuthRoleView.Manager,
+			Name: 'Manager'
+		}
+	]
+}
+
+export const authStatus = () => {
+	return [
+		{
+			id: dto.AuthStatusView.NotActivated,
+			name: 'Not Activated'
+		},
+		{
+			id: dto.AuthStatusView.Activated,
+			name: 'Activated'
+		},
+		{
+			id: dto.AuthStatusView.Blocked,
+			name: 'Blocked'
+		}
+	]
+}

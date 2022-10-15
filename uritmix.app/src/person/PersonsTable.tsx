@@ -23,36 +23,6 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
 		onSelect(e.row.data)
 	}
 
-	/*const authRole = () => {
-		return [
-			{
-				Id: dto.AuthRoleView.Admin,
-				Name: 'Administrator'
-			},
-			{
-				Id: dto.AuthRoleView.Manager,
-				Name: 'Manager'
-			}
-		]
-	}
-
-	const authStatus = () => {
-		return [
-			{
-				id: dto.AuthStatusView.NotActivated,
-				name: 'Not Activated'
-			},
-			{
-				id: dto.AuthStatusView.Activated,
-				name: 'Activated'
-			},
-			{
-				id: dto.AuthStatusView.Blocked,
-				name: 'Blocked'
-			}
-		]
-	}*/
-
 	return (
 		<DataGrid
 			ref={ref => {

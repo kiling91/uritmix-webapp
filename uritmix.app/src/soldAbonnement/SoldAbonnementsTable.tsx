@@ -9,7 +9,7 @@ import DataGrid, {
 	Scrolling
 } from 'devextreme-react/data-grid'
 import { dto } from 'uritmix.api'
-import abonnementsStore from './store/abonnementsStore'
+import abonnementsStore from './store/soldAbonnementsStore'
 
 interface Param {
 	personId: number

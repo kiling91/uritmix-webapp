@@ -11,7 +11,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid'
 import abonnementsStore from './store/abonnementsStore'
 import { dto } from 'uritmix.api'
-import { discountLookup, validityLookup } from './lookup'
+import { discountLookup, validityLookup } from '../store/lookup'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void

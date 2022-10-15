@@ -1,10 +1,10 @@
 import CustomStore from 'devextreme/data/custom_store'
-import { catchHttp, checkErrors } from '../../base/catchError'
+import { catchHttp, checkErrors } from '../base/catchError'
 import { Api, dto } from 'uritmix.api'
-import { Paginator } from '../../base/paginator'
+import { Paginator } from '../base/paginator'
 
-export const createLessonsLookupStore = () => {
-	let lessons: dto.Lesson[] = []
+export const createPersonsLookupStore = () => {
+	let persons: dto.Person[] = []
 	return {
 		store: new CustomStore({
 			key: 'id',
@@ -14,14 +14,15 @@ export const createLessonsLookupStore = () => {
 						const skip = options.skip ?? 0
 						const take = options.take ?? 10
 
-						const response = await Api.lessonApi.apiV1LessonGet(
+						const response = await Api.personApi.apiV1PersonGet(
 							Paginator.paginatorPageSize(skip, take),
-							Paginator.paginatorPageNumber(skip, take)
+							Paginator.paginatorPageNumber(skip, take),
+							dto.PersonTypeView.Trainer
 						)
 
 						checkErrors(response)
-						lessons = response.data.result?.results!
-						return lessons
+						persons = response.data.result?.results!
+						return persons
 					} catch (error) {
 						catchHttp(error, (errorMessage: string) => {
 							throw errorMessage
@@ -32,13 +33,12 @@ export const createLessonsLookupStore = () => {
 				return []
 			},
 			byKey: async (key: number) => {
-				const find = lessons.find(m => m.id == key)
+				const find = persons.find(m => m.id == key)
 				if (find) return find
-
 				try {
-					const response = await Api.lessonApi.apiV1LessonLessonIdGet(key)
+					const response = await Api.personApi.apiV1PersonPersonIdGet(key)
 					checkErrors(response)
-					lessons.push(response.data.result)
+					persons.push(response.data.result)
 					return response.data.result
 				} catch (error) {
 					catchHttp(error, (errorMessage: string) => {
@@ -48,7 +48,7 @@ export const createLessonsLookupStore = () => {
 				return null
 			}
 		}),
-		sort: 'name',
+		sort: 'lastname',
 		paginate: true,
 		pageSize: 10
 	}

@@ -3,7 +3,7 @@ import { Api, dto } from 'uritmix.api'
 import { Paginator } from '../../base/paginator'
 import { catchHttp, checkErrors } from '../../base/catchError'
 
-const abonnementsStore = (personId: number) => {
+const soldAbonnementsStore = (personId: number) => {
 	let totalCount = 0
 	let abonnements: dto.SoldAbonnement[] = []
 	return new CustomStore({
@@ -34,4 +34,4 @@ const abonnementsStore = (personId: number) => {
 	})
 }
 
-export default abonnementsStore
+export default soldAbonnementsStore

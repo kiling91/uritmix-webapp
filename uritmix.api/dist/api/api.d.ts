@@ -1371,6 +1371,14 @@ export interface ValidError {
 export declare const AbonnementApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
     /**
      *
+     * @summary Возвращает абоннемент по id
+     * @param {number} abonnementId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementAbonnementIdGet: (abonnementId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Обновляет данные абонимента
      * @param {number} abonnementId
      * @param {EditAbonnement} [editAbonnement]
@@ -1419,6 +1427,14 @@ export declare const AbonnementApiAxiosParamCreator: (configuration?: Configurat
  * @export
  */
 export declare const AbonnementApiFp: (configuration?: Configuration | undefined) => {
+    /**
+     *
+     * @summary Возвращает абоннемент по id
+     * @param {number} abonnementId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementAbonnementIdGet(abonnementId: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultAbonnement>>;
     /**
      *
      * @summary Обновляет данные абонимента
@@ -1471,6 +1487,14 @@ export declare const AbonnementApiFp: (configuration?: Configuration | undefined
 export declare const AbonnementApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
     /**
      *
+     * @summary Возвращает абоннемент по id
+     * @param {number} abonnementId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1AbonnementAbonnementIdGet(abonnementId: number, options?: any): AxiosPromise<ResultAbonnement>;
+    /**
+     *
      * @summary Обновляет данные абонимента
      * @param {number} abonnementId
      * @param {EditAbonnement} [editAbonnement]
@@ -1521,6 +1545,15 @@ export declare const AbonnementApiFactory: (configuration?: Configuration | unde
  * @extends {BaseAPI}
  */
 export declare class AbonnementApi extends BaseAPI {
+    /**
+     *
+     * @summary Возвращает абоннемент по id
+     * @param {number} abonnementId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    apiV1AbonnementAbonnementIdGet(abonnementId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultAbonnement, any>>;
     /**
      *
      * @summary Обновляет данные абонимента

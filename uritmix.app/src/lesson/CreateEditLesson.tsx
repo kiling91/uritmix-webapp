@@ -17,7 +17,7 @@ import { LessonDomain } from '../domainConfig'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import LessonStore from './store/lessonStore'
 import ShowErrors from '../ui/ShowErrors'
-import { createPersonsLookupStore } from './store/personsLookupStore'
+import { createPersonsLookupStore } from '../store/personsLookupStore'
 
 interface Param {
 	lesson?: dto.Lesson | null

@@ -9,7 +9,7 @@ import Persons from '../person/Persons'
 import PersonData from '../person/PersonData'
 import { IAccount } from '../base/account'
 import TopNavbar from './TopNavbar'
-import PersonAbonnements from '../person/PersonAbonnements'
+import SoldAbonnements from '../soldAbonnement/SoldAbonnements'
 import Abonnements from '../abonnement/Abonnements'
 import Rooms from '../room/Rooms'
 import Lessons from '../lesson/Lessons'
@@ -45,7 +45,7 @@ const App = () => {
 				<Route path={AppUrl.Persons} element={<Persons />} />
 				<Route path={AppUrl.Person}>
 					<Route index element={<PersonData />} />
-					<Route path={'abonnements'} element={<PersonAbonnements />} />
+					<Route path={'abonnements'} element={<SoldAbonnements />} />
 				</Route>
 				<Route path={'about'} element={<h1>About</h1>} />
 			</Route>
