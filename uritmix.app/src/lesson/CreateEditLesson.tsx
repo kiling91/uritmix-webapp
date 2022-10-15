@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import { observer, useLocalObservable } from 'mobx-react-lite'
 import { Popup } from 'devextreme-react/popup'
-import {
-	Button,
-	CheckBox,
-	TextArea,
-	TextBox,
-	Validator
-} from 'devextreme-react'
+import { Button, TextArea, TextBox, Validator } from 'devextreme-react'
 import { Lookup, DropDownOptions } from 'devextreme-react/lookup'
 import { RequiredRule, StringLengthRule } from 'devextreme-react/validator'
 import NumberBox from 'devextreme-react/number-box'
@@ -37,8 +31,6 @@ const CreateEditLesson = observer((param: Param) => {
 		LessonDomain.DurationMinuteMin
 	)
 	const [basePrice, setBasePrice] = useState<number>(LessonDomain.BasePriceMin)
-
-	console.warn(`Trainer id ${trainerId}`)
 
 	const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault()

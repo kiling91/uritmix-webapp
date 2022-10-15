@@ -19,7 +19,7 @@ import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
 import { createLessonsLookupStore } from '../store/lessonsLookupStore'
-import { discountLookup, validityLookup } from '../store/lookup'
+import { discountLookup, validityLookup } from '../base/lookup'
 
 interface Param {
 	abonnement?: dto.Abonnement | null

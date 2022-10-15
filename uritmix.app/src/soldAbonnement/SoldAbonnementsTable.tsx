@@ -14,15 +14,11 @@ import abonnementsStore from './store/soldAbonnementsStore'
 interface Param {
 	personId: number
 	initDataGrid: (dataGrid: DataGrid) => void
-	onSelect: (value: dto.Abonnement) => void
+	onSelect: (value: dto.SoldAbonnement) => void
 }
 
-const PersonsAbonnementsTable = ({
-	personId,
-	initDataGrid,
-	onSelect
-}: Param) => {
-	const userInfoClick = (e: any) => {
+const SoldAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) => {
+	const onSelectClick = (e: any) => {
 		e.event.preventDefault()
 		onSelect(e.row.data)
 	}
@@ -68,18 +64,62 @@ const PersonsAbonnementsTable = ({
 				allowEditing={false}
 			/>
 			<Column
+				dataField='active'
+				caption={'Active'}
+				dataType='boolean'
+				allowHeaderFiltering={false}
+			/>
+			<Column
 				dataField='name'
-				caption={'Name'}
+				caption={'Abonnement name'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
-
+			<Column
+				dataField='dateSale'
+				caption={'Date Sale'}
+				dataType='date'
+				allowHeaderFiltering={true}
+			/>
+			<Column
+				dataField='dateExpiration'
+				caption={'Date expiration'}
+				dataType='date'
+				allowHeaderFiltering={true}
+			/>
+			<Column
+				dataField='visitCounter'
+				caption={'Number of visits'}
+				dataType='number'
+				allowHeaderFiltering={true}
+				cellRender={data => {
+					return (
+						<div key={data.row.data}>
+							{data.value}/{data.row.data.numberOfVisits}
+						</div>
+					)
+				}}
+			/>
+			<Column
+				dataField='lessons'
+				caption={'Lessons'}
+				allowHeaderFiltering={false}
+				allowSearch={false}
+				minWidth={'180'}
+				cellRender={data =>
+					data.value.map(lesson => (
+						<span key={lesson.id} className='badge bg-secondary me-1'>
+							{lesson.name}
+						</span>
+					))
+				}
+			/>
 			<Column type='buttons'>
-				<Button hint={'Info'} icon='info' onClick={userInfoClick} />
+				<Button hint={'Info'} icon='info' onClick={onSelectClick} />
 			</Column>
 			{/**/}
 		</DataGrid>
 	)
 }
 
-export default PersonsAbonnementsTable
+export default SoldAbonnementsTable

@@ -25,6 +25,16 @@ export const validityLookup = () => {
 	]
 }
 
+export const validityToString = (
+	validity: dto.AbonnementValidityView
+): string => {
+	const array = validityLookup()
+	for (const v of array) {
+		if (v.id == validity) return v.name
+	}
+	return validity
+}
+
 export const discountLookup = () => {
 	return [
 		{
@@ -80,6 +90,60 @@ export const discountLookup = () => {
 			name: 'Discount 90%'
 		}
 	]
+}
+
+export const discountToString = (discount: dto.DiscountView): string => {
+	const array = discountLookup()
+	for (const v of array) {
+		if (v.id == discount) return v.name
+	}
+	return discount
+}
+
+export const discountToValue = (discount: dto.DiscountView): number => {
+	let discountValue = 0.0
+	switch (discount) {
+		case dto.DiscountView.D0:
+			discountValue = 0.0
+			break
+		case dto.DiscountView.D5:
+			discountValue = 0.05
+			break
+		case dto.DiscountView.D10:
+			discountValue = 0.1
+			break
+		case dto.DiscountView.D15:
+			discountValue = 0.15
+			break
+		case dto.DiscountView.D20:
+			discountValue = 0.2
+			break
+		case dto.DiscountView.D25:
+			discountValue = 0.25
+			break
+		case dto.DiscountView.D30:
+			discountValue = 0.3
+			break
+		case dto.DiscountView.D40:
+			discountValue = 0.4
+			break
+		case dto.DiscountView.D50:
+			discountValue = 0.5
+			break
+		case dto.DiscountView.D60:
+			discountValue = 0.6
+			break
+		case dto.DiscountView.D70:
+			discountValue = 0.7
+			break
+		case dto.DiscountView.D80:
+			discountValue = 0.8
+			break
+		case dto.DiscountView.D90:
+			discountValue = 0.9
+			break
+	}
+	return discountValue
 }
 
 export const authRole = () => {

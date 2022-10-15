@@ -10,9 +10,11 @@ import { dto } from 'uritmix.api'
 import PersonAbonnementsTable from './SoldAbonnementsTable'
 import Visibility from '../ui/Visibility'
 import SaleAbonnement from './SaleAbonnement'
+import SoldAbonnementInfo from './SoldAbonnementInfo'
 
 enum ModalMode {
 	Create,
+	Info,
 	None
 }
 
@@ -23,6 +25,7 @@ const SoldAbonnements = observer(() => {
 		return <ShowErrors errors={[RuleCaption.parameterError('id')]} />
 	const [dataGrid, setDataGrid] = useState<DataGrid | null>(null)
 	const [modalMode, setModalMode] = useState(ModalMode.None)
+	const [current, setCurrent] = useState<dto.SoldAbonnement | null>(null)
 
 	const initDataGrid = (grid: DataGrid) => {
 		setDataGrid(grid)
@@ -37,7 +40,10 @@ const SoldAbonnements = observer(() => {
 		setModalMode(ModalMode.None)
 	}
 
-	const onSelect = (_: dto.Abonnement) => {}
+	const onSelect = (value: dto.SoldAbonnement) => {
+		setCurrent(value)
+		setModalMode(ModalMode.Info)
+	}
 
 	const search = (text: string) => {
 		dataGrid?.instance.searchByText(text)
@@ -60,7 +66,11 @@ const SoldAbonnements = observer(() => {
 				{abonnementsTable}
 				{/*Modal*/}
 				<Visibility visible={modalMode == ModalMode.Create}>
-					<SaleAbonnement onClose={onCloseModal} />
+					<SaleAbonnement personId={personId} onClose={onCloseModal} />
+				</Visibility>
+
+				<Visibility visible={modalMode == ModalMode.Info}>
+					<SoldAbonnementInfo soldAbonnement={current} onClose={onCloseModal} />
 				</Visibility>
 				{/*Modal*/}
 			</div>
