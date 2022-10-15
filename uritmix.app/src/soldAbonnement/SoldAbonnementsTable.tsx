@@ -85,6 +85,7 @@ const SoldAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) => {
 				dataField='dateExpiration'
 				caption={'Date expiration'}
 				dataType='date'
+				format={'shortDate'}
 				allowHeaderFiltering={true}
 			/>
 			<Column
