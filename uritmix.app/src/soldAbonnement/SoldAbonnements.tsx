@@ -3,26 +3,47 @@ import ShowErrors from '../ui/ShowErrors'
 import { RuleCaption } from '../base/ruleCaption'
 import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
-import PersonCard from './PersonCard'
+import PersonCard from '../person/PersonCard'
 import Tooltip from '../ui/Tooltip'
 import { Button, DataGrid, TextBox } from 'devextreme-react'
 import { dto } from 'uritmix.api'
-import PersonAbonnementsTable from './PersonAbonnementsTable'
+import PersonAbonnementsTable from './SoldAbonnementsTable'
+import Visibility from '../ui/Visibility'
+import SaleAbonnement from './SaleAbonnement'
+import SoldAbonnementInfo from './SoldAbonnementInfo'
 
-const PersonAbonnements = observer(() => {
+enum ModalMode {
+	Create,
+	Info,
+	None
+}
+
+const SoldAbonnements = observer(() => {
 	const { id } = useParams<{ id: string }>()
 	const personId = Number(id)
 	if (!personId)
 		return <ShowErrors errors={[RuleCaption.parameterError('id')]} />
 	const [dataGrid, setDataGrid] = useState<DataGrid | null>(null)
+	const [modalMode, setModalMode] = useState(ModalMode.None)
+	const [current, setCurrent] = useState<dto.SoldAbonnement | null>(null)
 
 	const initDataGrid = (grid: DataGrid) => {
 		setDataGrid(grid)
 	}
 
-	const onSale = () => {}
+	const onSale = () => {
+		setModalMode(ModalMode.Create)
+	}
 
-	const onSelect = (_: dto.Abonnement) => {}
+	const onCloseModal = (_: number, needReload: boolean) => {
+		if (needReload) dataGrid?.instance.refresh()
+		setModalMode(ModalMode.None)
+	}
+
+	const onSelect = (value: dto.SoldAbonnement) => {
+		setCurrent(value)
+		setModalMode(ModalMode.Info)
+	}
 
 	const search = (text: string) => {
 		dataGrid?.instance.searchByText(text)
@@ -40,7 +61,20 @@ const PersonAbonnements = observer(() => {
 	)
 
 	const body = () => {
-		return <div>{abonnementsTable}</div>
+		return (
+			<div>
+				{abonnementsTable}
+				{/*Modal*/}
+				<Visibility visible={modalMode == ModalMode.Create}>
+					<SaleAbonnement personId={personId} onClose={onCloseModal} />
+				</Visibility>
+
+				<Visibility visible={modalMode == ModalMode.Info}>
+					<SoldAbonnementInfo soldAbonnement={current} onClose={onCloseModal} />
+				</Visibility>
+				{/*Modal*/}
+			</div>
+		)
 	}
 
 	const toolBar = () => {
@@ -69,4 +103,4 @@ const PersonAbonnements = observer(() => {
 	return <PersonCard body={body()} toolbar={toolBar()} />
 })
 
-export default PersonAbonnements
+export default SoldAbonnements

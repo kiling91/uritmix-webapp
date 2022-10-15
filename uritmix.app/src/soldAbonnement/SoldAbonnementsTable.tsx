@@ -4,21 +4,21 @@ import DataGrid, {
 	Column,
 	Editing,
 	FilterRow,
-	Lookup,
 	Pager,
 	Paging,
 	Scrolling
 } from 'devextreme-react/data-grid'
-import personsDataStore from './store/personsStore'
 import { dto } from 'uritmix.api'
+import abonnementsStore from './store/soldAbonnementsStore'
 
 interface Param {
+	personId: number
 	initDataGrid: (dataGrid: DataGrid) => void
-	onSelect: (value: dto.Person) => void
+	onSelect: (value: dto.SoldAbonnement) => void
 }
 
-const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
-	const userInfoClick = (e: any) => {
+const SoldAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) => {
+	const onSelectClick = (e: any) => {
 		e.event.preventDefault()
 		onSelect(e.row.data)
 	}
@@ -28,7 +28,7 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
 			ref={ref => {
 				if (ref) initDataGrid(ref)
 			}}
-			dataSource={personsDataStore()}
+			dataSource={abonnementsStore(personId)}
 			remoteOperations={true}
 			columnAutoWidth={true}
 			rowAlternationEnabled={true}
@@ -64,64 +64,63 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
 				allowEditing={false}
 			/>
 			<Column
-				dataField='firstName'
-				caption={'Firstname'}
-				dataType='string'
-				allowHeaderFiltering={false}
-			/>
-			<Column
-				dataField='lastName'
-				caption={'Lastname'}
-				dataType='string'
-				allowHeaderFiltering={false}
-			/>
-			<Column
-				dataField='isTrainer'
-				caption={'Trainer'}
+				dataField='active'
+				caption={'Active'}
 				dataType='boolean'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='haveAuth'
-				caption={'Auth'}
-				dataType='boolean'
-				allowHeaderFiltering={false}
-			/>
-			<Column
-				dataField='auth.email'
-				caption={'Email'}
+				dataField='name'
+				caption={'Abonnement name'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
-
-			{/*<Column
-				dataField='auth.role'
-				caption={'Role'}
-				dataType='string'
-				allowSorting={false}
-				allowHeaderFiltering={true}
-				allowSearch={false}
-			>
-				<Lookup dataSource={authRole()} valueExpr='Id' displayExpr='Name' />
-			</Column>
-
 			<Column
-				dataField='auth.status'
-				caption={'Status'}
-				dataType='string'
-				allowSorting={false}
+				dataField='dateSale'
+				caption={'Date Sale'}
+				dataType='date'
 				allowHeaderFiltering={true}
+			/>
+			<Column
+				dataField='dateExpiration'
+				caption={'Date expiration'}
+				dataType='date'
+				format={'shortDate'}
+				allowHeaderFiltering={true}
+			/>
+			<Column
+				dataField='visitCounter'
+				caption={'Number of visits'}
+				dataType='number'
+				allowHeaderFiltering={true}
+				cellRender={data => {
+					return (
+						<div key={data.row.data}>
+							{data.value}/{data.row.data.numberOfVisits}
+						</div>
+					)
+				}}
+			/>
+			<Column
+				dataField='lessons'
+				caption={'Lessons'}
+				allowHeaderFiltering={false}
 				allowSearch={false}
-			>
-				<Lookup dataSource={authStatus()} valueExpr='id' displayExpr='name' />
-			</Column>*/}
-
+				minWidth={'180'}
+				cellRender={data =>
+					data.value.map(lesson => (
+						<span key={lesson.id} className='badge bg-secondary me-1'>
+							{lesson.name}
+						</span>
+					))
+				}
+			/>
 			<Column type='buttons'>
-				<Button hint={'Info'} icon='info' onClick={userInfoClick} />
+				<Button hint={'Info'} icon='info' onClick={onSelectClick} />
 			</Column>
 			{/**/}
 		</DataGrid>
 	)
 }
 
-export default PersonsTable
+export default SoldAbonnementsTable

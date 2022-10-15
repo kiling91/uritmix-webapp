@@ -11,7 +11,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid'
 import abonnementsStore from './store/abonnementsStore'
 import { dto } from 'uritmix.api'
-import { discountLookup, validityLookup } from './lookup'
+import { discountLookup, validityLookup } from '../base/lookup'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void
@@ -119,7 +119,9 @@ const AbonnementsTable = ({ initDataGrid, onEditClick }: Param) => {
 				minWidth={'180'}
 				cellRender={data =>
 					data.value.map(lesson => (
-						<span className='badge bg-secondary me-1'>{lesson.name}</span>
+						<span key={lesson.id} className='badge bg-secondary me-1'>
+							{lesson.name}
+						</span>
 					))
 				}
 			/>

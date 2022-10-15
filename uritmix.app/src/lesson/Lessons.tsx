@@ -37,6 +37,7 @@ const Lessons = () => {
 
 	const onCloseModal = (_: number, needReload: boolean) => {
 		if (needReload) dataGrid?.instance.refresh()
+		setCurrent(null)
 		setModalMode(ModalMode.None)
 	}
 

@@ -1402,6 +1402,43 @@ export const AbonnementApiAxiosParamCreator = function (configuration?: Configur
     return {
         /**
          * 
+         * @summary Возвращает абоннемент по id
+         * @param {number} abonnementId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1AbonnementAbonnementIdGet: async (abonnementId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'abonnementId' is not null or undefined
+            assertParamExists('apiV1AbonnementAbonnementIdGet', 'abonnementId', abonnementId)
+            const localVarPath = `/api/v1/abonnement/{abonnementId}`
+                .replace(`{${"abonnementId"}}`, encodeURIComponent(String(abonnementId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Обновляет данные абонимента
          * @param {number} abonnementId 
          * @param {EditAbonnement} [editAbonnement] 
@@ -1625,6 +1662,17 @@ export const AbonnementApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Возвращает абоннемент по id
+         * @param {number} abonnementId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1AbonnementAbonnementIdGet(abonnementId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultAbonnement>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1AbonnementAbonnementIdGet(abonnementId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Обновляет данные абонимента
          * @param {number} abonnementId 
          * @param {EditAbonnement} [editAbonnement] 
@@ -1694,6 +1742,16 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
     return {
         /**
          * 
+         * @summary Возвращает абоннемент по id
+         * @param {number} abonnementId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1AbonnementAbonnementIdGet(abonnementId: number, options?: any): AxiosPromise<ResultAbonnement> {
+            return localVarFp.apiV1AbonnementAbonnementIdGet(abonnementId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Обновляет данные абонимента
          * @param {number} abonnementId 
          * @param {EditAbonnement} [editAbonnement] 
@@ -1756,6 +1814,18 @@ export const AbonnementApiFactory = function (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export class AbonnementApi extends BaseAPI {
+    /**
+     * 
+     * @summary Возвращает абоннемент по id
+     * @param {number} abonnementId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AbonnementApi
+     */
+    public apiV1AbonnementAbonnementIdGet(abonnementId: number, options?: AxiosRequestConfig) {
+        return AbonnementApiFp(this.configuration).apiV1AbonnementAbonnementIdGet(abonnementId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Обновляет данные абонимента

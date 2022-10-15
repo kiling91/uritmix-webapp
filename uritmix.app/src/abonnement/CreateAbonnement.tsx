@@ -18,8 +18,8 @@ import { AbonnementDomain } from '../domainConfig'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import AbonnementStore from './store/abonnementStore'
 import ShowErrors from '../ui/ShowErrors'
-import { createLessonsLookupStore } from './store/lessonsLookupStore'
-import { discountLookup, validityLookup } from './lookup'
+import { createLessonsLookupStore } from '../store/lessonsLookupStore'
+import { discountLookup, validityLookup } from '../base/lookup'
 
 interface Param {
 	abonnement?: dto.Abonnement | null
@@ -253,7 +253,7 @@ const CreateEditAbonnement = observer((param: Param) => {
 						stylingMode='contained'
 						disabled={store.loading}
 					>
-						{store.loading ? '...' : 'Create'}
+						{store.loading ? '...' : buttonTitle()}
 					</Button>
 				</div>
 			</form>
@@ -261,7 +261,13 @@ const CreateEditAbonnement = observer((param: Param) => {
 	}
 
 	const title = () => {
-		return 'Create abonnement'
+		if (param.abonnement == null) return 'Create abonnement'
+		return 'Edit abonnement'
+	}
+
+	const buttonTitle = () => {
+		if (param.abonnement == null) return 'Create'
+		return 'Edit'
 	}
 
 	return (
