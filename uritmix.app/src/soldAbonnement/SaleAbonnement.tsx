@@ -83,15 +83,15 @@ const SaleAbonnement = observer((param: Param) => {
 					</tr>
 					<tr>
 						<td>
-							<b>{'Number of visits'}</b>
+							<b>{'Max number of visits'}</b>
 						</td>
-						<td>{abonnement.numberOfVisits}</td>
+						<td>{abonnement.maxNumberOfVisits}</td>
 					</tr>
 					<tr>
 						<td>
 							<b>{'Max discount'}</b>
 						</td>
-						<td>{discountToString(abonnement.discount)}</td>
+						<td>{discountToString(abonnement.maxDiscount)}</td>
 					</tr>
 					<tr>
 						<td>
@@ -102,10 +102,8 @@ const SaleAbonnement = observer((param: Param) => {
 					<tr>
 						<td colSpan={2}>
 							{abonnement.lessons.map(lesson => (
-								<h5 className='d-inline'>
-									<span key={lesson.id} className='badge bg-secondary me-1'>
-										{lesson.name}
-									</span>
+								<h5 key={lesson.id} className='d-inline'>
+									<span className='badge bg-secondary me-1'>{lesson.name}</span>
 								</h5>
 							))}
 						</td>
@@ -119,7 +117,7 @@ const SaleAbonnement = observer((param: Param) => {
 		let discount = discountLookup()
 		let result: { id: dto.DiscountView; name: string }[] = []
 		for (let d of discount) {
-			if (d.id <= abonnement.discount) {
+			if (d.id <= abonnement.maxDiscount) {
 				result.push(d)
 			}
 		}

@@ -41,7 +41,7 @@ export interface Abonnement {
      * @type {number}
      * @memberof Abonnement
      */
-    'numberOfVisits'?: number;
+    'maxNumberOfVisits'?: number;
     /**
      *
      * @type {number}
@@ -53,7 +53,7 @@ export interface Abonnement {
      * @type {DiscountView}
      * @memberof Abonnement
      */
-    'discount'?: DiscountView;
+    'maxDiscount'?: DiscountView;
     /**
      *
      * @type {Array<Lesson>}
@@ -169,7 +169,7 @@ export interface CreateAbonnement {
      * @type {number}
      * @memberof CreateAbonnement
      */
-    'numberOfVisits'?: number;
+    'maxNumberOfVisits'?: number;
     /**
      *
      * @type {number}
@@ -181,7 +181,7 @@ export interface CreateAbonnement {
      * @type {DiscountView}
      * @memberof CreateAbonnement
      */
-    'discount'?: DiscountView;
+    'maxDiscount'?: DiscountView;
     /**
      *
      * @type {Array<number>}
@@ -339,7 +339,7 @@ export interface EditAbonnement {
      * @type {number}
      * @memberof EditAbonnement
      */
-    'numberOfVisits'?: number;
+    'maxNumberOfVisits'?: number;
     /**
      *
      * @type {number}
@@ -351,7 +351,7 @@ export interface EditAbonnement {
      * @type {DiscountView}
      * @memberof EditAbonnement
      */
-    'discount'?: DiscountView;
+    'maxDiscount'?: DiscountView;
     /**
      *
      * @type {Array<number>}
@@ -1310,6 +1310,12 @@ export interface SoldAbonnement {
     'priceSold'?: number;
     /**
      *
+     * @type {DiscountView}
+     * @memberof SoldAbonnement
+     */
+    'discount'?: DiscountView;
+    /**
+     *
      * @type {number}
      * @memberof SoldAbonnement
      */
@@ -1331,19 +1337,13 @@ export interface SoldAbonnement {
      * @type {number}
      * @memberof SoldAbonnement
      */
-    'numberOfVisits'?: number;
+    'maxNumberOfVisits'?: number;
     /**
      *
      * @type {number}
      * @memberof SoldAbonnement
      */
     'basePrice'?: number;
-    /**
-     *
-     * @type {DiscountView}
-     * @memberof SoldAbonnement
-     */
-    'discount'?: DiscountView;
     /**
      *
      * @type {Array<Lesson>}

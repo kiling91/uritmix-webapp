@@ -94,21 +94,24 @@ const PersonData = observer(() => {
 							</td>
 							<td>{data.description}</td>
 						</tr>
-						<tr>
-							<td colSpan={2}>
-								{data.isTrainer && (
-									<span className='badge rounded-pill text-bg-primary me-1'>
-										{'Trainer'}
-									</span>
-								)}
-								{/*TODO: Client*/}
-								{data.haveAuth && (
-									<span className='badge rounded-pill text-bg-warning me-1'>
-										{'Account'}
-									</span>
-								)}
-							</td>
-						</tr>
+						{data.isTrainer ||
+							(data.haveAuth && (
+								<tr>
+									<td colSpan={2}>
+										{data.isTrainer && (
+											<span className='badge rounded-pill text-bg-primary me-1'>
+												{'Trainer'}
+											</span>
+										)}
+										{/*TODO: Client*/}
+										{data.haveAuth && (
+											<span className='badge rounded-pill text-bg-warning me-1'>
+												{'Account'}
+											</span>
+										)}
+									</td>
+								</tr>
+							))}
 						<tr>
 							<td colSpan={2}>
 								<button type='button' className='btn btn-success btn-sm mx-1'>

@@ -12,6 +12,7 @@ import DataGrid, {
 import abonnementsStore from './store/abonnementsStore'
 import { dto } from 'uritmix.api'
 import { discountLookup, validityLookup } from '../base/lookup'
+import { nameof } from 'ts-simple-nameof'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void
@@ -58,20 +59,20 @@ const AbonnementsTable = ({ initDataGrid, onEditClick }: Param) => {
 			<FilterRow visible={true} />
 			{/**/}
 			<Column
-				dataField='id'
+				dataField={nameof<dto.Abonnement>(o => o.id)}
 				caption={'ID'}
 				dataType='number'
 				allowHeaderFiltering={false}
 				allowEditing={false}
 			/>
 			<Column
-				dataField='name'
+				dataField={nameof<dto.Abonnement>(o => o.name)}
 				caption={'Name'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='validity'
+				dataField={nameof<dto.Abonnement>(o => o.validity)}
 				caption={'Validity'}
 				//allowSorting={false}
 				allowHeaderFiltering={true}
@@ -84,16 +85,16 @@ const AbonnementsTable = ({ initDataGrid, onEditClick }: Param) => {
 				/>
 			</Column>
 			<Column
-				dataField='basePrice'
-				caption={'Price'}
+				dataField={nameof<dto.Abonnement>(o => o.basePrice)}
+				caption={'Base price'}
 				type={'number'}
 				//allowSorting={false}
 				allowHeaderFiltering={true}
 				allowSearch={false}
 			/>
 			<Column
-				dataField='discount'
-				caption={'Discount'}
+				dataField={nameof<dto.Abonnement>(o => o.maxDiscount)}
+				caption={'Max discount'}
 				//allowSorting={false}
 				allowHeaderFiltering={true}
 				allowSearch={false}
@@ -105,14 +106,14 @@ const AbonnementsTable = ({ initDataGrid, onEditClick }: Param) => {
 				/>
 			</Column>
 			<Column
-				dataField='numberOfVisits'
-				caption={'Number of visits'}
+				dataField={nameof<dto.Abonnement>(o => o.maxNumberOfVisits)}
+				caption={'Max number of visits'}
 				type={'number'}
 				allowHeaderFiltering={true}
 				allowSearch={false}
 			/>
 			<Column
-				dataField='lessons'
+				dataField={nameof<dto.Abonnement>(o => o.lessons)}
 				caption={'Lessons'}
 				allowHeaderFiltering={false}
 				allowSearch={false}

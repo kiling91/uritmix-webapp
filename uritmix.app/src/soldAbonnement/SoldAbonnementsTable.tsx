@@ -10,6 +10,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid'
 import { dto } from 'uritmix.api'
 import abonnementsStore from './store/soldAbonnementsStore'
+import { nameof } from 'ts-simple-nameof'
 
 interface Param {
 	personId: number
@@ -57,52 +58,52 @@ const SoldAbonnementsTable = ({ personId, initDataGrid, onSelect }: Param) => {
 			<FilterRow visible={true} />
 			{/**/}
 			<Column
-				dataField='id'
+				dataField={nameof<dto.SoldAbonnement>(o => o.id)}
 				caption={'ID'}
 				dataType='number'
 				allowHeaderFiltering={false}
 				allowEditing={false}
 			/>
 			<Column
-				dataField='active'
+				dataField={nameof<dto.SoldAbonnement>(o => o.active)}
 				caption={'Active'}
 				dataType='boolean'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='name'
+				dataField={nameof<dto.SoldAbonnement>(o => o.name)}
 				caption={'Abonnement name'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='dateSale'
+				dataField={nameof<dto.SoldAbonnement>(o => o.dateSale)}
 				caption={'Date Sale'}
 				dataType='date'
 				allowHeaderFiltering={true}
 			/>
 			<Column
-				dataField='dateExpiration'
+				dataField={nameof<dto.SoldAbonnement>(o => o.dateExpiration)}
 				caption={'Date expiration'}
 				dataType='date'
 				format={'shortDate'}
 				allowHeaderFiltering={true}
 			/>
 			<Column
-				dataField='visitCounter'
+				dataField={nameof<dto.SoldAbonnement>(o => o.visitCounter)}
 				caption={'Number of visits'}
 				dataType='number'
 				allowHeaderFiltering={true}
 				cellRender={data => {
 					return (
 						<div key={data.row.data}>
-							{data.value}/{data.row.data.numberOfVisits}
+							{data.value}/{data.row.data.maxNumberOfVisits}
 						</div>
 					)
 				}}
 			/>
 			<Column
-				dataField='lessons'
+				dataField={nameof<dto.SoldAbonnement>(o => o.lessons)}
 				caption={'Lessons'}
 				allowHeaderFiltering={false}
 				allowSearch={false}

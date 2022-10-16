@@ -10,6 +10,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid'
 import roomsStore from './store/roomsStore'
 import { dto } from 'uritmix.api'
+import { nameof } from 'ts-simple-nameof'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void
@@ -56,21 +57,21 @@ const RoomsTable = ({ initDataGrid, onEdit }: Param) => {
 			<FilterRow visible={true} />
 			{/**/}
 			<Column
-				dataField='id'
+				dataField={nameof<dto.Room>(o => o.id)}
 				caption={'ID'}
 				dataType='number'
 				allowHeaderFiltering={false}
 				allowEditing={false}
 			/>
 			<Column
-				dataField='name'
+				dataField={nameof<dto.Room>(o => o.name)}
 				caption={'Name'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
 
 			<Column
-				dataField='description'
+				dataField={nameof<dto.Room>(o => o.description)}
 				caption={'Description'}
 				dataType='string'
 				allowHeaderFiltering={false}

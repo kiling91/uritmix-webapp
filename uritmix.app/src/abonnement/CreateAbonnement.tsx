@@ -1,14 +1,7 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { observer, useLocalObservable } from 'mobx-react-lite'
 import { Popup } from 'devextreme-react/popup'
-import {
-	Button,
-	CheckBox,
-	TagBox,
-	TextArea,
-	TextBox,
-	Validator
-} from 'devextreme-react'
+import { Button, TagBox, TextBox, Validator } from 'devextreme-react'
 import { Lookup, DropDownOptions } from 'devextreme-react/lookup'
 import { RequiredRule, StringLengthRule } from 'devextreme-react/validator'
 import NumberBox from 'devextreme-react/number-box'
@@ -45,14 +38,14 @@ const CreateEditAbonnement = observer((param: Param) => {
 	const [validity, setValidity] = useState(
 		param.abonnement?.validity || dto.AbonnementValidityView.OneDay
 	)
-	const [numberOfVisits, setNumberOfVisits] = useState<number>(
-		param.abonnement?.numberOfVisits || AbonnementDomain.NumberOfVisitsMin
+	const [maxNumberOfVisits, setNumberOfVisits] = useState<number>(
+		param.abonnement?.maxNumberOfVisits || AbonnementDomain.NumberOfVisitsMin
 	)
 	const [basePrice, setBasePrice] = useState<number>(
 		param.abonnement?.basePrice || AbonnementDomain.BasePriceMin
 	)
-	const [discount, setDiscount] = useState(
-		param.abonnement?.discount || dto.DiscountView.D0
+	const [maxDiscount, setDiscount] = useState(
+		param.abonnement?.maxDiscount || dto.DiscountView.D0
 	)
 
 	const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -66,20 +59,20 @@ const CreateEditAbonnement = observer((param: Param) => {
 			const res = await store.edit(param.abonnement.id, {
 				name: name,
 				validity: validity,
-				numberOfVisits: numberOfVisits,
+				maxNumberOfVisits: maxNumberOfVisits,
 				basePrice: basePrice,
 				lessonIds: lessonsId,
-				discount: discount
+				maxDiscount: maxDiscount
 			})
 			if (res && store.value?.id) param.onClose(store.value.id, true)
 		} else {
 			const res = await store.create({
 				name: name,
 				validity: validity,
-				numberOfVisits: numberOfVisits,
+				maxNumberOfVisits: maxNumberOfVisits,
 				basePrice: basePrice,
 				lessonIds: lessonsId,
-				discount: discount
+				maxDiscount: maxDiscount
 			})
 			if (res && store.value?.id) param.onClose(store.value.id, true)
 		}
@@ -184,10 +177,9 @@ const CreateEditAbonnement = observer((param: Param) => {
 						<label className='small mb-1' htmlFor='inputName'>
 							{'Max number of visits'}
 						</label>
-
 						<NumberBox
 							disabled={store.loading}
-							defaultValue={numberOfVisits}
+							defaultValue={maxNumberOfVisits}
 							onValueChanged={e => setNumberOfVisits(e.value)}
 							showSpinButtons={true}
 							min={AbonnementDomain.NumberOfVisitsMin}
@@ -198,7 +190,7 @@ const CreateEditAbonnement = observer((param: Param) => {
 					{/*Price*/}
 					<div className='required'>
 						<label className='small mb-1' htmlFor='inputName'>
-							{'Price'}
+							{'Base price'}
 						</label>
 						<NumberBox
 							disabled={store.loading}
@@ -224,7 +216,7 @@ const CreateEditAbonnement = observer((param: Param) => {
 							displayExpr='name'
 							valueExpr='id'
 							searchEnabled={false}
-							value={discount}
+							value={maxDiscount}
 							onValueChanged={e => setDiscount(e.value)}
 						>
 							<DropDownOptions showTitle={false} />

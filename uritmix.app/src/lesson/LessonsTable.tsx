@@ -10,6 +10,7 @@ import DataGrid, {
 } from 'devextreme-react/data-grid'
 import lessonsStore from './store/lessonsStore'
 import { dto } from 'uritmix.api'
+import { nameof } from 'ts-simple-nameof'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void
@@ -56,20 +57,20 @@ const LessonsTable = ({ initDataGrid, onEdit }: Param) => {
 			<FilterRow visible={true} />
 			{/**/}
 			<Column
-				dataField='id'
+				dataField={nameof<dto.Lesson>(o => o.id)}
 				caption={'ID'}
 				dataType='number'
 				allowHeaderFiltering={false}
 				allowEditing={false}
 			/>
 			<Column
-				dataField='name'
+				dataField={nameof<dto.Lesson>(o => o.name)}
 				caption={'Name'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='trainer'
+				dataField={nameof<dto.Lesson>(o => o.trainer)}
 				caption={'Trainer'}
 				dataType='string'
 				allowHeaderFiltering={false}
@@ -81,19 +82,19 @@ const LessonsTable = ({ initDataGrid, onEdit }: Param) => {
 			/>
 
 			<Column
-				dataField='durationMinute'
+				dataField={nameof<dto.Lesson>(o => o.durationMinute)}
 				caption={'Duration (minute)'}
 				dataType='number'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='basePrice'
+				dataField={nameof<dto.Lesson>(o => o.basePrice)}
 				caption={'Trainer price'}
 				dataType='number'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='description'
+				dataField={nameof<dto.Lesson>(o => o.description)}
 				caption={'Description'}
 				dataType='string'
 				allowHeaderFiltering={false}

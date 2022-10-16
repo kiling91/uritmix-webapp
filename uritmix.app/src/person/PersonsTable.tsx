@@ -4,13 +4,13 @@ import DataGrid, {
 	Column,
 	Editing,
 	FilterRow,
-	Lookup,
 	Pager,
 	Paging,
 	Scrolling
 } from 'devextreme-react/data-grid'
 import personsDataStore from './store/personsStore'
 import { dto } from 'uritmix.api'
+import { nameof } from 'ts-simple-nameof'
 
 interface Param {
 	initDataGrid: (dataGrid: DataGrid) => void
@@ -57,38 +57,38 @@ const PersonsTable = ({ initDataGrid, onSelect }: Param) => {
 			<FilterRow visible={true} />
 			{/**/}
 			<Column
-				dataField='id'
+				dataField={nameof<dto.Person>(o => o.id)}
 				caption={'ID'}
 				dataType='number'
 				allowHeaderFiltering={false}
 				allowEditing={false}
 			/>
 			<Column
-				dataField='firstName'
+				dataField={nameof<dto.Person>(o => o.firstName)}
 				caption={'Firstname'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='lastName'
+				dataField={nameof<dto.Person>(o => o.lastName)}
 				caption={'Lastname'}
 				dataType='string'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='isTrainer'
+				dataField={nameof<dto.Person>(o => o.isTrainer)}
 				caption={'Trainer'}
 				dataType='boolean'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='haveAuth'
+				dataField={nameof<dto.Person>(o => o.haveAuth)}
 				caption={'Auth'}
 				dataType='boolean'
 				allowHeaderFiltering={false}
 			/>
 			<Column
-				dataField='auth.email'
+				dataField={nameof<dto.Person>(o => o.auth.email)}
 				caption={'Email'}
 				dataType='string'
 				allowHeaderFiltering={false}

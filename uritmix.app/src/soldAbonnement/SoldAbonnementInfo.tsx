@@ -47,7 +47,7 @@ const SoldAbonnementInfo = observer((param: Param) => {
 							<td>
 								<b>{'Max number of visits'}</b>
 							</td>
-							<td>{param.soldAbonnement.numberOfVisits}</td>
+							<td>{param.soldAbonnement.maxNumberOfVisits}</td>
 						</tr>
 						<tr>
 							<td>
@@ -64,8 +64,8 @@ const SoldAbonnementInfo = observer((param: Param) => {
 						<tr>
 							<td colSpan={2}>
 								{param.soldAbonnement.lessons.map(lesson => (
-									<h5 className='d-inline'>
-										<span key={lesson.id} className='badge bg-secondary me-1'>
+									<h5 key={lesson.id} className='d-inline'>
+										<span className='badge bg-secondary me-1'>
 											{lesson.name}
 										</span>
 									</h5>
