@@ -5,7 +5,7 @@ import { dto } from 'uritmix.api'
 import Tooltip from '../ui/Tooltip'
 import Visibility from '../ui/Visibility'
 import AbonnementsTable from './AbonnementsTable'
-import CreateAbonnement from './CreateAbonnement'
+import CreateAbonnement from './CreateEditAbonnement'
 
 enum ModalMode {
 	Create,

@@ -1,7 +1,7 @@
 import CustomStore from 'devextreme/data/custom_store'
-import { catchHttp, checkErrors } from '../../base/catchError'
+import { catchHttp, checkErrors } from '../base/catchError'
 import { Api, dto } from 'uritmix.api'
-import { Paginator } from '../../base/paginator'
+import { Paginator } from '../base/paginator'
 
 export class AbonnementsLookupStore {
 	private abonnements: dto.Abonnement[] = []
