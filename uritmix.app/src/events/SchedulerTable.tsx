@@ -7,6 +7,7 @@ import moment from 'moment'
 import * as Icon from 'react-feather'
 import { dto } from 'uritmix.api'
 import EventsStore from './store/eventssStore'
+import Visibility from '../ui/Visibility'
 
 const Appointment = model => {
 	const { targetedAppointmentData } = model.data
@@ -84,7 +85,7 @@ const AppointmentTooltip = (param: TooltipParam) => {
 				</div>
 			</div>
 
-			<div>
+			<Visibility visible={param.value.type == dto.EventTypeView.NotStarted}>
 				<div className='d-inline'>
 					<Button
 						icon='edit'
@@ -103,7 +104,7 @@ const AppointmentTooltip = (param: TooltipParam) => {
 						onClick={onDelete}
 					/>
 				</div>
-			</div>
+			</Visibility>
 		</div>
 	)
 }

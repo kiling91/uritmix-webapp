@@ -2040,6 +2040,14 @@ export declare const EventApiAxiosParamCreator: (configuration?: Configuration |
      *
      * @summary Обновляет событие
      * @param {number} eventId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdDelete: (eventId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
      * @param {EditEvent} [editEvent]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2068,6 +2076,14 @@ export declare const EventApiAxiosParamCreator: (configuration?: Configuration |
  * @export
  */
 export declare const EventApiFp: (configuration?: Configuration | undefined) => {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdDelete(eventId: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultUnit>>;
     /**
      *
      * @summary Обновляет событие
@@ -2104,6 +2120,14 @@ export declare const EventApiFactory: (configuration?: Configuration | undefined
      *
      * @summary Обновляет событие
      * @param {number} eventId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdDelete(eventId: number, options?: any): AxiosPromise<ResultUnit>;
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
      * @param {EditEvent} [editEvent]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2134,6 +2158,15 @@ export declare const EventApiFactory: (configuration?: Configuration | undefined
  * @extends {BaseAPI}
  */
 export declare class EventApi extends BaseAPI {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    apiV1EventEventIdDelete(eventId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultUnit, any>>;
     /**
      *
      * @summary Обновляет событие

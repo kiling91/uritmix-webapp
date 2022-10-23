@@ -2484,16 +2484,77 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
      *
      * @summary Обновляет событие
      * @param {number} eventId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdDelete: function () {
+      var _apiV1EventEventIdDelete = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee27(eventId, options) {
+        var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+        return _regeneratorRuntime().wrap(function _callee27$(_context27) {
+          while (1) {
+            switch (_context27.prev = _context27.next) {
+              case 0:
+                if (options === void 0) {
+                  options = {};
+                }
+
+                // verify required parameter 'eventId' is not null or undefined
+                assertParamExists('apiV1EventEventIdDelete', 'eventId', eventId);
+                localVarPath = "/api/v1/event/{eventId}".replace("{" + "eventId" + "}", encodeURIComponent(String(eventId))); // use dummy base URL string because the URL constructor only accepts absolute URLs.
+
+                localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+
+                if (configuration) {
+                  baseOptions = configuration.baseOptions;
+                }
+
+                localVarRequestOptions = _extends({
+                  method: 'DELETE'
+                }, baseOptions, options);
+                localVarHeaderParameter = {};
+                localVarQueryParameter = {}; // authentication Bearer required
+
+                _context27.next = 10;
+                return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
+
+              case 10:
+                setSearchParams(localVarUrlObj, localVarQueryParameter);
+                headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
+                return _context27.abrupt("return", {
+                  url: toPathString(localVarUrlObj),
+                  options: localVarRequestOptions
+                });
+
+              case 14:
+              case "end":
+                return _context27.stop();
+            }
+          }
+        }, _callee27);
+      }));
+
+      function apiV1EventEventIdDelete(_x32, _x33) {
+        return _apiV1EventEventIdDelete.apply(this, arguments);
+      }
+
+      return apiV1EventEventIdDelete;
+    }(),
+
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
      * @param {EditEvent} [editEvent]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     apiV1EventEventIdPut: function () {
-      var _apiV1EventEventIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee27(eventId, editEvent, options) {
+      var _apiV1EventEventIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee28(eventId, editEvent, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee27$(_context27) {
+        return _regeneratorRuntime().wrap(function _callee28$(_context28) {
           while (1) {
-            switch (_context27.prev = _context27.next) {
+            switch (_context28.prev = _context28.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -2515,7 +2576,7 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context27.next = 10;
+                _context28.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
@@ -2524,20 +2585,20 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(editEvent, localVarRequestOptions, configuration);
-                return _context27.abrupt("return", {
+                return _context28.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 16:
               case "end":
-                return _context27.stop();
+                return _context28.stop();
             }
           }
-        }, _callee27);
+        }, _callee28);
       }));
 
-      function apiV1EventEventIdPut(_x32, _x33, _x34) {
+      function apiV1EventEventIdPut(_x34, _x35, _x36) {
         return _apiV1EventEventIdPut.apply(this, arguments);
       }
 
@@ -2553,11 +2614,11 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
      * @throws {RequiredError}
      */
     apiV1EventGet: function () {
-      var _apiV1EventGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee28(startDate, endDate, options) {
+      var _apiV1EventGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee29(startDate, endDate, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee28$(_context28) {
+        return _regeneratorRuntime().wrap(function _callee29$(_context29) {
           while (1) {
-            switch (_context28.prev = _context28.next) {
+            switch (_context29.prev = _context29.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -2577,7 +2638,7 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context28.next = 9;
+                _context29.next = 9;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 9:
@@ -2592,20 +2653,20 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context28.abrupt("return", {
+                return _context29.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 15:
               case "end":
-                return _context28.stop();
+                return _context29.stop();
             }
           }
-        }, _callee28);
+        }, _callee29);
       }));
 
-      function apiV1EventGet(_x35, _x36, _x37) {
+      function apiV1EventGet(_x37, _x38, _x39) {
         return _apiV1EventGet.apply(this, arguments);
       }
 
@@ -2620,11 +2681,11 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
      * @throws {RequiredError}
      */
     apiV1EventPost: function () {
-      var _apiV1EventPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee29(createEvent, options) {
+      var _apiV1EventPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee30(createEvent, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee29$(_context29) {
+        return _regeneratorRuntime().wrap(function _callee30$(_context30) {
           while (1) {
-            switch (_context29.prev = _context29.next) {
+            switch (_context30.prev = _context30.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -2644,7 +2705,7 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context29.next = 9;
+                _context30.next = 9;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 9:
@@ -2653,20 +2714,20 @@ var EventApiAxiosParamCreator = function EventApiAxiosParamCreator(configuration
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(createEvent, localVarRequestOptions, configuration);
-                return _context29.abrupt("return", {
+                return _context30.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 15:
               case "end":
-                return _context29.stop();
+                return _context30.stop();
             }
           }
-        }, _callee29);
+        }, _callee30);
       }));
 
-      function apiV1EventPost(_x38, _x39) {
+      function apiV1EventPost(_x40, _x41) {
         return _apiV1EventPost.apply(this, arguments);
       }
 
@@ -2686,42 +2747,10 @@ var EventApiFp = function EventApiFp(configuration) {
      *
      * @summary Обновляет событие
      * @param {number} eventId
-     * @param {EditEvent} [editEvent]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiV1EventEventIdPut: function apiV1EventEventIdPut(eventId, editEvent, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee30() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee30$(_context30) {
-          while (1) {
-            switch (_context30.prev = _context30.next) {
-              case 0:
-                _context30.next = 2;
-                return localVarAxiosParamCreator.apiV1EventEventIdPut(eventId, editEvent, options);
-
-              case 2:
-                localVarAxiosArgs = _context30.sent;
-                return _context30.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context30.stop();
-            }
-          }
-        }, _callee30);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Возвращает список событий
-     * @param {string} [startDate]
-     * @param {string} [endDate]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1EventGet: function apiV1EventGet(startDate, endDate, options) {
+    apiV1EventEventIdDelete: function apiV1EventEventIdDelete(eventId, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee31() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee31$(_context31) {
@@ -2729,7 +2758,7 @@ var EventApiFp = function EventApiFp(configuration) {
             switch (_context31.prev = _context31.next) {
               case 0:
                 _context31.next = 2;
-                return localVarAxiosParamCreator.apiV1EventGet(startDate, endDate, options);
+                return localVarAxiosParamCreator.apiV1EventEventIdDelete(eventId, options);
 
               case 2:
                 localVarAxiosArgs = _context31.sent;
@@ -2746,12 +2775,13 @@ var EventApiFp = function EventApiFp(configuration) {
 
     /**
      *
-     * @summary Создает новое событие занятия
-     * @param {CreateEvent} [createEvent]
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {EditEvent} [editEvent]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiV1EventPost: function apiV1EventPost(createEvent, options) {
+    apiV1EventEventIdPut: function apiV1EventEventIdPut(eventId, editEvent, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee32() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee32$(_context32) {
@@ -2759,7 +2789,7 @@ var EventApiFp = function EventApiFp(configuration) {
             switch (_context32.prev = _context32.next) {
               case 0:
                 _context32.next = 2;
-                return localVarAxiosParamCreator.apiV1EventPost(createEvent, options);
+                return localVarAxiosParamCreator.apiV1EventEventIdPut(eventId, editEvent, options);
 
               case 2:
                 localVarAxiosArgs = _context32.sent;
@@ -2772,6 +2802,67 @@ var EventApiFp = function EventApiFp(configuration) {
           }
         }, _callee32);
       }))();
+    },
+
+    /**
+     *
+     * @summary Возвращает список событий
+     * @param {string} [startDate]
+     * @param {string} [endDate]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventGet: function apiV1EventGet(startDate, endDate, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee33() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee33$(_context33) {
+          while (1) {
+            switch (_context33.prev = _context33.next) {
+              case 0:
+                _context33.next = 2;
+                return localVarAxiosParamCreator.apiV1EventGet(startDate, endDate, options);
+
+              case 2:
+                localVarAxiosArgs = _context33.sent;
+                return _context33.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context33.stop();
+            }
+          }
+        }, _callee33);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Создает новое событие занятия
+     * @param {CreateEvent} [createEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventPost: function apiV1EventPost(createEvent, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee34() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee34$(_context34) {
+          while (1) {
+            switch (_context34.prev = _context34.next) {
+              case 0:
+                _context34.next = 2;
+                return localVarAxiosParamCreator.apiV1EventPost(createEvent, options);
+
+              case 2:
+                localVarAxiosArgs = _context34.sent;
+                return _context34.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context34.stop();
+            }
+          }
+        }, _callee34);
+      }))();
     }
   };
 };
@@ -2783,6 +2874,19 @@ var EventApiFp = function EventApiFp(configuration) {
 var EventApiFactory = function EventApiFactory(configuration, basePath, axios) {
   var localVarFp = EventApiFp(configuration);
   return {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdDelete: function apiV1EventEventIdDelete(eventId, options) {
+      return localVarFp.apiV1EventEventIdDelete(eventId, options).then(function (request) {
+        return request(axios, basePath);
+      });
+    },
+
     /**
      *
      * @summary Обновляет событие
@@ -2845,16 +2949,33 @@ var EventApi = /*#__PURE__*/function (_BaseAPI3) {
    *
    * @summary Обновляет событие
    * @param {number} eventId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof EventApi
+   */
+  _proto3.apiV1EventEventIdDelete = function apiV1EventEventIdDelete(eventId, options) {
+    var _this14 = this;
+
+    return EventApiFp(this.configuration).apiV1EventEventIdDelete(eventId, options).then(function (request) {
+      return request(_this14.axios, _this14.basePath);
+    });
+  }
+  /**
+   *
+   * @summary Обновляет событие
+   * @param {number} eventId
    * @param {EditEvent} [editEvent]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof EventApi
    */
+  ;
+
   _proto3.apiV1EventEventIdPut = function apiV1EventEventIdPut(eventId, editEvent, options) {
-    var _this14 = this;
+    var _this15 = this;
 
     return EventApiFp(this.configuration).apiV1EventEventIdPut(eventId, editEvent, options).then(function (request) {
-      return request(_this14.axios, _this14.basePath);
+      return request(_this15.axios, _this15.basePath);
     });
   }
   /**
@@ -2869,10 +2990,10 @@ var EventApi = /*#__PURE__*/function (_BaseAPI3) {
   ;
 
   _proto3.apiV1EventGet = function apiV1EventGet(startDate, endDate, options) {
-    var _this15 = this;
+    var _this16 = this;
 
     return EventApiFp(this.configuration).apiV1EventGet(startDate, endDate, options).then(function (request) {
-      return request(_this15.axios, _this15.basePath);
+      return request(_this16.axios, _this16.basePath);
     });
   }
   /**
@@ -2886,10 +3007,10 @@ var EventApi = /*#__PURE__*/function (_BaseAPI3) {
   ;
 
   _proto3.apiV1EventPost = function apiV1EventPost(createEvent, options) {
-    var _this16 = this;
+    var _this17 = this;
 
     return EventApiFp(this.configuration).apiV1EventPost(createEvent, options).then(function (request) {
-      return request(_this16.axios, _this16.basePath);
+      return request(_this17.axios, _this17.basePath);
     });
   };
 
@@ -2911,11 +3032,11 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1LessonGet: function () {
-      var _apiV1LessonGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee33(pageSize, pageNumber, options) {
+      var _apiV1LessonGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee35(pageSize, pageNumber, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee33$(_context33) {
+        return _regeneratorRuntime().wrap(function _callee35$(_context35) {
           while (1) {
-            switch (_context33.prev = _context33.next) {
+            switch (_context35.prev = _context35.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -2939,7 +3060,7 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context33.next = 11;
+                _context35.next = 11;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 11:
@@ -2954,20 +3075,20 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context33.abrupt("return", {
+                return _context35.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 17:
               case "end":
-                return _context33.stop();
+                return _context35.stop();
             }
           }
-        }, _callee33);
+        }, _callee35);
       }));
 
-      function apiV1LessonGet(_x40, _x41, _x42) {
+      function apiV1LessonGet(_x42, _x43, _x44) {
         return _apiV1LessonGet.apply(this, arguments);
       }
 
@@ -2982,11 +3103,11 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1LessonLessonIdGet: function () {
-      var _apiV1LessonLessonIdGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee34(lessonId, options) {
+      var _apiV1LessonLessonIdGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee36(lessonId, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee34$(_context34) {
+        return _regeneratorRuntime().wrap(function _callee36$(_context36) {
           while (1) {
-            switch (_context34.prev = _context34.next) {
+            switch (_context36.prev = _context36.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3008,27 +3129,27 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context34.next = 10;
+                _context36.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context34.abrupt("return", {
+                return _context36.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 14:
               case "end":
-                return _context34.stop();
+                return _context36.stop();
             }
           }
-        }, _callee34);
+        }, _callee36);
       }));
 
-      function apiV1LessonLessonIdGet(_x43, _x44) {
+      function apiV1LessonLessonIdGet(_x45, _x46) {
         return _apiV1LessonLessonIdGet.apply(this, arguments);
       }
 
@@ -3044,11 +3165,11 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1LessonLessonIdPut: function () {
-      var _apiV1LessonLessonIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee35(lessonId, editLesson, options) {
+      var _apiV1LessonLessonIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee37(lessonId, editLesson, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee35$(_context35) {
+        return _regeneratorRuntime().wrap(function _callee37$(_context37) {
           while (1) {
-            switch (_context35.prev = _context35.next) {
+            switch (_context37.prev = _context37.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3070,7 +3191,7 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context35.next = 10;
+                _context37.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
@@ -3079,20 +3200,20 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(editLesson, localVarRequestOptions, configuration);
-                return _context35.abrupt("return", {
+                return _context37.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 16:
               case "end":
-                return _context35.stop();
+                return _context37.stop();
             }
           }
-        }, _callee35);
+        }, _callee37);
       }));
 
-      function apiV1LessonLessonIdPut(_x45, _x46, _x47) {
+      function apiV1LessonLessonIdPut(_x47, _x48, _x49) {
         return _apiV1LessonLessonIdPut.apply(this, arguments);
       }
 
@@ -3107,11 +3228,11 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1LessonPost: function () {
-      var _apiV1LessonPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee36(createLesson, options) {
+      var _apiV1LessonPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee38(createLesson, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee36$(_context36) {
+        return _regeneratorRuntime().wrap(function _callee38$(_context38) {
           while (1) {
-            switch (_context36.prev = _context36.next) {
+            switch (_context38.prev = _context38.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3131,7 +3252,7 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context36.next = 9;
+                _context38.next = 9;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 9:
@@ -3140,20 +3261,20 @@ var LessonApiAxiosParamCreator = function LessonApiAxiosParamCreator(configurati
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(createLesson, localVarRequestOptions, configuration);
-                return _context36.abrupt("return", {
+                return _context38.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 15:
               case "end":
-                return _context36.stop();
+                return _context38.stop();
             }
           }
-        }, _callee36);
+        }, _callee38);
       }));
 
-      function apiV1LessonPost(_x48, _x49) {
+      function apiV1LessonPost(_x50, _x51) {
         return _apiV1LessonPost.apply(this, arguments);
       }
 
@@ -3178,67 +3299,6 @@ var LessonApiFp = function LessonApiFp(configuration) {
      * @throws {RequiredError}
      */
     apiV1LessonGet: function apiV1LessonGet(pageSize, pageNumber, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee37() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee37$(_context37) {
-          while (1) {
-            switch (_context37.prev = _context37.next) {
-              case 0:
-                _context37.next = 2;
-                return localVarAxiosParamCreator.apiV1LessonGet(pageSize, pageNumber, options);
-
-              case 2:
-                localVarAxiosArgs = _context37.sent;
-                return _context37.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context37.stop();
-            }
-          }
-        }, _callee37);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Возвращает занятие по id
-     * @param {number} lessonId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1LessonLessonIdGet: function apiV1LessonLessonIdGet(lessonId, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee38() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee38$(_context38) {
-          while (1) {
-            switch (_context38.prev = _context38.next) {
-              case 0:
-                _context38.next = 2;
-                return localVarAxiosParamCreator.apiV1LessonLessonIdGet(lessonId, options);
-
-              case 2:
-                localVarAxiosArgs = _context38.sent;
-                return _context38.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context38.stop();
-            }
-          }
-        }, _callee38);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Обновляет данные занятия
-     * @param {number} lessonId
-     * @param {EditLesson} [editLesson]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1LessonLessonIdPut: function apiV1LessonLessonIdPut(lessonId, editLesson, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee39() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee39$(_context39) {
@@ -3246,7 +3306,7 @@ var LessonApiFp = function LessonApiFp(configuration) {
             switch (_context39.prev = _context39.next) {
               case 0:
                 _context39.next = 2;
-                return localVarAxiosParamCreator.apiV1LessonLessonIdPut(lessonId, editLesson, options);
+                return localVarAxiosParamCreator.apiV1LessonGet(pageSize, pageNumber, options);
 
               case 2:
                 localVarAxiosArgs = _context39.sent;
@@ -3263,12 +3323,12 @@ var LessonApiFp = function LessonApiFp(configuration) {
 
     /**
      *
-     * @summary Создает новое занятие
-     * @param {CreateLesson} [createLesson]
+     * @summary Возвращает занятие по id
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiV1LessonPost: function apiV1LessonPost(createLesson, options) {
+    apiV1LessonLessonIdGet: function apiV1LessonLessonIdGet(lessonId, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee40() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee40$(_context40) {
@@ -3276,7 +3336,7 @@ var LessonApiFp = function LessonApiFp(configuration) {
             switch (_context40.prev = _context40.next) {
               case 0:
                 _context40.next = 2;
-                return localVarAxiosParamCreator.apiV1LessonPost(createLesson, options);
+                return localVarAxiosParamCreator.apiV1LessonLessonIdGet(lessonId, options);
 
               case 2:
                 localVarAxiosArgs = _context40.sent;
@@ -3288,6 +3348,67 @@ var LessonApiFp = function LessonApiFp(configuration) {
             }
           }
         }, _callee40);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Обновляет данные занятия
+     * @param {number} lessonId
+     * @param {EditLesson} [editLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonLessonIdPut: function apiV1LessonLessonIdPut(lessonId, editLesson, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee41() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee41$(_context41) {
+          while (1) {
+            switch (_context41.prev = _context41.next) {
+              case 0:
+                _context41.next = 2;
+                return localVarAxiosParamCreator.apiV1LessonLessonIdPut(lessonId, editLesson, options);
+
+              case 2:
+                localVarAxiosArgs = _context41.sent;
+                return _context41.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context41.stop();
+            }
+          }
+        }, _callee41);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Создает новое занятие
+     * @param {CreateLesson} [createLesson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1LessonPost: function apiV1LessonPost(createLesson, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee42() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee42$(_context42) {
+          while (1) {
+            switch (_context42.prev = _context42.next) {
+              case 0:
+                _context42.next = 2;
+                return localVarAxiosParamCreator.apiV1LessonPost(createLesson, options);
+
+              case 2:
+                localVarAxiosArgs = _context42.sent;
+                return _context42.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context42.stop();
+            }
+          }
+        }, _callee42);
       }))();
     }
   };
@@ -3381,10 +3502,10 @@ var LessonApi = /*#__PURE__*/function (_BaseAPI4) {
    * @memberof LessonApi
    */
   _proto4.apiV1LessonGet = function apiV1LessonGet(pageSize, pageNumber, options) {
-    var _this17 = this;
+    var _this18 = this;
 
     return LessonApiFp(this.configuration).apiV1LessonGet(pageSize, pageNumber, options).then(function (request) {
-      return request(_this17.axios, _this17.basePath);
+      return request(_this18.axios, _this18.basePath);
     });
   }
   /**
@@ -3398,10 +3519,10 @@ var LessonApi = /*#__PURE__*/function (_BaseAPI4) {
   ;
 
   _proto4.apiV1LessonLessonIdGet = function apiV1LessonLessonIdGet(lessonId, options) {
-    var _this18 = this;
+    var _this19 = this;
 
     return LessonApiFp(this.configuration).apiV1LessonLessonIdGet(lessonId, options).then(function (request) {
-      return request(_this18.axios, _this18.basePath);
+      return request(_this19.axios, _this19.basePath);
     });
   }
   /**
@@ -3416,10 +3537,10 @@ var LessonApi = /*#__PURE__*/function (_BaseAPI4) {
   ;
 
   _proto4.apiV1LessonLessonIdPut = function apiV1LessonLessonIdPut(lessonId, editLesson, options) {
-    var _this19 = this;
+    var _this20 = this;
 
     return LessonApiFp(this.configuration).apiV1LessonLessonIdPut(lessonId, editLesson, options).then(function (request) {
-      return request(_this19.axios, _this19.basePath);
+      return request(_this20.axios, _this20.basePath);
     });
   }
   /**
@@ -3433,10 +3554,10 @@ var LessonApi = /*#__PURE__*/function (_BaseAPI4) {
   ;
 
   _proto4.apiV1LessonPost = function apiV1LessonPost(createLesson, options) {
-    var _this20 = this;
+    var _this21 = this;
 
     return LessonApiFp(this.configuration).apiV1LessonPost(createLesson, options).then(function (request) {
-      return request(_this20.axios, _this20.basePath);
+      return request(_this21.axios, _this21.basePath);
     });
   };
 
@@ -3459,11 +3580,11 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1PersonGet: function () {
-      var _apiV1PersonGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee41(pageSize, pageNumber, type, options) {
+      var _apiV1PersonGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee43(pageSize, pageNumber, type, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee41$(_context41) {
+        return _regeneratorRuntime().wrap(function _callee43$(_context43) {
           while (1) {
-            switch (_context41.prev = _context41.next) {
+            switch (_context43.prev = _context43.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3487,7 +3608,7 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context41.next = 11;
+                _context43.next = 11;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 11:
@@ -3506,20 +3627,20 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context41.abrupt("return", {
+                return _context43.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 18:
               case "end":
-                return _context41.stop();
+                return _context43.stop();
             }
           }
-        }, _callee41);
+        }, _callee43);
       }));
 
-      function apiV1PersonGet(_x50, _x51, _x52, _x53) {
+      function apiV1PersonGet(_x52, _x53, _x54, _x55) {
         return _apiV1PersonGet.apply(this, arguments);
       }
 
@@ -3534,11 +3655,11 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1PersonPersonIdGet: function () {
-      var _apiV1PersonPersonIdGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee42(personId, options) {
+      var _apiV1PersonPersonIdGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee44(personId, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee42$(_context42) {
+        return _regeneratorRuntime().wrap(function _callee44$(_context44) {
           while (1) {
-            switch (_context42.prev = _context42.next) {
+            switch (_context44.prev = _context44.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3560,27 +3681,27 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context42.next = 10;
+                _context44.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context42.abrupt("return", {
+                return _context44.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 14:
               case "end":
-                return _context42.stop();
+                return _context44.stop();
             }
           }
-        }, _callee42);
+        }, _callee44);
       }));
 
-      function apiV1PersonPersonIdGet(_x54, _x55) {
+      function apiV1PersonPersonIdGet(_x56, _x57) {
         return _apiV1PersonPersonIdGet.apply(this, arguments);
       }
 
@@ -3596,11 +3717,11 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1PersonPersonIdPut: function () {
-      var _apiV1PersonPersonIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee43(personId, editPerson, options) {
+      var _apiV1PersonPersonIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee45(personId, editPerson, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee43$(_context43) {
+        return _regeneratorRuntime().wrap(function _callee45$(_context45) {
           while (1) {
-            switch (_context43.prev = _context43.next) {
+            switch (_context45.prev = _context45.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3622,7 +3743,7 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context43.next = 10;
+                _context45.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
@@ -3631,20 +3752,20 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(editPerson, localVarRequestOptions, configuration);
-                return _context43.abrupt("return", {
+                return _context45.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 16:
               case "end":
-                return _context43.stop();
+                return _context45.stop();
             }
           }
-        }, _callee43);
+        }, _callee45);
       }));
 
-      function apiV1PersonPersonIdPut(_x56, _x57, _x58) {
+      function apiV1PersonPersonIdPut(_x58, _x59, _x60) {
         return _apiV1PersonPersonIdPut.apply(this, arguments);
       }
 
@@ -3659,11 +3780,11 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1PersonPost: function () {
-      var _apiV1PersonPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee44(createPerson, options) {
+      var _apiV1PersonPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee46(createPerson, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee44$(_context44) {
+        return _regeneratorRuntime().wrap(function _callee46$(_context46) {
           while (1) {
-            switch (_context44.prev = _context44.next) {
+            switch (_context46.prev = _context46.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3683,7 +3804,7 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context44.next = 9;
+                _context46.next = 9;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 9:
@@ -3692,20 +3813,20 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(createPerson, localVarRequestOptions, configuration);
-                return _context44.abrupt("return", {
+                return _context46.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 15:
               case "end":
-                return _context44.stop();
+                return _context46.stop();
             }
           }
-        }, _callee44);
+        }, _callee46);
       }));
 
-      function apiV1PersonPost(_x59, _x60) {
+      function apiV1PersonPost(_x61, _x62) {
         return _apiV1PersonPost.apply(this, arguments);
       }
 
@@ -3719,11 +3840,11 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
      * @throws {RequiredError}
      */
     apiV1PersonSelfGet: function () {
-      var _apiV1PersonSelfGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee45(options) {
+      var _apiV1PersonSelfGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee47(options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee45$(_context45) {
+        return _regeneratorRuntime().wrap(function _callee47$(_context47) {
           while (1) {
-            switch (_context45.prev = _context45.next) {
+            switch (_context47.prev = _context47.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -3743,27 +3864,27 @@ var PersonApiAxiosParamCreator = function PersonApiAxiosParamCreator(configurati
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context45.next = 9;
+                _context47.next = 9;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 9:
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context45.abrupt("return", {
+                return _context47.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 13:
               case "end":
-                return _context45.stop();
+                return _context47.stop();
             }
           }
-        }, _callee45);
+        }, _callee47);
       }));
 
-      function apiV1PersonSelfGet(_x61) {
+      function apiV1PersonSelfGet(_x63) {
         return _apiV1PersonSelfGet.apply(this, arguments);
       }
 
@@ -3789,67 +3910,6 @@ var PersonApiFp = function PersonApiFp(configuration) {
      * @throws {RequiredError}
      */
     apiV1PersonGet: function apiV1PersonGet(pageSize, pageNumber, type, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee46() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee46$(_context46) {
-          while (1) {
-            switch (_context46.prev = _context46.next) {
-              case 0:
-                _context46.next = 2;
-                return localVarAxiosParamCreator.apiV1PersonGet(pageSize, pageNumber, type, options);
-
-              case 2:
-                localVarAxiosArgs = _context46.sent;
-                return _context46.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context46.stop();
-            }
-          }
-        }, _callee46);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Возвращает пользователя по id
-     * @param {number} personId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1PersonPersonIdGet: function apiV1PersonPersonIdGet(personId, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee47() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee47$(_context47) {
-          while (1) {
-            switch (_context47.prev = _context47.next) {
-              case 0:
-                _context47.next = 2;
-                return localVarAxiosParamCreator.apiV1PersonPersonIdGet(personId, options);
-
-              case 2:
-                localVarAxiosArgs = _context47.sent;
-                return _context47.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context47.stop();
-            }
-          }
-        }, _callee47);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Обновляет данные пользователя
-     * @param {number} personId
-     * @param {EditPerson} [editPerson]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1PersonPersonIdPut: function apiV1PersonPersonIdPut(personId, editPerson, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee48() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee48$(_context48) {
@@ -3857,7 +3917,7 @@ var PersonApiFp = function PersonApiFp(configuration) {
             switch (_context48.prev = _context48.next) {
               case 0:
                 _context48.next = 2;
-                return localVarAxiosParamCreator.apiV1PersonPersonIdPut(personId, editPerson, options);
+                return localVarAxiosParamCreator.apiV1PersonGet(pageSize, pageNumber, type, options);
 
               case 2:
                 localVarAxiosArgs = _context48.sent;
@@ -3874,12 +3934,12 @@ var PersonApiFp = function PersonApiFp(configuration) {
 
     /**
      *
-     * @summary Создает нового пользователя
-     * @param {CreatePerson} [createPerson]
+     * @summary Возвращает пользователя по id
+     * @param {number} personId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiV1PersonPost: function apiV1PersonPost(createPerson, options) {
+    apiV1PersonPersonIdGet: function apiV1PersonPersonIdGet(personId, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee49() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee49$(_context49) {
@@ -3887,7 +3947,7 @@ var PersonApiFp = function PersonApiFp(configuration) {
             switch (_context49.prev = _context49.next) {
               case 0:
                 _context49.next = 2;
-                return localVarAxiosParamCreator.apiV1PersonPost(createPerson, options);
+                return localVarAxiosParamCreator.apiV1PersonPersonIdGet(personId, options);
 
               case 2:
                 localVarAxiosArgs = _context49.sent;
@@ -3904,11 +3964,13 @@ var PersonApiFp = function PersonApiFp(configuration) {
 
     /**
      *
-     * @summary Возвращает текущего авторизованного пользователя
+     * @summary Обновляет данные пользователя
+     * @param {number} personId
+     * @param {EditPerson} [editPerson]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiV1PersonSelfGet: function apiV1PersonSelfGet(options) {
+    apiV1PersonPersonIdPut: function apiV1PersonPersonIdPut(personId, editPerson, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee50() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee50$(_context50) {
@@ -3916,7 +3978,7 @@ var PersonApiFp = function PersonApiFp(configuration) {
             switch (_context50.prev = _context50.next) {
               case 0:
                 _context50.next = 2;
-                return localVarAxiosParamCreator.apiV1PersonSelfGet(options);
+                return localVarAxiosParamCreator.apiV1PersonPersonIdPut(personId, editPerson, options);
 
               case 2:
                 localVarAxiosArgs = _context50.sent;
@@ -3928,6 +3990,65 @@ var PersonApiFp = function PersonApiFp(configuration) {
             }
           }
         }, _callee50);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Создает нового пользователя
+     * @param {CreatePerson} [createPerson]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonPost: function apiV1PersonPost(createPerson, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee51() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee51$(_context51) {
+          while (1) {
+            switch (_context51.prev = _context51.next) {
+              case 0:
+                _context51.next = 2;
+                return localVarAxiosParamCreator.apiV1PersonPost(createPerson, options);
+
+              case 2:
+                localVarAxiosArgs = _context51.sent;
+                return _context51.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context51.stop();
+            }
+          }
+        }, _callee51);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Возвращает текущего авторизованного пользователя
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1PersonSelfGet: function apiV1PersonSelfGet(options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee52() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee52$(_context52) {
+          while (1) {
+            switch (_context52.prev = _context52.next) {
+              case 0:
+                _context52.next = 2;
+                return localVarAxiosParamCreator.apiV1PersonSelfGet(options);
+
+              case 2:
+                localVarAxiosArgs = _context52.sent;
+                return _context52.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context52.stop();
+            }
+          }
+        }, _callee52);
       }))();
     }
   };
@@ -4035,10 +4156,10 @@ var PersonApi = /*#__PURE__*/function (_BaseAPI5) {
    * @memberof PersonApi
    */
   _proto5.apiV1PersonGet = function apiV1PersonGet(pageSize, pageNumber, type, options) {
-    var _this21 = this;
+    var _this22 = this;
 
     return PersonApiFp(this.configuration).apiV1PersonGet(pageSize, pageNumber, type, options).then(function (request) {
-      return request(_this21.axios, _this21.basePath);
+      return request(_this22.axios, _this22.basePath);
     });
   }
   /**
@@ -4052,10 +4173,10 @@ var PersonApi = /*#__PURE__*/function (_BaseAPI5) {
   ;
 
   _proto5.apiV1PersonPersonIdGet = function apiV1PersonPersonIdGet(personId, options) {
-    var _this22 = this;
+    var _this23 = this;
 
     return PersonApiFp(this.configuration).apiV1PersonPersonIdGet(personId, options).then(function (request) {
-      return request(_this22.axios, _this22.basePath);
+      return request(_this23.axios, _this23.basePath);
     });
   }
   /**
@@ -4070,10 +4191,10 @@ var PersonApi = /*#__PURE__*/function (_BaseAPI5) {
   ;
 
   _proto5.apiV1PersonPersonIdPut = function apiV1PersonPersonIdPut(personId, editPerson, options) {
-    var _this23 = this;
+    var _this24 = this;
 
     return PersonApiFp(this.configuration).apiV1PersonPersonIdPut(personId, editPerson, options).then(function (request) {
-      return request(_this23.axios, _this23.basePath);
+      return request(_this24.axios, _this24.basePath);
     });
   }
   /**
@@ -4087,10 +4208,10 @@ var PersonApi = /*#__PURE__*/function (_BaseAPI5) {
   ;
 
   _proto5.apiV1PersonPost = function apiV1PersonPost(createPerson, options) {
-    var _this24 = this;
+    var _this25 = this;
 
     return PersonApiFp(this.configuration).apiV1PersonPost(createPerson, options).then(function (request) {
-      return request(_this24.axios, _this24.basePath);
+      return request(_this25.axios, _this25.basePath);
     });
   }
   /**
@@ -4103,10 +4224,10 @@ var PersonApi = /*#__PURE__*/function (_BaseAPI5) {
   ;
 
   _proto5.apiV1PersonSelfGet = function apiV1PersonSelfGet(options) {
-    var _this25 = this;
+    var _this26 = this;
 
     return PersonApiFp(this.configuration).apiV1PersonSelfGet(options).then(function (request) {
-      return request(_this25.axios, _this25.basePath);
+      return request(_this26.axios, _this26.basePath);
     });
   };
 
@@ -4128,11 +4249,11 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
      * @throws {RequiredError}
      */
     apiV1RoomGet: function () {
-      var _apiV1RoomGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee51(pageSize, pageNumber, options) {
+      var _apiV1RoomGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee53(pageSize, pageNumber, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee51$(_context51) {
+        return _regeneratorRuntime().wrap(function _callee53$(_context53) {
           while (1) {
-            switch (_context51.prev = _context51.next) {
+            switch (_context53.prev = _context53.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -4156,7 +4277,7 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context51.next = 11;
+                _context53.next = 11;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 11:
@@ -4171,20 +4292,20 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context51.abrupt("return", {
+                return _context53.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 17:
               case "end":
-                return _context51.stop();
+                return _context53.stop();
             }
           }
-        }, _callee51);
+        }, _callee53);
       }));
 
-      function apiV1RoomGet(_x62, _x63, _x64) {
+      function apiV1RoomGet(_x64, _x65, _x66) {
         return _apiV1RoomGet.apply(this, arguments);
       }
 
@@ -4199,11 +4320,11 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
      * @throws {RequiredError}
      */
     apiV1RoomPost: function () {
-      var _apiV1RoomPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee52(createRoom, options) {
+      var _apiV1RoomPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee54(createRoom, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee52$(_context52) {
+        return _regeneratorRuntime().wrap(function _callee54$(_context54) {
           while (1) {
-            switch (_context52.prev = _context52.next) {
+            switch (_context54.prev = _context54.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -4223,7 +4344,7 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context52.next = 9;
+                _context54.next = 9;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 9:
@@ -4232,20 +4353,20 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(createRoom, localVarRequestOptions, configuration);
-                return _context52.abrupt("return", {
+                return _context54.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 15:
               case "end":
-                return _context52.stop();
+                return _context54.stop();
             }
           }
-        }, _callee52);
+        }, _callee54);
       }));
 
-      function apiV1RoomPost(_x65, _x66) {
+      function apiV1RoomPost(_x67, _x68) {
         return _apiV1RoomPost.apply(this, arguments);
       }
 
@@ -4260,11 +4381,11 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
      * @throws {RequiredError}
      */
     apiV1RoomRoomIdGet: function () {
-      var _apiV1RoomRoomIdGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee53(roomId, options) {
+      var _apiV1RoomRoomIdGet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee55(roomId, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee53$(_context53) {
+        return _regeneratorRuntime().wrap(function _callee55$(_context55) {
           while (1) {
-            switch (_context53.prev = _context53.next) {
+            switch (_context55.prev = _context55.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -4286,27 +4407,27 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context53.next = 10;
+                _context55.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
                 setSearchParams(localVarUrlObj, localVarQueryParameter);
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
-                return _context53.abrupt("return", {
+                return _context55.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 14:
               case "end":
-                return _context53.stop();
+                return _context55.stop();
             }
           }
-        }, _callee53);
+        }, _callee55);
       }));
 
-      function apiV1RoomRoomIdGet(_x67, _x68) {
+      function apiV1RoomRoomIdGet(_x69, _x70) {
         return _apiV1RoomRoomIdGet.apply(this, arguments);
       }
 
@@ -4322,11 +4443,11 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
      * @throws {RequiredError}
      */
     apiV1RoomRoomIdPut: function () {
-      var _apiV1RoomRoomIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee54(roomId, editRoom, options) {
+      var _apiV1RoomRoomIdPut = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee56(roomId, editRoom, options) {
         var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
-        return _regeneratorRuntime().wrap(function _callee54$(_context54) {
+        return _regeneratorRuntime().wrap(function _callee56$(_context56) {
           while (1) {
-            switch (_context54.prev = _context54.next) {
+            switch (_context56.prev = _context56.next) {
               case 0:
                 if (options === void 0) {
                   options = {};
@@ -4348,7 +4469,7 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 localVarHeaderParameter = {};
                 localVarQueryParameter = {}; // authentication Bearer required
 
-                _context54.next = 10;
+                _context56.next = 10;
                 return setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration);
 
               case 10:
@@ -4357,20 +4478,20 @@ var RoomApiAxiosParamCreator = function RoomApiAxiosParamCreator(configuration) 
                 headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                 localVarRequestOptions.headers = _extends({}, localVarHeaderParameter, headersFromBaseOptions, options.headers);
                 localVarRequestOptions.data = serializeDataIfNeeded(editRoom, localVarRequestOptions, configuration);
-                return _context54.abrupt("return", {
+                return _context56.abrupt("return", {
                   url: toPathString(localVarUrlObj),
                   options: localVarRequestOptions
                 });
 
               case 16:
               case "end":
-                return _context54.stop();
+                return _context56.stop();
             }
           }
-        }, _callee54);
+        }, _callee56);
       }));
 
-      function apiV1RoomRoomIdPut(_x69, _x70, _x71) {
+      function apiV1RoomRoomIdPut(_x71, _x72, _x73) {
         return _apiV1RoomRoomIdPut.apply(this, arguments);
       }
 
@@ -4395,66 +4516,6 @@ var RoomApiFp = function RoomApiFp(configuration) {
      * @throws {RequiredError}
      */
     apiV1RoomGet: function apiV1RoomGet(pageSize, pageNumber, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee55() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee55$(_context55) {
-          while (1) {
-            switch (_context55.prev = _context55.next) {
-              case 0:
-                _context55.next = 2;
-                return localVarAxiosParamCreator.apiV1RoomGet(pageSize, pageNumber, options);
-
-              case 2:
-                localVarAxiosArgs = _context55.sent;
-                return _context55.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context55.stop();
-            }
-          }
-        }, _callee55);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Создает новое помещение
-     * @param {CreateRoom} [createRoom]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1RoomPost: function apiV1RoomPost(createRoom, options) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee56() {
-        var localVarAxiosArgs;
-        return _regeneratorRuntime().wrap(function _callee56$(_context56) {
-          while (1) {
-            switch (_context56.prev = _context56.next) {
-              case 0:
-                _context56.next = 2;
-                return localVarAxiosParamCreator.apiV1RoomPost(createRoom, options);
-
-              case 2:
-                localVarAxiosArgs = _context56.sent;
-                return _context56.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
-
-              case 4:
-              case "end":
-                return _context56.stop();
-            }
-          }
-        }, _callee56);
-      }))();
-    },
-
-    /**
-     *
-     * @summary Возвращает помещение по id
-     * @param {number} roomId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiV1RoomRoomIdGet: function apiV1RoomRoomIdGet(roomId, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee57() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee57$(_context57) {
@@ -4462,7 +4523,7 @@ var RoomApiFp = function RoomApiFp(configuration) {
             switch (_context57.prev = _context57.next) {
               case 0:
                 _context57.next = 2;
-                return localVarAxiosParamCreator.apiV1RoomRoomIdGet(roomId, options);
+                return localVarAxiosParamCreator.apiV1RoomGet(pageSize, pageNumber, options);
 
               case 2:
                 localVarAxiosArgs = _context57.sent;
@@ -4479,13 +4540,12 @@ var RoomApiFp = function RoomApiFp(configuration) {
 
     /**
      *
-     * @summary Обновляет данные помещения
-     * @param {number} roomId
-     * @param {EditRoom} [editRoom]
+     * @summary Создает новое помещение
+     * @param {CreateRoom} [createRoom]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiV1RoomRoomIdPut: function apiV1RoomRoomIdPut(roomId, editRoom, options) {
+    apiV1RoomPost: function apiV1RoomPost(createRoom, options) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee58() {
         var localVarAxiosArgs;
         return _regeneratorRuntime().wrap(function _callee58$(_context58) {
@@ -4493,7 +4553,7 @@ var RoomApiFp = function RoomApiFp(configuration) {
             switch (_context58.prev = _context58.next) {
               case 0:
                 _context58.next = 2;
-                return localVarAxiosParamCreator.apiV1RoomRoomIdPut(roomId, editRoom, options);
+                return localVarAxiosParamCreator.apiV1RoomPost(createRoom, options);
 
               case 2:
                 localVarAxiosArgs = _context58.sent;
@@ -4505,6 +4565,67 @@ var RoomApiFp = function RoomApiFp(configuration) {
             }
           }
         }, _callee58);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Возвращает помещение по id
+     * @param {number} roomId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdGet: function apiV1RoomRoomIdGet(roomId, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee59() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee59$(_context59) {
+          while (1) {
+            switch (_context59.prev = _context59.next) {
+              case 0:
+                _context59.next = 2;
+                return localVarAxiosParamCreator.apiV1RoomRoomIdGet(roomId, options);
+
+              case 2:
+                localVarAxiosArgs = _context59.sent;
+                return _context59.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context59.stop();
+            }
+          }
+        }, _callee59);
+      }))();
+    },
+
+    /**
+     *
+     * @summary Обновляет данные помещения
+     * @param {number} roomId
+     * @param {EditRoom} [editRoom]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdPut: function apiV1RoomRoomIdPut(roomId, editRoom, options) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee60() {
+        var localVarAxiosArgs;
+        return _regeneratorRuntime().wrap(function _callee60$(_context60) {
+          while (1) {
+            switch (_context60.prev = _context60.next) {
+              case 0:
+                _context60.next = 2;
+                return localVarAxiosParamCreator.apiV1RoomRoomIdPut(roomId, editRoom, options);
+
+              case 2:
+                localVarAxiosArgs = _context60.sent;
+                return _context60.abrupt("return", createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration));
+
+              case 4:
+              case "end":
+                return _context60.stop();
+            }
+          }
+        }, _callee60);
       }))();
     }
   };
@@ -4598,10 +4719,10 @@ var RoomApi = /*#__PURE__*/function (_BaseAPI6) {
    * @memberof RoomApi
    */
   _proto6.apiV1RoomGet = function apiV1RoomGet(pageSize, pageNumber, options) {
-    var _this26 = this;
+    var _this27 = this;
 
     return RoomApiFp(this.configuration).apiV1RoomGet(pageSize, pageNumber, options).then(function (request) {
-      return request(_this26.axios, _this26.basePath);
+      return request(_this27.axios, _this27.basePath);
     });
   }
   /**
@@ -4615,10 +4736,10 @@ var RoomApi = /*#__PURE__*/function (_BaseAPI6) {
   ;
 
   _proto6.apiV1RoomPost = function apiV1RoomPost(createRoom, options) {
-    var _this27 = this;
+    var _this28 = this;
 
     return RoomApiFp(this.configuration).apiV1RoomPost(createRoom, options).then(function (request) {
-      return request(_this27.axios, _this27.basePath);
+      return request(_this28.axios, _this28.basePath);
     });
   }
   /**
@@ -4632,10 +4753,10 @@ var RoomApi = /*#__PURE__*/function (_BaseAPI6) {
   ;
 
   _proto6.apiV1RoomRoomIdGet = function apiV1RoomRoomIdGet(roomId, options) {
-    var _this28 = this;
+    var _this29 = this;
 
     return RoomApiFp(this.configuration).apiV1RoomRoomIdGet(roomId, options).then(function (request) {
-      return request(_this28.axios, _this28.basePath);
+      return request(_this29.axios, _this29.basePath);
     });
   }
   /**
@@ -4650,10 +4771,10 @@ var RoomApi = /*#__PURE__*/function (_BaseAPI6) {
   ;
 
   _proto6.apiV1RoomRoomIdPut = function apiV1RoomRoomIdPut(roomId, editRoom, options) {
-    var _this29 = this;
+    var _this30 = this;
 
     return RoomApiFp(this.configuration).apiV1RoomRoomIdPut(roomId, editRoom, options).then(function (request) {
-      return request(_this29.axios, _this29.basePath);
+      return request(_this30.axios, _this30.basePath);
     });
   };
 

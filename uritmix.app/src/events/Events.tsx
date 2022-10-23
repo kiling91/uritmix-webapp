@@ -5,10 +5,12 @@ import Tooltip from '../ui/Tooltip'
 import Visibility from '../ui/Visibility'
 import CreateEditEvent from './CreateEditEvent'
 import { dto } from 'uritmix.api'
+import RemoveEvent from './RemoveEvent'
 
 enum ModalMode {
 	Create,
 	Edit,
+	Remove,
 	None
 }
 
@@ -28,7 +30,8 @@ const Events = () => {
 	}
 
 	const onDelete = (value: dto.Event) => {
-		console.warn(`On delete ${value.id}`)
+		setCurrent(value)
+		setModalMode(ModalMode.Remove)
 	}
 
 	const onCreate = () => {
@@ -76,8 +79,11 @@ const Events = () => {
 				<Visibility visible={modalMode == ModalMode.Create}>
 					<CreateEditEvent onClose={onCloseModal} />
 				</Visibility>
-				<Visibility visible={modalMode == ModalMode.Edit}>
+				<Visibility visible={modalMode == ModalMode.Edit && current != null}>
 					<CreateEditEvent onClose={onCloseModal} event={current} />
+				</Visibility>
+				<Visibility visible={modalMode == ModalMode.Remove && current != null}>
+					<RemoveEvent onClose={onCloseModal} event={current} />
 				</Visibility>
 				{/*Modal*/}
 			</div>

@@ -19,6 +19,15 @@ class EventStore extends BaseStore<dto.Event> {
 			return res.data.ok || false
 		})
 	}
+
+	public async remove(eventId: number) {
+		return await this.makeRequest(async () => {
+			const res = await Api.eventApi.apiV1EventEventIdDelete(eventId)
+			this.checkErrors(res)
+			this.setValue(null)
+			return res.data.ok || false
+		})
+	}
 }
 
 export default EventStore

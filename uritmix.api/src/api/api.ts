@@ -2589,6 +2589,43 @@ export const EventApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Обновляет событие
          * @param {number} eventId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventEventIdDelete: async (eventId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'eventId' is not null or undefined
+            assertParamExists('apiV1EventEventIdDelete', 'eventId', eventId)
+            const localVarPath = `/api/v1/event/{eventId}`
+                .replace(`{${"eventId"}}`, encodeURIComponent(String(eventId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Обновляет событие
+         * @param {number} eventId 
          * @param {EditEvent} [editEvent] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2724,6 +2761,17 @@ export const EventApiFp = function(configuration?: Configuration) {
          * 
          * @summary Обновляет событие
          * @param {number} eventId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1EventEventIdDelete(eventId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultUnit>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1EventEventIdDelete(eventId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Обновляет событие
+         * @param {number} eventId 
          * @param {EditEvent} [editEvent] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2769,6 +2817,16 @@ export const EventApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Обновляет событие
          * @param {number} eventId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventEventIdDelete(eventId: number, options?: any): AxiosPromise<ResultUnit> {
+            return localVarFp.apiV1EventEventIdDelete(eventId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Обновляет событие
+         * @param {number} eventId 
          * @param {EditEvent} [editEvent] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2807,6 +2865,18 @@ export const EventApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class EventApi extends BaseAPI {
+    /**
+     * 
+     * @summary Обновляет событие
+     * @param {number} eventId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    public apiV1EventEventIdDelete(eventId: number, options?: AxiosRequestConfig) {
+        return EventApiFp(this.configuration).apiV1EventEventIdDelete(eventId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Обновляет событие
