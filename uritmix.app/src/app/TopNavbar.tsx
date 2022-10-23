@@ -64,6 +64,11 @@ const TopNavbar = () => {
 							{'Lessons'}
 						</NavLink>
 					</li>
+					<li className='nav-item'>
+						<NavLink to={AppUrl.Events} className='nav-link'>
+							{'Events'}
+						</NavLink>
+					</li>
 				</ul>
 
 				<div className='col-md-3'>

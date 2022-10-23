@@ -232,6 +232,31 @@ export interface CreateAuth {
 /**
  * 
  * @export
+ * @interface CreateEvent
+ */
+export interface CreateEvent {
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateEvent
+     */
+    'lessonId'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateEvent
+     */
+    'roomId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateEvent
+     */
+    'startDate'?: string;
+}
+/**
+ * 
+ * @export
  * @interface CreateLesson
  */
 export interface CreateLesson {
@@ -387,6 +412,31 @@ export interface EditAbonnement {
 /**
  * 
  * @export
+ * @interface EditEvent
+ */
+export interface EditEvent {
+    /**
+     * 
+     * @type {number}
+     * @memberof EditEvent
+     */
+    'lessonId'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditEvent
+     */
+    'roomId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditEvent
+     */
+    'startDate'?: string;
+}
+/**
+ * 
+ * @export
  * @interface EditLesson
  */
 export interface EditLesson {
@@ -484,6 +534,76 @@ export interface ErrorResponse {
      */
     'code'?: string;
 }
+/**
+ * 
+ * @export
+ * @interface Event
+ */
+export interface Event {
+    /**
+     * 
+     * @type {number}
+     * @memberof Event
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {EventTypeView}
+     * @memberof Event
+     */
+    'type'?: EventTypeView;
+    /**
+     * 
+     * @type {number}
+     * @memberof Event
+     */
+    'lessonId'?: number;
+    /**
+     * 
+     * @type {Lesson}
+     * @memberof Event
+     */
+    'lesson'?: Lesson;
+    /**
+     * 
+     * @type {number}
+     * @memberof Event
+     */
+    'roomId'?: number;
+    /**
+     * 
+     * @type {Room}
+     * @memberof Event
+     */
+    'room'?: Room;
+    /**
+     * 
+     * @type {string}
+     * @memberof Event
+     */
+    'startDate'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Event
+     */
+    'endDate'?: string;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const EventTypeView = {
+    NotStarted: 'NotStarted',
+    InProgress: 'InProgress',
+    Finished: 'Finished'
+} as const;
+
+export type EventTypeView = typeof EventTypeView[keyof typeof EventTypeView];
+
+
 /**
  * 
  * @export
@@ -979,6 +1099,31 @@ export interface ResultAbonnement {
 /**
  * 
  * @export
+ * @interface ResultEvent
+ */
+export interface ResultEvent {
+    /**
+     * 
+     * @type {Event}
+     * @memberof ResultEvent
+     */
+    'result'?: Event;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResultEvent
+     */
+    'error'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ResultEvent
+     */
+    'ok'?: boolean;
+}
+/**
+ * 
+ * @export
  * @interface ResultLesson
  */
 export interface ResultLesson {
@@ -998,6 +1143,31 @@ export interface ResultLesson {
      * 
      * @type {boolean}
      * @memberof ResultLesson
+     */
+    'ok'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ResultListEvent
+ */
+export interface ResultListEvent {
+    /**
+     * 
+     * @type {Array<Event>}
+     * @memberof ResultListEvent
+     */
+    'result'?: Array<Event> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResultListEvent
+     */
+    'error'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ResultListEvent
      */
     'ok'?: boolean;
 }
@@ -2410,6 +2580,274 @@ export class AuthApi extends BaseAPI {
 
 
 /**
+ * EventApi - axios parameter creator
+ * @export
+ */
+export const EventApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Обновляет событие
+         * @param {number} eventId 
+         * @param {EditEvent} [editEvent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventEventIdPut: async (eventId: number, editEvent?: EditEvent, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'eventId' is not null or undefined
+            assertParamExists('apiV1EventEventIdPut', 'eventId', eventId)
+            const localVarPath = `/api/v1/event/{eventId}`
+                .replace(`{${"eventId"}}`, encodeURIComponent(String(eventId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(editEvent, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Возвращает список событий
+         * @param {string} [startDate] 
+         * @param {string} [endDate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventGet: async (startDate?: string, endDate?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/event`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['startDate'] = (startDate as any instanceof Date) ?
+                    (startDate as any).toISOString() :
+                    startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['endDate'] = (endDate as any instanceof Date) ?
+                    (endDate as any).toISOString() :
+                    endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Создает новое событие занятия
+         * @param {CreateEvent} [createEvent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventPost: async (createEvent?: CreateEvent, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/event`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createEvent, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * EventApi - functional programming interface
+ * @export
+ */
+export const EventApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = EventApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Обновляет событие
+         * @param {number} eventId 
+         * @param {EditEvent} [editEvent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1EventEventIdPut(eventId: number, editEvent?: EditEvent, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultEvent>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1EventEventIdPut(eventId, editEvent, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Возвращает список событий
+         * @param {string} [startDate] 
+         * @param {string} [endDate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1EventGet(startDate?: string, endDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultListEvent>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1EventGet(startDate, endDate, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Создает новое событие занятия
+         * @param {CreateEvent} [createEvent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1EventPost(createEvent?: CreateEvent, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultEvent>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1EventPost(createEvent, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * EventApi - factory interface
+ * @export
+ */
+export const EventApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = EventApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Обновляет событие
+         * @param {number} eventId 
+         * @param {EditEvent} [editEvent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventEventIdPut(eventId: number, editEvent?: EditEvent, options?: any): AxiosPromise<ResultEvent> {
+            return localVarFp.apiV1EventEventIdPut(eventId, editEvent, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Возвращает список событий
+         * @param {string} [startDate] 
+         * @param {string} [endDate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventGet(startDate?: string, endDate?: string, options?: any): AxiosPromise<ResultListEvent> {
+            return localVarFp.apiV1EventGet(startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Создает новое событие занятия
+         * @param {CreateEvent} [createEvent] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1EventPost(createEvent?: CreateEvent, options?: any): AxiosPromise<ResultEvent> {
+            return localVarFp.apiV1EventPost(createEvent, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * EventApi - object-oriented interface
+ * @export
+ * @class EventApi
+ * @extends {BaseAPI}
+ */
+export class EventApi extends BaseAPI {
+    /**
+     * 
+     * @summary Обновляет событие
+     * @param {number} eventId 
+     * @param {EditEvent} [editEvent] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    public apiV1EventEventIdPut(eventId: number, editEvent?: EditEvent, options?: AxiosRequestConfig) {
+        return EventApiFp(this.configuration).apiV1EventEventIdPut(eventId, editEvent, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Возвращает список событий
+     * @param {string} [startDate] 
+     * @param {string} [endDate] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    public apiV1EventGet(startDate?: string, endDate?: string, options?: AxiosRequestConfig) {
+        return EventApiFp(this.configuration).apiV1EventGet(startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Создает новое событие занятия
+     * @param {CreateEvent} [createEvent] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    public apiV1EventPost(createEvent?: CreateEvent, options?: AxiosRequestConfig) {
+        return EventApiFp(this.configuration).apiV1EventPost(createEvent, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
  * LessonApi - axios parameter creator
  * @export
  */
@@ -3248,6 +3686,43 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @summary Возвращает помещение по id
+         * @param {number} roomId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1RoomRoomIdGet: async (roomId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'roomId' is not null or undefined
+            assertParamExists('apiV1RoomRoomIdGet', 'roomId', roomId)
+            const localVarPath = `/api/v1/room/{roomId}`
+                .replace(`{${"roomId"}}`, encodeURIComponent(String(roomId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Обновляет данные помещения
          * @param {number} roomId 
          * @param {EditRoom} [editRoom] 
@@ -3322,6 +3797,17 @@ export const RoomApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Возвращает помещение по id
+         * @param {number} roomId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1RoomRoomIdGet(roomId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResultRoom>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1RoomRoomIdGet(roomId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Обновляет данные помещения
          * @param {number} roomId 
          * @param {EditRoom} [editRoom] 
@@ -3362,6 +3848,16 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
          */
         apiV1RoomPost(createRoom?: CreateRoom, options?: any): AxiosPromise<ResultRoom> {
             return localVarFp.apiV1RoomPost(createRoom, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Возвращает помещение по id
+         * @param {number} roomId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1RoomRoomIdGet(roomId: number, options?: any): AxiosPromise<ResultRoom> {
+            return localVarFp.apiV1RoomRoomIdGet(roomId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3407,6 +3903,18 @@ export class RoomApi extends BaseAPI {
      */
     public apiV1RoomPost(createRoom?: CreateRoom, options?: AxiosRequestConfig) {
         return RoomApiFp(this.configuration).apiV1RoomPost(createRoom, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Возвращает помещение по id
+     * @param {number} roomId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoomApi
+     */
+    public apiV1RoomRoomIdGet(roomId: number, options?: AxiosRequestConfig) {
+        return RoomApiFp(this.configuration).apiV1RoomRoomIdGet(roomId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

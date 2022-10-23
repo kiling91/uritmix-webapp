@@ -5,6 +5,7 @@ import { Button } from 'devextreme-react'
 import { dto } from 'uritmix.api'
 import { POPUP_FORM_WIDTH, POPUP_POSITION } from '../config'
 import { discountToString, validityToString } from '../base/lookup'
+import moment from 'moment'
 
 interface Param {
 	soldAbonnement: dto.SoldAbonnement
@@ -17,8 +18,7 @@ const SoldAbonnementInfo = observer((param: Param) => {
 	}
 
 	const formatDate = (date: string) => {
-		var mydate = new Date(date)
-		return mydate.toLocaleDateString()
+		return moment(date).calendar()
 	}
 
 	const baseAbonnementData = () => {

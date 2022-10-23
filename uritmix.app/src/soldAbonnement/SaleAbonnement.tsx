@@ -16,7 +16,7 @@ import {
 	discountToValue,
 	validityToString
 } from '../base/lookup'
-import { AbonnementsLookupStore } from './store/abonnementsLookupStore'
+import { AbonnementsLookupStore } from '../store/abonnementsLookupStore'
 
 interface Param {
 	personId: number

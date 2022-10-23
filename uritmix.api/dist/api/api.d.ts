@@ -211,6 +211,31 @@ export interface CreateAuth {
 /**
  *
  * @export
+ * @interface CreateEvent
+ */
+export interface CreateEvent {
+    /**
+     *
+     * @type {number}
+     * @memberof CreateEvent
+     */
+    'lessonId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateEvent
+     */
+    'roomId'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateEvent
+     */
+    'startDate'?: string;
+}
+/**
+ *
+ * @export
  * @interface CreateLesson
  */
 export interface CreateLesson {
@@ -362,6 +387,31 @@ export interface EditAbonnement {
 /**
  *
  * @export
+ * @interface EditEvent
+ */
+export interface EditEvent {
+    /**
+     *
+     * @type {number}
+     * @memberof EditEvent
+     */
+    'lessonId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof EditEvent
+     */
+    'roomId'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof EditEvent
+     */
+    'startDate'?: string;
+}
+/**
+ *
+ * @export
  * @interface EditLesson
  */
 export interface EditLesson {
@@ -459,6 +509,72 @@ export interface ErrorResponse {
      */
     'code'?: string;
 }
+/**
+ *
+ * @export
+ * @interface Event
+ */
+export interface Event {
+    /**
+     *
+     * @type {number}
+     * @memberof Event
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {EventTypeView}
+     * @memberof Event
+     */
+    'type'?: EventTypeView;
+    /**
+     *
+     * @type {number}
+     * @memberof Event
+     */
+    'lessonId'?: number;
+    /**
+     *
+     * @type {Lesson}
+     * @memberof Event
+     */
+    'lesson'?: Lesson;
+    /**
+     *
+     * @type {number}
+     * @memberof Event
+     */
+    'roomId'?: number;
+    /**
+     *
+     * @type {Room}
+     * @memberof Event
+     */
+    'room'?: Room;
+    /**
+     *
+     * @type {string}
+     * @memberof Event
+     */
+    'startDate'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Event
+     */
+    'endDate'?: string;
+}
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export declare const EventTypeView: {
+    readonly NotStarted: "NotStarted";
+    readonly InProgress: "InProgress";
+    readonly Finished: "Finished";
+};
+export declare type EventTypeView = typeof EventTypeView[keyof typeof EventTypeView];
 /**
  *
  * @export
@@ -950,6 +1066,31 @@ export interface ResultAbonnement {
 /**
  *
  * @export
+ * @interface ResultEvent
+ */
+export interface ResultEvent {
+    /**
+     *
+     * @type {Event}
+     * @memberof ResultEvent
+     */
+    'result'?: Event;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultEvent
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultEvent
+     */
+    'ok'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface ResultLesson
  */
 export interface ResultLesson {
@@ -969,6 +1110,31 @@ export interface ResultLesson {
      *
      * @type {boolean}
      * @memberof ResultLesson
+     */
+    'ok'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ResultListEvent
+ */
+export interface ResultListEvent {
+    /**
+     *
+     * @type {Array<Event>}
+     * @memberof ResultListEvent
+     */
+    'result'?: Array<Event> | null;
+    /**
+     *
+     * @type {string}
+     * @memberof ResultListEvent
+     */
+    'error'?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResultListEvent
      */
     'ok'?: boolean;
 }
@@ -1866,6 +2032,139 @@ export declare class AuthApi extends BaseAPI {
     apiV1AuthRefreshPost(refresh?: Refresh, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultLoggedPerson, any>>;
 }
 /**
+ * EventApi - axios parameter creator
+ * @export
+ */
+export declare const EventApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {EditEvent} [editEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdPut: (eventId: number, editEvent?: EditEvent | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Возвращает список событий
+     * @param {string} [startDate]
+     * @param {string} [endDate]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventGet: (startDate?: string | undefined, endDate?: string | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Создает новое событие занятия
+     * @param {CreateEvent} [createEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventPost: (createEvent?: CreateEvent | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * EventApi - functional programming interface
+ * @export
+ */
+export declare const EventApiFp: (configuration?: Configuration | undefined) => {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {EditEvent} [editEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdPut(eventId: number, editEvent?: EditEvent | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultEvent>>;
+    /**
+     *
+     * @summary Возвращает список событий
+     * @param {string} [startDate]
+     * @param {string} [endDate]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventGet(startDate?: string | undefined, endDate?: string | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultListEvent>>;
+    /**
+     *
+     * @summary Создает новое событие занятия
+     * @param {CreateEvent} [createEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventPost(createEvent?: CreateEvent | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultEvent>>;
+};
+/**
+ * EventApi - factory interface
+ * @export
+ */
+export declare const EventApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {EditEvent} [editEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventEventIdPut(eventId: number, editEvent?: EditEvent | undefined, options?: any): AxiosPromise<ResultEvent>;
+    /**
+     *
+     * @summary Возвращает список событий
+     * @param {string} [startDate]
+     * @param {string} [endDate]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventGet(startDate?: string | undefined, endDate?: string | undefined, options?: any): AxiosPromise<ResultListEvent>;
+    /**
+     *
+     * @summary Создает новое событие занятия
+     * @param {CreateEvent} [createEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1EventPost(createEvent?: CreateEvent | undefined, options?: any): AxiosPromise<ResultEvent>;
+};
+/**
+ * EventApi - object-oriented interface
+ * @export
+ * @class EventApi
+ * @extends {BaseAPI}
+ */
+export declare class EventApi extends BaseAPI {
+    /**
+     *
+     * @summary Обновляет событие
+     * @param {number} eventId
+     * @param {EditEvent} [editEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    apiV1EventEventIdPut(eventId: number, editEvent?: EditEvent, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultEvent, any>>;
+    /**
+     *
+     * @summary Возвращает список событий
+     * @param {string} [startDate]
+     * @param {string} [endDate]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    apiV1EventGet(startDate?: string, endDate?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultListEvent, any>>;
+    /**
+     *
+     * @summary Создает новое событие занятия
+     * @param {CreateEvent} [createEvent]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EventApi
+     */
+    apiV1EventPost(createEvent?: CreateEvent, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultEvent, any>>;
+}
+/**
  * LessonApi - axios parameter creator
  * @export
  */
@@ -2254,6 +2553,14 @@ export declare const RoomApiAxiosParamCreator: (configuration?: Configuration | 
     apiV1RoomPost: (createRoom?: CreateRoom | undefined, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Возвращает помещение по id
+     * @param {number} roomId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdGet: (roomId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Обновляет данные помещения
      * @param {number} roomId
      * @param {EditRoom} [editRoom]
@@ -2286,6 +2593,14 @@ export declare const RoomApiFp: (configuration?: Configuration | undefined) => {
     apiV1RoomPost(createRoom?: CreateRoom | undefined, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultRoom>>;
     /**
      *
+     * @summary Возвращает помещение по id
+     * @param {number} roomId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdGet(roomId: number, options?: AxiosRequestConfig<any> | undefined): Promise<(axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResultRoom>>;
+    /**
+     *
      * @summary Обновляет данные помещения
      * @param {number} roomId
      * @param {EditRoom} [editRoom]
@@ -2316,6 +2631,14 @@ export declare const RoomApiFactory: (configuration?: Configuration | undefined,
      * @throws {RequiredError}
      */
     apiV1RoomPost(createRoom?: CreateRoom | undefined, options?: any): AxiosPromise<ResultRoom>;
+    /**
+     *
+     * @summary Возвращает помещение по id
+     * @param {number} roomId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiV1RoomRoomIdGet(roomId: number, options?: any): AxiosPromise<ResultRoom>;
     /**
      *
      * @summary Обновляет данные помещения
@@ -2352,6 +2675,15 @@ export declare class RoomApi extends BaseAPI {
      * @memberof RoomApi
      */
     apiV1RoomPost(createRoom?: CreateRoom, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultRoom, any>>;
+    /**
+     *
+     * @summary Возвращает помещение по id
+     * @param {number} roomId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoomApi
+     */
+    apiV1RoomRoomIdGet(roomId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ResultRoom, any>>;
     /**
      *
      * @summary Обновляет данные помещения

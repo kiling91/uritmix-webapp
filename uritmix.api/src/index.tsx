@@ -31,6 +31,12 @@ export namespace Api {
             basePath: API_URL
         })
     );
+
+    export const eventApi = new api.EventApi(
+        new api.Configuration({
+            basePath: API_URL
+        })
+    );
 }
 
 export * as dto from './api';

@@ -13,6 +13,17 @@ import SoldAbonnements from '../soldAbonnement/SoldAbonnements'
 import Abonnements from '../abonnement/Abonnements'
 import Rooms from '../room/Rooms'
 import Lessons from '../lesson/Lessons'
+import Events from '../events/Events'
+
+import { /*loadMessages,*/ locale } from 'devextreme/localization'
+//import * as ruMessages from 'devextreme/localization/messages/ru.json'
+// loadMessages(ruMessages)
+locale('ru')
+
+import moment from 'moment'
+import 'moment/locale/ru' // without this line it didn't work
+
+moment.locale('ru')
 
 const AppWrapper = () => {
 	const account = IAccount.load()
@@ -40,6 +51,7 @@ const App = () => {
 			<Route path={'/'} element={<AppWrapper />}>
 				<Route index element={<h1>Home</h1>} />
 				<Route path={AppUrl.Abonnements} element={<Abonnements />} />
+				<Route path={AppUrl.Events} element={<Events />} />
 				<Route path={AppUrl.Rooms} element={<Rooms />} />
 				<Route path={AppUrl.Lessons} element={<Lessons />} />
 				<Route path={AppUrl.Persons} element={<Persons />} />
